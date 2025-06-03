@@ -5,6 +5,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  basePath: '/YITA-Aviation-Site',
+  assetPrefix: '/YITA-Aviation-Site/',
 };
 
 module.exports = nextConfig;
