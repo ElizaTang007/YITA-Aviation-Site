@@ -1,5 +1,5 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body, html { height: 100%; font-family: sans-serif; background: black; color: white; scroll-behavior: smooth; }
+body, html { height: 100%; font-family: sans-serif; background: transparent; color: white; scroll-behavior: smooth; }
 
 #bg-video {
   position: fixed;
@@ -9,7 +9,7 @@ body, html { height: 100%; font-family: sans-serif; background: black; color: wh
   height: 100vh;
   object-fit: cover;
   z-index: -1;
-  background: black;
+  background: transparent;
 }
 
 .logo {
