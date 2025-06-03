@@ -326,3 +326,48 @@ body, html { height: 100%; font-family: sans-serif; background: transparent; col
 .footer-meta p {
   margin-bottom: 0.5rem;
 }
+
+
+.black-text {
+  color: #111;
+}
+
+.partnership-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 4rem 5%;
+  gap: 3rem;
+}
+
+.left-partner, .right-partner {
+  flex: 1 1 400px;
+  max-width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.left-partner img,
+.right-partner img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.image-shadow {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .partnership-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .left-partner, .right-partner {
+    max-width: 90%;
+  }
+}
+
