@@ -1,10 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: 'export',
-    images: {
-        unoptimized: true,
-    },
-};
+  reactStrictMode: true,
+  experimental: {
+    appDir: true,  // ✅ 告诉 Vercel 你在用 app/
+  },
+}
 
-export default nextConfig;
-
+export default nextConfig
