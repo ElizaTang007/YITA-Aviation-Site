@@ -1,3 +1,4 @@
+// 横向滚动逻辑
 const scrollWrapper = document.getElementById('scrollWrapper');
 const container = document.getElementById('scrollContainer');
 
@@ -12,4 +13,23 @@ window.addEventListener('scroll', () => {
     const progress = relativeScroll / totalScrollHeight;
     scrollWrapper.style.transform = `translateX(-${progress * totalHorizontalScroll}px)`;
   }
+});
+
+
+// 滑入淡出动画逻辑
+document.addEventListener("DOMContentLoaded", () => {
+  const fadeElements = document.querySelectorAll(".fade-in");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target); // 触发一次就不再监听
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  fadeElements.forEach(el => observer.observe(el));
 });
