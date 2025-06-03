@@ -24,41 +24,38 @@ body, html { height: 100%; font-family: sans-serif; background: transparent; col
 .logo span {
   color: #B1FF1A;
 }
-.overlay-section {
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  color: white;
+.fade-section {
+  background: transparent;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 5rem;
+  padding: 4rem 6%;
+  height: 100vh;
+  color: white;
 }
 
 .text-block {
   max-width: 700px;
-  background: rgba(0, 0, 0, 0.4); /* 可选半透明背景 */
-  padding: 2rem;
-  border-radius: 12px;
-  animation: fadeInUp 1.5s ease forwards;
+  animation: fadeInUp 1.4s ease-out both;
 }
 
 .text-block h2 {
-  font-size: 2.8rem;
-  line-height: 1.3;
-  font-weight: bold;
+  font-size: 3.4rem; /* 更大标题 */
+  line-height: 1.2;
+  font-weight: 800;
   margin-bottom: 1.5rem;
 }
 
-.text-block h2 .green {
-  color: #B1FF1A;
+.text-block p {
+  font-size: 1.25rem;  /* 稍大字体 */
+  line-height: 1.6;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+  max-width: 600px;
 }
 
-.text-block p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  margin-bottom: 2rem;
-  opacity: 0.9;
+.text-block .green {
+  color: #B1FF1A;
 }
 
 .cta-button {
@@ -75,11 +72,11 @@ body, html { height: 100%; font-family: sans-serif; background: transparent; col
   transform: scale(1.05);
 }
 
-/* 动画效果 */
+/* 动画关键帧 */
 @keyframes fadeInUp {
   0% {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px);
   }
   100% {
     opacity: 1;
