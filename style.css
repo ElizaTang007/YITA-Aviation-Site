@@ -137,18 +137,20 @@ body, html { height: 100%; font-family: sans-serif; background: transparent; col
   background-color: black;
 }
 
-.horizontal-scroll {
-  height: 500vh;
-  position: relative;
-}
-.scroll-wrapper {
+.scroll-wrapper-wrapper {
+  overflow: hidden;
+  width: 100vw;
   position: sticky;
   top: 0;
   height: 100vh;
-  display: flex;
-  width: 600vw;
-  transition: transform 0.1s ease-out;
 }
+
+.scroll-wrapper {
+  display: flex;
+  height: 100%;
+  will-change: transform;
+}
+
 .slide {
   width: 100vw;
   display: flex;
@@ -325,5 +327,8 @@ body, html { height: 100%; font-family: sans-serif; background: transparent; col
 }
 .footer-meta p {
   margin-bottom: 0.5rem;
+}
+body, html {
+  overflow-x: hidden;
 }
 
