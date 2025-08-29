@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# 网站地图
+Sitemap: https://yitaaviation.com/sitemap.xml
+
+# 允许所有搜索引擎爬取
+Disallow: /404.html
+Disallow: /test-animation.html
+
+# 爬取延迟（可选）
+Crawl-delay: 1 
