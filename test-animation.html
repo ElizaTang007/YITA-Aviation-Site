@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画测试</title>
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 50px;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            max-width: 400px;
+        }
+        
+        .product-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 0.75rem;
+            text-align: center;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateX(-100%);
+            opacity: 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .product-item.animate-in {
+            transform: translateX(0) !important;
+            opacity: 1 !important;
+        }
+        
+        .product-image {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-info h4 {
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+        }
+        
+        .product-info p {
+            color: #cccccc;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .price {
+            color: #00d4ff;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .test-button {
+            background: #00d4ff;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>产品卡片动画测试</h1>
+    <button class="test-button" onclick="testAnimation()">测试动画</button>
+    
+    <div class="product-grid">
+        <div class="product-item" data-delay="0">
+            <div class="product-image">🚁</div>
+            <div class="product-info">
+                <h4>DJI Mavic 3</h4>
+                <p>专业级航拍无人机</p>
+                <span class="price">¥12,999</span>
+            </div>
+        </div>
+        <div class="product-item" data-delay="200">
+            <div class="product-image">✈️</div>
+            <div class="product-info">
+                <h4>eVTOL 原型机</h4>
+                <p>城市空中出行</p>
+                <span class="price">¥2,500,000</span>
+            </div>
+        </div>
+        <div class="product-item" data-delay="400">
+            <div class="product-image">🔧</div>
+            <div class="product-info">
+                <h4>飞控系统</h4>
+                <p>高精度定位模块</p>
+                <span class="price">¥3,999</span>
+            </div>
+        </div>
+        <div class="product-item" data-delay="600">
+            <div class="product-image">📡</div>
+            <div class="product-info">
+                <h4>通信模块</h4>
+                <p>远程控制链路</p>
+                <span class="price">¥1,299</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function testAnimation() {
+            console.log('Testing animation...');
+            const productItems = document.querySelectorAll('.product-item');
+            
+            // 重置所有卡片
+            productItems.forEach(item => {
+                item.style.transform = 'translateX(-100%)';
+                item.style.opacity = '0';
+                item.classList.remove('animate-in');
+            });
+            
+            // 延迟后开始动画
+            setTimeout(() => {
+                productItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        console.log('Animating item', index);
+                        item.classList.add('animate-in');
+                    }, index * 400);
+                });
+            }, 100);
+        }
+        
+        // 页面加载后自动测试
+        window.addEventListener('load', () => {
+            setTimeout(testAnimation, 1000);
+        });
+    </script>
+</body>
+</html> 

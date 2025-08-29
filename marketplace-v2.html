@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YITA 市场平台 - 简化版</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+        
+        .marketplace-layout {
+            display: grid;
+            grid-template-rows: auto 1fr;
+            height: 100vh;
+        }
+        
+        .marketplace-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-left, .header-right {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .header-center {
+            text-align: center;
+        }
+        
+        .header-center h1 {
+            margin: 0;
+            color: #ffffff;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+        
+        .header-center p {
+            margin: 0.5rem 0 0 0;
+            color: #00d4ff;
+            font-size: 1rem;
+        }
+        
+        .btn-primary, .btn-secondary {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: #00d4ff;
+            color: #000000;
+        }
+        
+        .btn-primary:hover {
+            background: #0099cc;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .marketplace-main {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            height: 100%;
+        }
+        
+        .marketplace-sidebar {
+            background: rgba(0, 0, 0, 0.3);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .search-section {
+            margin-bottom: 2rem;
+        }
+        
+        .search-box {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .search-box input {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 0.75rem;
+            color: #ffffff;
+            font-size: 0.875rem;
+        }
+        
+        .search-box input::placeholder {
+            color: #cccccc;
+        }
+        
+        .search-box button {
+            background: #00d4ff;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: #000000;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box button:hover {
+            background: #0099cc;
+        }
+        
+        .filter-section {
+            margin-bottom: 2rem;
+        }
+        
+        .filter-section h3 {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .filter-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #cccccc;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .filter-item:hover {
+            color: #ffffff;
+        }
+        
+        .filter-item input[type="checkbox"],
+        .filter-item input[type="radio"] {
+            accent-color: #00d4ff;
+        }
+        
+        .marketplace-content {
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .results-info {
+            color: #cccccc;
+            font-size: 0.875rem;
+        }
+        
+        .results-info strong {
+            color: #ffffff;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.2);
+            border-color: #00d4ff;
+        }
+        
+        .product-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-name {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin: 0 0 0.5rem 0;
+            font-weight: 600;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stars {
+            font-size: 0.875rem;
+        }
+        
+        .rating-text {
+            color: #cccccc;
+            font-size: 0.75rem;
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .current-price {
+            color: #00d4ff;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        
+        .original-price {
+            color: #cccccc;
+            text-decoration: line-through;
+            font-size: 0.875rem;
+        }
+        
+        .product-actions {
+            padding: 0 1.5rem 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .product-actions button {
+            flex: 1;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="marketplace-layout">
+        <!-- 顶部导航 -->
+        <div class="marketplace-header">
+            <div class="header-left">
+                <button class="btn-secondary" onclick="window.location.href='index.html'">← 返回主页</button>
+                <button class="btn-secondary" onclick="window.location.href='marketplace.html'">查看原版</button>
+            </div>
+            <div class="header-center">
+                <h1>🛍️ YITA 市场平台</h1>
+                <p>无人机 + 配件 + 服务的可信交易闭环</p>
+            </div>
+            <div class="header-right">
+                <div class="user-actions">
+                    <button class="btn-secondary" onclick="openCart()">
+                        🛒 购物车 <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                    <button class="btn-primary" onclick="openSellerCenter()">卖家中心</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主要内容区 -->
+        <div class="marketplace-main">
+            <!-- 左侧筛选栏 -->
+            <div class="marketplace-sidebar">
+                <!-- 搜索框 -->
+                <div class="search-section">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="搜索商品、品牌、型号...">
+                        <button onclick="performSearch()">🔍</button>
+                    </div>
+                </div>
+
+                <!-- 分类筛选 -->
+                <div class="filter-section">
+                    <h3>📦 商品分类</h3>
+                    <div class="category-filters">
+                        <label class="filter-item">
+                            <input type="checkbox" value="drone" checked> 无人机
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" value="accessory"> 配件
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" value="service"> 服务
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" value="used"> 二手认证
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 价格筛选 -->
+                <div class="filter-section">
+                    <h3>💰 价格区间</h3>
+                    <div class="price-filters">
+                        <label class="filter-item">
+                            <input type="radio" name="price" value="0-1000"> ¥0 - ¥1,000
+                        </label>
+                        <label class="filter-item">
+                            <input type="radio" name="price" value="1000-5000" checked> ¥1,000 - ¥5,000
+                        </label>
+                        <label class="filter-item">
+                            <input type="radio" name="price" value="5000-20000"> ¥5,000 - ¥20,000
+                        </label>
+                        <label class="filter-item">
+                            <input type="radio" name="price" value="20000+"> ¥20,000+
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 品牌筛选 -->
+                <div class="filter-section">
+                    <h3>🏷️ 品牌</h3>
+                    <div class="brand-filters">
+                        <label class="filter-item">
+                            <input type="checkbox" value="dji"> DJI
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" value="autel"> Autel
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" value="parrot"> Parrot
+                        </label>
+                        <label class="filter-item">
+                            <input type="checkbox" value="yita"> YITA
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧商品展示区 -->
+            <div class="marketplace-content">
+                <!-- 排序和视图控制 -->
+                <div class="content-header">
+                    <div class="results-info">
+                        <span>找到 <strong id="resultCount">8</strong> 个商品</span>
+                    </div>
+                </div>
+
+                <!-- 商品网格 -->
+                <div class="product-grid" id="productGrid">
+                    <!-- 商品卡片 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/drone-inspection.jpg" alt="DJI Mavic 3 Pro">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">DJI Mavic 3 Pro</h3>
+                            <div class="product-rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span class="rating-text">4.8 (156)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">¥12,999</span>
+                                <span class="original-price">¥15,999</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-primary">加入购物车</button>
+                            <button class="btn-secondary">查看详情</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/evtol-transport.jpg" alt="YITA Alpha-1 eVTOL">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">YITA Alpha-1 eVTOL</h3>
+                            <div class="product-rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span class="rating-text">4.9 (23)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">¥89,999</span>
+                                <span class="original-price">¥99,999</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-primary">加入购物车</button>
+                            <button class="btn-secondary">查看详情</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/agriculture-spraying.jpg" alt="DJI Mini 3 Pro">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">DJI Mini 3 Pro</h3>
+                            <div class="product-rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span class="rating-text">4.7 (89)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">¥4,799</span>
+                                <span class="original-price">¥5,299</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-primary">加入购物车</button>
+                            <button class="btn-secondary">查看详情</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/logistics-delivery.jpg" alt="农业喷洒无人机">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">农业喷洒无人机</h3>
+                            <div class="product-rating">
+                                <span class="stars">⭐⭐⭐⭐⭐</span>
+                                <span class="rating-text">4.6 (45)</span>
+                            </div>
+                            <div class="product-price">
+                                <span class="current-price">¥15,999</span>
+                                <span class="original-price">¥18,999</span>
+                            </div>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-primary">加入购物车</button>
+                            <button class="btn-secondary">查看详情</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 简单的JavaScript功能
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value;
+            alert('搜索功能：' + searchTerm);
+        }
+        
+        function openCart() {
+            alert('购物车功能即将上线！');
+        }
+        
+        function openSellerCenter() {
+            alert('卖家中心功能即将上线！');
+        }
+        
+        // 搜索框回车事件
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    </script>
+</body>
+</html> 

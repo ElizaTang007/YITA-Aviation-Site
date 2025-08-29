@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YITA 指挥中心 - 飞行员视角</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+    <div class="command-center-layout">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>🎮 指挥中心</h2>
+                <p class="subtitle">飞行员视角</p>
+            </div>
+
+            <!-- 设备管理 -->
+            <div class="sidebar-section">
+                <h3>📡 设备管理</h3>
+                <div class="device-cards">
+                    <div class="device-card online">
+                        <div class="device-status"></div>
+                        <div class="device-info">
+                            <h4>DJI Mavic 3 Pro</h4>
+                            <p>ID: DRONE-001</p>
+                            <p>电量: 85% | 信号: 强</p>
+                        </div>
+                    </div>
+                    <div class="device-card offline">
+                        <div class="device-status"></div>
+                        <div class="device-info">
+                            <h4>eVTOL Alpha-1</h4>
+                            <p>ID: EVTOL-002</p>
+                            <p>电量: 0% | 信号: 离线</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 任务队列 -->
+            <div class="sidebar-section">
+                <h3>📋 任务队列</h3>
+                <div class="task-queue">
+                    <div class="task-item executing">
+                        <div class="task-icon">🚁</div>
+                        <div class="task-info">
+                            <h4>起飞</h4>
+                            <p>高度: 50m | 状态: 执行中</p>
+                        </div>
+                    </div>
+                    <div class="task-item pending">
+                        <div class="task-icon">📍</div>
+                        <div class="task-info">
+                            <h4>移动到目标点</h4>
+                            <p>坐标: 39.9042°N, 116.4074°E</p>
+                        </div>
+                    </div>
+                    <div class="task-item pending">
+                        <div class="task-icon">🔄</div>
+                        <div class="task-info">
+                            <h4>环绕飞行</h4>
+                            <p>半径: 100m | 圈数: 3</p>
+                        </div>
+                    </div>
+                    <div class="task-item pending">
+                        <div class="task-icon">🛬</div>
+                        <div class="task-info">
+                            <h4>降落</h4>
+                            <p>返航点 | 状态: 待命</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 遥测数据 -->
+            <div class="sidebar-section">
+                <h3>📊 遥测数据</h3>
+                <div class="telemetry-grid">
+                    <div class="telemetry-item">
+                        <span class="label">位置精度</span>
+                        <span class="value good">±0.5m</span>
+                    </div>
+                    <div class="telemetry-item">
+                        <span class="label">信噪比</span>
+                        <span class="value good">45dB</span>
+                    </div>
+                    <div class="telemetry-item">
+                        <span class="label">电量</span>
+                        <span class="value warning">85%</span>
+                    </div>
+                    <div class="telemetry-item">
+                        <span class="label">链路质量</span>
+                        <span class="value good">98%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 告警系统 -->
+            <div class="sidebar-section">
+                <h3>⚠️ 告警系统</h3>
+                <div class="alert-list">
+                    <div class="alert-item info">
+                        <span class="alert-icon">ℹ️</span>
+                        <span class="alert-text">设备已连接</span>
+                    </div>
+                    <div class="alert-item warning">
+                        <span class="alert-icon">⚠️</span>
+                        <span class="alert-text">电量低于20%时提醒</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主内容区 -->
+        <div class="main-content">
+            <!-- 顶部工具栏 -->
+            <div class="top-toolbar">
+                <div class="toolbar-left">
+                    <button class="btn-secondary" onclick="window.location.href='index.html'">← 返回主页</button>
+                    <button class="btn-secondary" onclick="window.location.href='command-center.html'">切换到玩家版</button>
+                </div>
+                <div class="toolbar-right">
+                    <button class="btn-primary" onclick="startDemo()">开始演示</button>
+                    <button class="btn-secondary" onclick="exportLogs()">导出日志</button>
+                </div>
+            </div>
+
+            <!-- 地图区域 -->
+            <div class="map-container">
+                <div class="map-controls">
+                    <button class="map-btn active" onclick="switchMapType('2d')">2D</button>
+                    <button class="map-btn" onclick="switchMapType('satellite')">卫星</button>
+                    <button class="map-btn" onclick="toggleNoFlyZones()">禁飞区</button>
+                    <button class="map-btn" onclick="showFlightPath()">航线</button>
+                </div>
+                <div id="map"></div>
+            </div>
+
+            <!-- 控制面板 -->
+            <div class="control-panel">
+                <div class="panel-section">
+                    <h3>🎯 任务控制</h3>
+                    <div class="control-buttons">
+                        <button class="control-btn primary" onclick="executeCommand('takeoff')">起飞</button>
+                        <button class="control-btn" onclick="executeCommand('move')">移动</button>
+                        <button class="control-btn" onclick="executeCommand('orbit')">环绕</button>
+                        <button class="control-btn" onclick="executeCommand('land')">降落</button>
+                        <button class="control-btn emergency" onclick="executeCommand('emergency')">紧急降落</button>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>📹 视频控制</h3>
+                    <div class="video-controls">
+                        <button class="video-btn" onclick="startRecording()">开始录制</button>
+                        <button class="video-btn" onclick="takePhoto()">拍照</button>
+                        <button class="video-btn" onclick="switchCamera()">切换相机</button>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>⚙️ 高级设置</h3>
+                    <div class="advanced-controls">
+                        <div class="setting-item">
+                            <label>飞行高度</label>
+                            <input type="range" min="10" max="500" value="100" id="altitude">
+                            <span id="altitude-value">100m</span>
+                        </div>
+                        <div class="setting-item">
+                            <label>飞行速度</label>
+                            <input type="range" min="1" max="20" value="10" id="speed">
+                            <span id="speed-value">10m/s</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 任务回放面板 -->
+        <div class="replay-panel" id="replayPanel">
+            <div class="replay-header">
+                <h3>📼 任务回放</h3>
+                <button class="close-btn" onclick="closeReplay()">×</button>
+            </div>
+            <div class="timeline">
+                <div class="timeline-track">
+                    <div class="timeline-marker" style="left: 30%"></div>
+                    <div class="timeline-marker" style="left: 60%"></div>
+                    <div class="timeline-marker" style="left: 90%"></div>
+                </div>
+                <div class="timeline-controls">
+                    <button onclick="playReplay()">▶️</button>
+                    <button onclick="pauseReplay()">⏸️</button>
+                    <button onclick="resetReplay()">⏮️</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="command-center-pro.js"></script>
+</body>
+</html> 

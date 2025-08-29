@@ -1,35 +1,424 @@
-// 横向滚动逻辑
-const scrollWrapper = document.getElementById('scrollWrapper');
-const container = document.getElementById('scrollContainer');
-
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const offsetTop = container.offsetTop;
-  const screenHeight = window.innerHeight;
-  const totalScrollHeight = screenHeight * 4;
-  const totalHorizontalScroll = window.innerWidth * 5;
-  const relativeScroll = scrollTop - offsetTop;
-  if (relativeScroll >= 0 && relativeScroll <= totalScrollHeight) {
-    const progress = relativeScroll / totalScrollHeight;
-    scrollWrapper.style.transform = `translateX(-${progress * totalHorizontalScroll}px)`;
+// 导航栏滚动效果
+window.addEventListener('scroll', function() {
+  const navbar = document.querySelector('.navbar');
+  if (window.scrollY > 100) {
+    navbar.style.background = 'rgba(0, 0, 0, 0.95)';
+  } else {
+    navbar.style.background = 'rgba(0, 0, 0, 0.9)';
   }
 });
 
-
-// 滑入淡出动画逻辑
-document.addEventListener("DOMContentLoaded", () => {
-  const fadeElements = document.querySelectorAll(".fade-in");
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target); // 触发一次就不再监听
-      }
-    });
-  }, {
-    threshold: 0.1
+// 平滑滚动到锚点
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   });
+});
 
-  fadeElements.forEach(el => observer.observe(el));
+// 滚动动画
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, observerOptions);
+
+// 观察所有需要动画的元素
+document.addEventListener('DOMContentLoaded', function() {
+  const animatedElements = document.querySelectorAll('.tech-item, .feature-card, .solution-card, .career-card');
+  
+  animatedElements.forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+});
+
+// 平台预览动画
+function animatePlatformPreview() {
+  const screenItems = document.querySelectorAll('.screen-item');
+  const indicators = document.querySelectorAll('.indicator');
+  
+  // 如果元素不存在，直接返回
+  if (screenItems.length === 0 || indicators.length === 0) {
+    return;
+  }
+  
+  let currentIndex = 0;
+  
+  setInterval(() => {
+    // 重置所有屏幕
+    screenItems.forEach(item => item.classList.remove('active'));
+    indicators.forEach(indicator => indicator.classList.remove('active'));
+    
+    // 激活当前屏幕
+    if (screenItems[currentIndex] && indicators[currentIndex]) {
+      screenItems[currentIndex].classList.add('active');
+      indicators[currentIndex].classList.add('active');
+    }
+    
+    // 更新索引
+    currentIndex = (currentIndex + 1) % screenItems.length;
+  }, 2000);
+}
+
+// 技术数字动画
+function animateNumbers() {
+  const statNumbers = document.querySelectorAll('.stat-number');
+  
+  if (statNumbers.length === 0) {
+    return;
+  }
+  
+  statNumbers.forEach(stat => {
+    const target = parseInt(stat.textContent.replace(/[^\d]/g, ''));
+    const suffix = stat.textContent.replace(/[\d]/g, '');
+    let current = 0;
+    const increment = target / 50;
+    
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      stat.textContent = Math.floor(current) + suffix;
+    }, 30);
+  });
+}
+
+// 应用商店动画
+function animateAppStore() {
+  const appItems = document.querySelectorAll('.app-item');
+  
+  if (appItems.length === 0) {
+    return;
+  }
+  
+  appItems.forEach((item, index) => {
+    setTimeout(() => {
+      item.style.transform = 'scale(1.05)';
+      setTimeout(() => {
+        item.style.transform = 'scale(1)';
+      }, 200);
+    }, index * 200);
+  });
+}
+
+// 页面加载完成后启动动画
+document.addEventListener('DOMContentLoaded', function() {
+  // 启动平台预览动画
+  setTimeout(animatePlatformPreview, 1000);
+  
+  // 观察统计数字
+  const statsSection = document.querySelector('.stats');
+  if (statsSection) {
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateNumbers();
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    statsObserver.observe(statsSection);
+  }
+  
+  // 观察应用商店
+  const appStore = document.querySelector('.app-store');
+  if (appStore) {
+    const appStoreObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateAppStore();
+          appStoreObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    appStoreObserver.observe(appStore);
+  }
+});
+
+// 按钮点击效果
+document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
+  button.addEventListener('click', function(e) {
+    // 创建涟漪效果
+    const ripple = document.createElement('span');
+    const rect = this.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const x = e.clientX - rect.left - size / 2;
+    const y = e.clientY - rect.top - size / 2;
+    
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = x + 'px';
+    ripple.style.top = y + 'px';
+    ripple.classList.add('ripple');
+    
+    this.appendChild(ripple);
+    
+    setTimeout(() => {
+      ripple.remove();
+    }, 600);
+  });
+});
+
+// 添加涟漪效果样式
+const style = document.createElement('style');
+style.textContent = `
+  .btn-primary, .btn-secondary {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+    pointer-events: none;
+  }
+  
+  @keyframes ripple-animation {
+    to {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(style);
+
+// 鼠标跟随效果
+document.addEventListener('mousemove', function(e) {
+  const cursor = document.querySelector('.cursor');
+  if (!cursor) {
+    const cursorElement = document.createElement('div');
+    cursorElement.className = 'cursor';
+    cursorElement.style.cssText = `
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: rgba(0, 212, 255, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.1s ease;
+    `;
+    document.body.appendChild(cursorElement);
+  }
+  
+  const cursorElement = document.querySelector('.cursor');
+  cursorElement.style.left = e.clientX - 10 + 'px';
+  cursorElement.style.top = e.clientY - 10 + 'px';
+});
+
+// 悬停效果
+document.addEventListener('mouseover', function(e) {
+  if (e.target.matches('.btn-primary, .btn-secondary, .nav-link, .feature-card, .tech-item, .solution-card, .career-card')) {
+    const cursor = document.querySelector('.cursor');
+    if (cursor) {
+      cursor.style.transform = 'scale(2)';
+      cursor.style.background = 'rgba(0, 212, 255, 0.8)';
+    }
+  }
+});
+
+document.addEventListener('mouseout', function(e) {
+  if (e.target.matches('.btn-primary, .btn-secondary, .nav-link, .feature-card, .tech-item, .solution-card, .career-card')) {
+    const cursor = document.querySelector('.cursor');
+    if (cursor) {
+      cursor.style.transform = 'scale(1)';
+      cursor.style.background = 'rgba(0, 212, 255, 0.5)';
+    }
+  }
+});
+
+// 键盘导航支持
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Tab') {
+    const cursor = document.querySelector('.cursor');
+    if (cursor) {
+      cursor.style.display = 'none';
+    }
+  }
+});
+
+document.addEventListener('mousedown', function() {
+  const cursor = document.querySelector('.cursor');
+  if (cursor) {
+    cursor.style.transform = 'scale(0.8)';
+  }
+});
+
+document.addEventListener('mouseup', function() {
+  const cursor = document.querySelector('.cursor');
+  if (cursor) {
+    cursor.style.transform = 'scale(1)';
+  }
+});
+
+// 性能优化：防抖函数
+function debounce(func, wait) {
+  let timeout;
+  return function executedFunction(...args) {
+    const later = () => {
+      clearTimeout(timeout);
+      func(...args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+  };
+}
+
+// 优化滚动事件
+const optimizedScrollHandler = debounce(function() {
+  // 滚动相关的性能敏感操作
+}, 16);
+
+window.addEventListener('scroll', optimizedScrollHandler);
+
+// 预加载关键资源
+function preloadCriticalResources() {
+  // 预加载应用场景图片
+  const criticalImages = [
+    'images/team.jpg',
+    'images/bridge.jpg',
+    'images/drone-inspection.jpg',
+    'images/evtol-transport.jpg',
+    'images/logistics-delivery.jpg',
+    'images/emergency-rescue.jpg',
+    'images/agriculture-spraying.jpg',
+    'images/survey-mapping.jpg'
+  ];
+  
+  criticalImages.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+}
+
+// 页面加载完成后预加载资源
+window.addEventListener('load', preloadCriticalResources);
+
+// 滚动到指定区域
+function scrollToSection(sectionId) {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+// 市场平台滚动动画控制
+let currentProductIndex = 0;
+let isMarketplaceAnimating = false;
+let isInMarketplaceArea = false;
+let scrollStartY = 0;
+
+function initMarketplaceScrollAnimation() {
+  const marketplaceSection = document.getElementById('marketplace');
+  const productItems = document.querySelectorAll('.product-item');
+  
+  if (!marketplaceSection || productItems.length === 0) {
+    console.log('Marketplace section or product items not found');
+    return;
+  }
+  
+  console.log('Found', productItems.length, 'product items');
+  
+  // 初始化：只显示第一个产品
+  productItems.forEach((item, index) => {
+    if (index === 0) {
+      item.classList.add('active');
+    } else {
+      item.classList.remove('active', 'prev');
+    }
+  });
+  
+  // 监听滚动事件
+  window.addEventListener('scroll', () => {
+    const rect = marketplaceSection.getBoundingClientRect();
+    const isInView = rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2;
+    
+    // 进入市场平台区域
+    if (isInView && !isInMarketplaceArea) {
+      isInMarketplaceArea = true;
+      scrollStartY = window.scrollY;
+      console.log('Entered marketplace area');
+    }
+    
+    // 离开市场平台区域
+    if (!isInView && isInMarketplaceArea) {
+      isInMarketplaceArea = false;
+      console.log('Left marketplace area');
+    }
+    
+    // 在市场平台区域内处理滚动
+    if (isInView && isInMarketplaceArea && !isMarketplaceAnimating) {
+      const scrollDelta = window.scrollY - scrollStartY;
+      const sectionHeight = marketplaceSection.offsetHeight;
+      const progress = Math.min(scrollDelta / (sectionHeight * 0.5), 1);
+      
+      // 根据滚动进度计算应该显示的产品
+      const targetIndex = Math.min(Math.floor(progress * productItems.length), productItems.length - 1);
+      
+      if (targetIndex !== currentProductIndex && targetIndex < productItems.length) {
+        console.log('Switching to product', targetIndex, 'progress:', progress);
+        switchToProduct(targetIndex);
+      }
+    }
+  });
+}
+
+function switchToProduct(targetIndex) {
+  if (isMarketplaceAnimating) return;
+  
+  const productItems = document.querySelectorAll('.product-item');
+  if (targetIndex < 0 || targetIndex >= productItems.length) return;
+  
+  isMarketplaceAnimating = true;
+  
+  // 移除所有产品的active和prev类
+  productItems.forEach(item => {
+    item.classList.remove('active', 'prev');
+  });
+  
+  // 设置目标产品为active
+  productItems[targetIndex].classList.add('active');
+  
+  // 设置之前的产品为prev（向左滑出）
+  if (currentProductIndex < targetIndex) {
+    for (let i = 0; i < targetIndex; i++) {
+      productItems[i].classList.add('prev');
+    }
+  }
+  
+  currentProductIndex = targetIndex;
+  
+  console.log('Switched to product', currentProductIndex);
+  
+  setTimeout(() => {
+    isMarketplaceAnimating = false;
+  }, 800);
+}
+
+// 页面加载完成后初始化
+document.addEventListener('DOMContentLoaded', function() {
+  initMarketplaceScrollAnimation();
 });

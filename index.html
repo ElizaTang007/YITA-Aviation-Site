@@ -1,154 +1,668 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YITA AVIATION</title>
+  <title>YITA - 低空经济的综合平台</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- 视频背景 -->
-  <video autoplay muted loop playsinline id="bg-video">
-    <source src="videos/hero.mp4" type="video/mp4" />
-  </video>
-  <!-- 首页内容 -->
-  <section class="screen fade">
-    <div class="logo">YITA <span>AVIATION</span></div>
-    <h1 class="title">A New Mobility Paradigm</h1>
-    <div class="scroll-down">&#8595;</div>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-text">YITA</span>
+      </div>
+      <div class="nav-menu">
+        <a href="#command-center" class="nav-link">指挥中心</a>
+        <a href="#developer-portal" class="nav-link">开发者</a>
+        <a href="#marketplace" class="nav-link">市场</a>
+        <a href="#technology" class="nav-link">技术</a>
+        <a href="#about" class="nav-link">关于我们</a>
+        <a href="#careers" class="nav-link">招聘</a>
+        <a href="#contact" class="nav-link">联系我们</a>
+      </div>
+      <div class="nav-cta">
+        <a href="login.html" class="btn-secondary">登录</a>
+        <a href="login.html" class="btn-primary">注册</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 英雄区域 -->
+  <section class="hero">
+    <div class="hero-background">
+      <video autoplay muted loop playsinline id="hero-video">
+        <source src="videos/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1 class="hero-title">
+          <span class="title-line">低空经济的</span>
+          <span class="title-line highlight">综合平台</span>
+        </h1>
+        <p class="hero-subtitle">
+          YITA 提供指挥中心、开发者门户、市场平台三大核心服务，构建完整的低空经济生态系统
+        </p>
+        <div class="hero-cta">
+          <button class="btn-primary btn-large" onclick="scrollToSection('business-platforms')">了解更多</button>
+        </div>
+        <div class="scroll-indicator">
+          <span class="scroll-text">↓</span>
+        </div>
+      </div>
+
+    </div>
   </section>
 
 
- <!-- 第二屏：介绍 -->
-<section class="screen fade-section">
-  <div class="text-block fade-in">
-    <h2>
-      <span>Shaping the skies.</span><br>
-      <span class="green">With intelligent platforms.</span>
-    </h2>
-    <p>
-      We don’t build aircraft — we build the platform behind them.<br>
-      Discover smarter ways to connect flights, optimize routes, and unlock the best price every time.
-    </p>
-    <button class="cta-button">Get to know us</button>
-  </div>
-</section>
 
- <!-- 第三屏 横滑 -->
-  <section class="horizontal-scroll black-bg" id="scrollContainer">
-    <div class="scroll-wrapper" id="scrollWrapper">
-      <div class="slide"><img src="images/china.jpg"/><div class="fade-in"><h3>中国的低空经济愿景</h3><p>积极推进民用低空空域改革，建设万亿级低空经济体。</p></div></div>
-      <div class="slide"><img src="images/europe.jpg"/><div class="fade-in"><h3>欧洲的城市空中出行计划</h3><p>支持UAM立法，注重可持续与城市融合。</p></div></div>
-      <div class="slide"><img src="images/us.jpg"/><div class="fade-in"><h3>美国AAM国家路线图</h3><p>FAA和NASA推进Sky计划，实现商业化点对点飞行。</p></div></div>
-      <div class="slide"><img src="images/seamless.jpg"/><div class="fade-in"><h3>无缝出行体验</h3><p>EVTOL与地面系统协同，实现一体化交通体验。</p></div></div>
-      <div class="slide"><img src="images/sustainable.jpg"/><div class="fade-in"><h3>绿色低碳技术</h3><p>以零排放为目标，推动绿色飞行器发展。</p></div></div>
-      <div class="slide"><img src="images/connected.jpg"/><div class="fade-in"><h3>连接城市与社区</h3><p>打通城市边缘地带，实现空间公平与无缝连接。</p></div></div>
+  <!-- 三大业务板块 -->
+  <section id="business-platforms" class="business-platforms-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">三大核心业务</h2>
+        <p class="section-subtitle">指挥中心、开发者门户、市场平台，构建完整的低空经济生态系统</p>
+      </div>
+      <div class="platforms-grid">
+        <div class="platform-card">
+          <div class="platform-icon">🎮</div>
+          <h3>指挥中心</h3>
+          <p>远程控制无人机、eVTOL，支持超视距任务编排，让复杂操作变得直观简单</p>
+          <ul>
+            <li>设备注册与可信绑定</li>
+            <li>实时地图与态势界面</li>
+            <li>任务原语与队列管理</li>
+            <li>遥测数据与视频回传</li>
+          </ul>
+          <button class="btn-primary" onclick="window.location.href='command-center-pro.html'">立即体验</button>
+        </div>
+        <div class="platform-card">
+          <div class="platform-icon">💻</div>
+          <h3>开发者门户</h3>
+          <p>StratoOS 兼容层与 SDK，提供完整的开发工具链和沙箱环境</p>
+          <ul>
+            <li>Rust & Python SDK</li>
+            <li>API 文档与示例</li>
+            <li>沙箱密钥与配额</li>
+            <li>合规指南与最佳实践</li>
+          </ul>
+          <button class="btn-primary" onclick="window.location.href='developer-portal.html'">开始开发</button>
+        </div>
+        <div class="platform-card">
+          <div class="platform-icon">🛒</div>
+          <h3>市场平台</h3>
+          <p>无人机、eVTOL、配件买卖平台，从刊登到交易的完整闭环</p>
+          <ul>
+            <li>商品发布与检索</li>
+            <li>智能推荐与对比</li>
+            <li>安全交易与支付</li>
+            <li>风控审核与保障</li>
+          </ul>
+          <button class="btn-primary" onclick="window.location.href='marketplace.html'">浏览市场</button>
+        </div>
+      </div>
     </div>
   </section>
 
-
-  
-  <!-- 第4页：Air Mobility Network -->
-  <section class="screen center column black-bg" style="background: url('images/network.jpg') center/cover no-repeat;">
-    <div class="overlay" fade-in>
-      <h2>The YITA<br><span class="highlight">air mobility network.</span></h2>
-      <p>A complete, end-to-end solution for Advanced Air Mobility within our cities.</p>
-      <button class="cta-button">See how it works</button>
+  <!-- 指挥中心详情 -->
+  <section id="command-center" class="command-center-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">指挥中心</h2>
+        <p class="section-subtitle">让无人机操作像玩游戏一样直观</p>
+      </div>
+      <div class="platform-architecture">
+        <div class="architecture-diagram">
+          <div class="layer application-layer">
+            <div class="layer-content">
+              <h3>应用体验平面</h3>
+              <p>Linux + SDK</p>
+              <ul>
+                <li>任务原语 API</li>
+                <li>游戏化交互</li>
+                <li>多机任务编排</li>
+                <li>VR/体感指挥中心</li>
+              </ul>
+            </div>
+          </div>
+          <div class="layer security-layer">
+            <div class="layer-content">
+              <h3>安全控制平面</h3>
+              <p>RTOS + seL4</p>
+              <ul>
+                <li>实时调度</li>
+                <li>形式化验证</li>
+                <li>安全关键内核</li>
+                <li>BVLOS 支持</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="platform-features">
+          <div class="feature-card">
+            <div class="feature-icon">🚁</div>
+            <h3>超视距控制</h3>
+            <p>突破视觉限制，实现远程任务执行与监控</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎮</div>
+            <h3>游戏化交互</h3>
+            <p>指挥官模式，让复杂操作变得直观简单</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>群体智能</h3>
+            <p>分布式 MPC，支持多机协同与自主决策</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
- <!-- 第5页：合作战略 -->
-<section class="screen center row white-bg partnership-section">
-  <div class="partnership-left fade-in">
-    <h2>Revolution.<br>It’s a team effort.</h2>
-    <p> No one can make Advanced Air Mobility a reality alone. It takes vision, trust, and collective ambition. Every great leap in transportation is built on shared progress. At YITA, we forge partnerships that move the sky forward.</p>
-    <img src="images/team.jpg" alt="Team" class="responsive-img"/>
-  </div>
-  <div class="partnership-right fade-in">
-    <img src="images/bridge.jpg" alt="Bridge" class="responsive-img"/>
-    <h3>Powered by Strategic Alliances</h3>
-    <p>We’re taking a thoughtful approach to developing the market while minimizing disruption.</p>
-  </div>
-</section>
-
-  <!-- 第6页：YITA Platform展示（左视频右介绍） -->
-<section class="screen center row black-bg">
-  <div class="video-box fade-in">
-    <img src="images/p6.jpg" alt="YITA Platform Showcase" style="width: 100%; border-radius: 12px;" />
-  </div>
-  <div class="info-box fade-in">
-    <h2>Meet <span class="highlight">YITA Platform</span>.</h2>
-    <p>A smart air mobility platform that helps users <strong>find, book, and optimize</strong> their eVTOL journeys — <br>
-from purchasing aircraft to scheduling shared flights, always at the <strong>best price</strong>.</p>
-    <button class="cta-button">Learn more</button>
-  </div>
-</section>
-
- <!-- 第7页：Newsroom 页面，白色背景 -->
-<section class="screen center column white-bg newsroom-section">
-  <h2 class="subtitle black-text">Newsroom</h2>
-
-  <div class="news-grid">
-    <div class="news-card" fade-in>
-      <img src="images/yita_news1.jpg" alt="news 1">
-      <div class="news-meta">
-        <span class="news-type">PRESS RELEASE</span>
-        <span class="news-date">May 28, 2025</span>
+  <!-- 开发者门户详情 -->
+  <section id="developer-portal" class="developer-portal-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">开发者门户</h2>
+        <p class="section-subtitle">StratoOS 兼容层，构建繁荣的开发者生态</p>
       </div>
-      <h3>YITA Aviation Launches Beta Platform for Seamless eVTOL Booking Across Cities</h3>
-      <a href="#">Read More →</a>
-    </div>
+      <div class="developer-content">
+        <div class="developer-left">
+          <h3>StratoOS SDK</h3>
+          <p>提供完整的开发工具链，让开发者快速构建低空应用</p>
+          <div class="sdk-features">
+            <div class="sdk-feature">
+              <span class="feature-dot"></span>
+              <span>Rust & Python SDK</span>
+            </div>
+            <div class="sdk-feature">
+              <span class="feature-dot"></span>
+              <span>OpenAPI 文档</span>
+            </div>
+            <div class="sdk-feature">
+              <span class="feature-dot"></span>
+              <span>沙箱环境</span>
+            </div>
+            <div class="sdk-feature">
+              <span class="feature-dot"></span>
+              <span>示例项目</span>
+            </div>
+          </div>
+          <button class="btn-primary">下载 SDK</button>
+        </div>
+        <div class="developer-right">
+          <div class="developer-visual">
+            <div class="code-preview">
+              <div class="code-header">
+                <span class="code-title">示例代码</span>
+                <div class="code-controls">
+                  <span class="control-dot"></span>
+                  <span class="control-dot"></span>
+                  <span class="control-dot"></span>
+                </div>
+              </div>
+              <div class="code-content">
+                <pre><code>// 创建任务
+const mission = await yita.createMission({
+  deviceId: 'drone-001',
+  steps: [
+    { primitive: 'takeoff', params: { alt: 100 } },
+    { primitive: 'move_to', params: { lat: 39.9, lon: 116.4, alt: 100 } },
+    { primitive: 'orbit', params: { center: [39.9, 116.4], radius: 50, laps: 2 } },
+    { primitive: 'land', params: { site: 'home' } }
+  ]
+});
 
-    <div class="news-card" fade-in>
-      <img src="images/yita_news2.jpg" alt="news 2">
-      <div class="news-meta">
-        <span class="news-type">PRESS RELEASE</span>
-        <span class="news-date">April 15, 2025</span>
+// 执行任务
+await mission.execute();</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <h3>YITA Signs Strategic MoU with Shenzhen Airport Group to Build Urban Air Infrastructure</h3>
-      <a href="#">Read More →</a>
     </div>
+  </section>
 
-    <div class="news-card" fade-in>
-      <img src="images/yita_news3.jpg" alt="news 3">
-      <div class="news-meta">
-        <span class="news-type">PARTNERSHIP</span>
-        <span class="news-date">March 2, 2025</span>
+  <!-- 市场平台详情 -->
+  <section id="marketplace" class="marketplace-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">市场平台</h2>
+        <p class="section-subtitle">无人机、eVTOL、配件的专业交易平台</p>
       </div>
-      <h3>YITA and AVIC Jointly Launch Research on Low-Altitude Mobility Economics</h3>
-      <a href="#">Read More →</a>
-    </div>
-
-    <div class="news-card" fade-in>
-      <img src="images/yita_news4.jpg" alt="news 4">
-      <div class="news-meta">
-        <span class="news-type">EVENT</span>
-        <span class="news-date">February 20, 2025</span>
+      <div class="marketplace-content">
+        <div class="marketplace-left">
+          <h3>专业交易平台</h3>
+          <p>从无人机到 eVTOL，从配件到服务，一站式满足低空经济所有需求</p>
+          <div class="marketplace-stats">
+            <div class="stat-item">
+              <div class="stat-number">1000+</div>
+              <div class="stat-label">在售商品</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">50+</div>
+              <div class="stat-label">品牌厂商</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">99%</div>
+              <div class="stat-label">交易成功率</div>
+            </div>
+          </div>
+                              <button class="btn-primary" onclick="window.location.href='seller-registration.html'">商家入驻</button>
+        </div>
+        <div class="marketplace-right">
+          <div class="marketplace-visual">
+            <div class="product-grid" id="productGrid">
+              <div class="product-item active" data-index="0">
+                <div class="product-image">🚁</div>
+                <div class="product-info">
+                  <h4>DJI Mavic 3</h4>
+                  <p>专业级航拍无人机</p>
+                  <span class="price">¥12,999</span>
+                </div>
+              </div>
+              <div class="product-item" data-index="1">
+                <div class="product-image">✈️</div>
+                <div class="product-info">
+                  <h4>eVTOL 原型机</h4>
+                  <p>城市空中出行</p>
+                  <span class="price">¥2,500,000</span>
+                </div>
+              </div>
+              <div class="product-item" data-index="2">
+                <div class="product-image">🔧</div>
+                <div class="product-info">
+                  <h4>飞控系统</h4>
+                  <p>高精度定位模块</p>
+                  <span class="price">¥3,999</span>
+                </div>
+              </div>
+              <div class="product-item" data-index="3">
+                <div class="product-image">📡</div>
+                <div class="product-info">
+                  <h4>通信模块</h4>
+                  <p>远程控制链路</p>
+                  <span class="price">¥1,299</span>
+                </div>
+              </div>
+            </div>
+            <div class="marketplace-browse-btn">
+              <button class="btn-primary" onclick="window.location.href='marketplace-v2.html'">浏览商品</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <h3>YITA Showcases Digital Air Mobility Platform at Singapore Airshow 2025</h3>
-      <a href="#">Read More →</a>
     </div>
-  </div>
+  </section>
 
-  <button class="cta-button invert">See all news</button>
-</section>
+  <!-- 技术亮点 -->
+  <section id="technology" class="technology-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">核心技术</h2>
+        <p class="section-subtitle">从安全内核到开发者生态，构建完整的低空经济基础设施</p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-item">
+          <div class="tech-number">01</div>
+          <h3>安全关键内核</h3>
+          <p>seL4 微内核 + 实时调度，形式化验证确保最高安全等级</p>
+        </div>
+        <div class="tech-item">
+          <div class="tech-number">02</div>
+          <h3>BVLOS 支持</h3>
+          <p>远程链路、冗余定位、加密通信，突破超视距限制</p>
+        </div>
+        <div class="tech-item">
+          <div class="tech-number">03</div>
+          <h3>任务编排</h3>
+          <p>Mission Orchestration + 运动原语 API，简化复杂任务</p>
+        </div>
+        <div class="tech-item">
+          <div class="tech-number">04</div>
+          <h3>群体智能</h3>
+          <p>分布式 MPC，支持多无人机/车协同与自主决策</p>
+        </div>
+        <div class="tech-item">
+          <div class="tech-number">05</div>
+          <h3>开发者生态</h3>
+          <p>开放 SDK，第三方插件/应用，构建繁荣生态</p>
+        </div>
+        <div class="tech-item">
+          <div class="tech-number">06</div>
+          <h3>合规保障</h3>
+          <p>DO-178C / ISO 26262 / U-Space 标准，确保适航认证</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-left">
-      <h1>YITA <span>AVIATION</span></h1>
+  <!-- 解决方案 -->
+  <section id="solutions" class="solutions-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">应用场景</h2>
+        <p class="section-subtitle">从单机控制到城市级调度，覆盖低空经济全场景</p>
+      </div>
+      <div class="solutions-grid">
+        <div class="solution-card">
+          <div class="solution-image">
+            <img src="images/drone-inspection.jpg" alt="无人机巡检">
+          </div>
+          <div class="solution-content">
+            <h3>无人机巡检</h3>
+            <p>电力线路、管道、基础设施的自动化巡检与维护</p>
+            <ul>
+              <li>超视距自主飞行</li>
+              <li>AI 缺陷识别</li>
+              <li>多机协同作业</li>
+            </ul>
+          </div>
+        </div>
+        <div class="solution-card">
+          <div class="solution-image">
+            <img src="images/evtol-transport.jpg" alt="eVTOL 城市出行">
+          </div>
+          <div class="solution-content">
+            <h3>eVTOL 城市出行</h3>
+            <p>城市空中出租车、紧急医疗运输、高端商务出行</p>
+            <ul>
+              <li>垂直起降控制</li>
+              <li>城市空域管理</li>
+              <li>乘客体验优化</li>
+            </ul>
+          </div>
+        </div>
+        <div class="solution-card">
+          <div class="solution-image">
+            <img src="images/logistics-delivery.jpg" alt="智能物流">
+          </div>
+          <div class="solution-content">
+            <h3>智能物流</h3>
+            <p>最后一公里配送、医疗物资运输、应急物资投送</p>
+            <ul>
+              <li>精准投递控制</li>
+              <li>路径优化算法</li>
+              <li>多机协同配送</li>
+            </ul>
+          </div>
+        </div>
+        <div class="solution-card">
+          <div class="solution-image">
+            <img src="images/emergency-rescue.jpg" alt="应急救援">
+          </div>
+          <div class="solution-content">
+            <h3>应急救援</h3>
+            <p>灾害现场侦察、搜救任务、医疗物资紧急投送</p>
+            <ul>
+              <li>恶劣环境适应</li>
+              <li>快速响应部署</li>
+              <li>多部门协同</li>
+            </ul>
+          </div>
+        </div>
+        <div class="solution-card">
+          <div class="solution-image">
+            <img src="images/agriculture-spraying.jpg" alt="农业植保">
+          </div>
+          <div class="solution-content">
+            <h3>农业植保</h3>
+            <p>精准农业、农药喷洒、作物监测与智能管理</p>
+            <ul>
+              <li>精准喷洒控制</li>
+              <li>作物健康监测</li>
+              <li>智能路径规划</li>
+            </ul>
+          </div>
+        </div>
+        <div class="solution-card">
+          <div class="solution-image">
+            <img src="images/survey-mapping.jpg" alt="测绘测量">
+          </div>
+          <div class="solution-content">
+            <h3>测绘测量</h3>
+            <p>地形测绘、3D建模、建筑测量、地理信息采集</p>
+            <ul>
+              <li>高精度定位</li>
+              <li>实时数据处理</li>
+              <li>3D建模生成</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="footer-links">
-      <ul>
-        <li><a href="#">News & Events</a></li>
-        <li><a href="#">Careers</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">About Us</a></li>
-      </ul>
+  </section>
+
+  <!-- 生态展示 -->
+  <section id="ecosystem" class="ecosystem-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">开发者生态</h2>
+        <p class="section-subtitle">开放平台，共建低空经济未来</p>
+      </div>
+      <div class="ecosystem-content">
+        <div class="ecosystem-left">
+          <h3>StratoOS SDK</h3>
+          <p>提供完整的开发工具链，让开发者快速构建低空应用</p>
+          <div class="sdk-features">
+            <div class="sdk-feature">
+              <span class="feature-dot"></span>
+              <span>任务原语 API</span>
+            </div>
+            <div class="sdk-feature">
+              <span class="feature-dot"></span>
+              <span>模拟器环境</span>
+            </div>
+            <div class="sdk-feature">
+              <span class="feature-dot"></span>
+              <span>开发者文档</span>
+            </div>
+            <div class="sdk-feature">
+              <span class="feature-dot"></span>
+              <span>社区支持</span>
+            </div>
+          </div>
+          <button class="btn-primary">下载 SDK</button>
+        </div>
+        <div class="ecosystem-right">
+          <div class="ecosystem-visual">
+            <div class="app-store">
+              <div class="app-grid">
+                <div class="app-item">巡检助手</div>
+                <div class="app-item">城市出行</div>
+                <div class="app-item">智能物流</div>
+                <div class="app-item">应急救援</div>
+                <div class="app-item">农业植保</div>
+                <div class="app-item">测绘测量</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="footer-meta">
-      <p><a href="#">Privacy</a> · <a href="#">Terms of Use</a> · <a href="#">Do not sell my info</a></p>
-      <p>©2025 YITA Aviation, Ltd</p>
+  </section>
+
+  <!-- 关于我们 -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>关于 YITA</h2>
+          <p>我们致力于构建完整的低空经济生态系统，通过指挥中心、开发者门户、市场平台三大核心服务，推动低空经济的快速发展。</p>
+          <p>从设备控制到应用开发，从技术标准到商业交易，YITA 为低空经济提供一站式解决方案。</p>
+          <div class="stats">
+            <div class="stat-item">
+              <div class="stat-number">500+</div>
+              <div class="stat-label">亿美金市场规模</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">2万亿</div>
+              <div class="stat-label">人民币低空经济规模</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">BVLOS 支持</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          <img src="images/team.jpg" alt="StratoOS 团队">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 招聘 -->
+  <section id="careers" class="careers-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">加入我们</h2>
+        <p class="section-subtitle">与最优秀的人才一起，构建低空经济的未来</p>
+      </div>
+      <div class="careers-grid">
+        <div class="career-card">
+          <h3>嵌入式工程师</h3>
+          <p>负责实时内核开发、驱动开发、硬件适配</p>
+          <span class="job-tag">全职</span>
+        </div>
+        <div class="career-card">
+          <h3>算法工程师</h3>
+          <p>负责控制算法、路径规划、群体智能算法</p>
+          <span class="job-tag">全职</span>
+        </div>
+        <div class="career-card">
+          <h3>前端工程师</h3>
+          <p>负责指挥中心界面、VR/体感交互开发</p>
+          <span class="job-tag">全职</span>
+        </div>
+        <div class="career-card">
+          <h3>产品经理</h3>
+          <p>负责产品规划、用户需求分析、市场调研</p>
+          <span class="job-tag">全职</span>
+        </div>
+      </div>
+      <div class="careers-cta">
+        <button class="btn-primary btn-large">查看所有职位</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系我们 -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">联系我们</h2>
+        <p class="section-subtitle">我们期待与您合作，共同构建低空经济的未来</p>
+      </div>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div class="contact-details">
+              <h3>邮箱联系</h3>
+              <p>yitaaviation@163.com</p>
+              <span class="contact-description">商务合作、技术支持、产品咨询</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🏢</div>
+            <div class="contact-details">
+              <h3>公司地址</h3>
+              <p>中国·上海</p>
+              <span class="contact-description">总部位于上海，辐射全国</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🤝</div>
+            <div class="contact-details">
+              <h3>商务合作</h3>
+              <p>合作伙伴、投资机构、媒体合作</p>
+              <span class="contact-description">欢迎各类商务合作洽谈</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h3>发送消息</h3>
+          <form class="contact-form-content">
+            <div class="form-group">
+              <input type="text" placeholder="您的姓名" required>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="邮箱地址" required>
+            </div>
+            <div class="form-group">
+              <select required>
+                <option value="">选择咨询类型</option>
+                <option value="business">商务合作</option>
+                <option value="technical">技术支持</option>
+                <option value="product">产品咨询</option>
+                <option value="investment">投资合作</option>
+                <option value="media">媒体合作</option>
+                <option value="other">其他</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <textarea placeholder="请输入您的消息内容..." rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary btn-large">发送消息</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+                  <div class="footer-left">
+            <div class="footer-logo">
+              <span class="logo-text">YITA</span>
+            </div>
+            <p>低空经济的综合平台</p>
+          </div>
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>产品</h4>
+            <ul>
+              <li><a href="#">平台</a></li>
+              <li><a href="#">技术</a></li>
+              <li><a href="#">解决方案</a></li>
+              <li><a href="#">SDK</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>公司</h4>
+            <ul>
+              <li><a href="#">关于我们</a></li>
+              <li><a href="#">团队</a></li>
+              <li><a href="#">新闻</a></li>
+              <li><a href="#">联系</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>资源</h4>
+            <ul>
+              <li><a href="#">文档</a></li>
+              <li><a href="#">开发者</a></li>
+              <li><a href="#">社区</a></li>
+              <li><a href="#">招聘</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 YITA. 保留所有权利。</p>
+        <div class="footer-legal">
+          <a href="#">隐私政策</a>
+          <a href="#">服务条款</a>
+        </div>
+      </div>
     </div>
   </footer>
 

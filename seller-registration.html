@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商家入驻 - YITA Aviation</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .registration-container {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .registration-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .registration-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .registration-header h1 {
+            color: #ffffff;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .registration-header p {
+            color: #cccccc;
+            font-size: 1.1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #ffffff;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #00d4ff;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+            border: none;
+            border-radius: 8px;
+            color: #000000;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+        }
+        
+        .back-btn {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .benefits {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+        
+        .benefits h3 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+        
+        .benefits ul {
+            color: #cccccc;
+            list-style: none;
+            padding: 0;
+        }
+        
+        .benefits li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .benefits li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">← 返回首页</a>
+    
+    <div class="registration-container">
+        <div class="registration-card">
+            <div class="registration-header">
+                <h1>商家入驻</h1>
+                <p>加入YITA平台，开启低空经济新机遇</p>
+            </div>
+            
+            <form id="sellerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="companyName">公司名称 *</label>
+                        <input type="text" id="companyName" name="companyName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactPerson">联系人 *</label>
+                        <input type="text" id="contactPerson" name="contactPerson" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">联系电话 *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">邮箱地址 *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="businessType">业务类型 *</label>
+                    <select id="businessType" name="businessType" required>
+                        <option value="">请选择业务类型</option>
+                        <option value="drone-manufacturer">无人机制造商</option>
+                        <option value="evtol-manufacturer">eVTOL制造商</option>
+                        <option value="component-supplier">配件供应商</option>
+                        <option value="service-provider">服务提供商</option>
+                        <option value="software-developer">软件开发商</option>
+                        <option value="other">其他</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="products">主要产品/服务 *</label>
+                    <textarea id="products" name="products" placeholder="请详细描述您的主要产品和服务..." required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="certifications">相关认证</label>
+                    <textarea id="certifications" name="certifications" placeholder="请列出相关的行业认证、资质证书等..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="experience">行业经验</label>
+                    <textarea id="experience" name="experience" placeholder="请描述您在低空经济领域的经验和优势..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">提交申请</button>
+            </form>
+            
+            <div class="benefits">
+                <h3>入驻优势</h3>
+                <ul>
+                    <li>专业的低空经济交易平台</li>
+                    <li>覆盖无人机、eVTOL、配件全品类</li>
+                    <li>精准的目标客户群体</li>
+                    <li>完善的支付和物流体系</li>
+                    <li>专业的技术支持和运营服务</li>
+                    <li>行业领先的流量和曝光</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('sellerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 获取表单数据
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // 模拟提交
+            console.log('提交商家入驻申请:', data);
+            
+            // 显示成功消息
+            alert('申请提交成功！我们将在3个工作日内与您联系。');
+            
+            // 重置表单
+            this.reset();
+        });
+        
+        // 添加输入验证
+        document.querySelectorAll('input, select, textarea').forEach(element => {
+            element.addEventListener('blur', function() {
+                if (this.hasAttribute('required') && !this.value.trim()) {
+                    this.style.borderColor = '#ff6b6b';
+                } else {
+                    this.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

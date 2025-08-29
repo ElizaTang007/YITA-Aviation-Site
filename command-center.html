@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YITA - 指挥中心</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html" class="logo-text">YITA</a>
+      </div>
+      <div class="nav-menu">
+        <a href="index.html#command-center" class="nav-link">指挥中心</a>
+        <a href="index.html#developer-portal" class="nav-link">开发者</a>
+        <a href="index.html#marketplace" class="nav-link">市场</a>
+        <a href="index.html#technology" class="nav-link">技术</a>
+        <a href="index.html#about" class="nav-link">关于我们</a>
+      </div>
+      <div class="nav-cta">
+        <button class="btn-secondary" onclick="window.location.href='command-center-player.html'" style="margin-right: 1rem;">玩家版</button>
+        <button class="btn-secondary" onclick="window.location.href='command-center-pro.html'">专业版</button>
+        <span class="user-info">演示模式</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 指挥中心主界面 -->
+  <div class="command-center-layout">
+    <!-- 侧边栏 -->
+    <div class="sidebar">
+      <div class="sidebar-section">
+        <h3>🎮 游戏模式</h3>
+        <div class="game-modes">
+          <div class="mode-item active">
+            <div class="mode-icon">🎯</div>
+            <div class="mode-info">
+              <div class="mode-name">新手模式</div>
+              <div class="mode-desc">零风险体验</div>
+            </div>
+          </div>
+          <div class="mode-item">
+            <div class="mode-icon">🏆</div>
+            <div class="mode-info">
+              <div class="mode-name">竞速模式</div>
+              <div class="mode-desc">挑战记录</div>
+            </div>
+          </div>
+          <div class="mode-item">
+            <div class="mode-icon">🎨</div>
+            <div class="mode-info">
+              <div class="mode-name">创意模式</div>
+              <div class="mode-desc">自由创作</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>🚁 可用设备</h3>
+        <div class="device-list">
+          <div class="device-item active">
+            <div class="device-icon">🚁</div>
+            <div class="device-info">
+              <div class="device-name">DJI Mavic 3</div>
+              <div class="device-status online">可用</div>
+            </div>
+          </div>
+          <div class="device-item">
+            <div class="device-icon">✈️</div>
+            <div class="device-info">
+              <div class="device-name">eVTOL 体验机</div>
+              <div class="device-status online">可用</div>
+            </div>
+          </div>
+          <div class="device-item">
+            <div class="device-icon">🎮</div>
+            <div class="device-info">
+              <div class="device-name">VR 模拟舱</div>
+              <div class="device-status online">可用</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>🏆 挑战任务</h3>
+        <div class="challenge-list">
+          <div class="challenge-item">
+            <div class="challenge-status active">进行中</div>
+            <div class="challenge-name">新手教程</div>
+            <div class="challenge-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 75%"></div>
+              </div>
+              <span>75%</span>
+            </div>
+          </div>
+          <div class="challenge-item">
+            <div class="challenge-status locked">锁定</div>
+            <div class="challenge-name">竞速挑战</div>
+            <div class="challenge-desc">完成新手教程解锁</div>
+          </div>
+          <div class="challenge-item">
+            <div class="challenge-status locked">锁定</div>
+            <div class="challenge-name">创意飞行</div>
+            <div class="challenge-desc">达到5级解锁</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>🎖️ 成就系统</h3>
+        <div class="achievement-list">
+          <div class="achievement-item unlocked">
+            <div class="achievement-icon">🎯</div>
+            <div class="achievement-info">
+              <div class="achievement-name">首次起飞</div>
+              <div class="achievement-desc">完成第一次飞行</div>
+            </div>
+          </div>
+          <div class="achievement-item locked">
+            <div class="achievement-icon">🏆</div>
+            <div class="achievement-info">
+              <div class="achievement-name">速度之王</div>
+              <div class="achievement-desc">达到100km/h</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>🎮 游戏操作</h3>
+        <div class="game-actions">
+          <button class="action-btn primary" data-action="takeoff">
+            <span class="action-icon">🚀</span>
+            <span>起飞</span>
+          </button>
+          <button class="action-btn" data-action="hover">
+            <span class="action-icon">⏸️</span>
+            <span>悬停</span>
+          </button>
+          <button class="action-btn" data-action="land">
+            <span class="action-icon">🛬</span>
+            <span>降落</span>
+          </button>
+          <button class="action-btn" data-action="photo">
+            <span class="action-icon">📸</span>
+            <span>拍照</span>
+          </button>
+          <button class="action-btn" data-action="video">
+            <span class="action-icon">🎥</span>
+            <span>录像</span>
+          </button>
+          <button class="action-btn emergency" data-action="emergency">
+            <span class="action-icon">🚨</span>
+            <span>紧急停止</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <h3>👥 社交功能</h3>
+        <div class="social-features">
+          <button class="social-btn">
+            <span class="social-icon">📱</span>
+            <span>分享飞行</span>
+          </button>
+          <button class="social-btn">
+            <span class="social-icon">🏆</span>
+            <span>排行榜</span>
+          </button>
+          <button class="social-btn">
+            <span class="social-icon">🎁</span>
+            <span>邀请好友</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 主内容区域 -->
+    <div class="main-content">
+      <!-- 地图区域 -->
+      <div class="map-container">
+        <div id="map"></div>
+        <div class="map-controls">
+          <button class="map-btn" data-layer="satellite">卫星图</button>
+          <button class="map-btn active" data-layer="street">街道图</button>
+          <button class="map-btn" data-layer="terrain">地形图</button>
+        </div>
+      </div>
+
+      <!-- 游戏控制面板 -->
+      <div class="control-panel">
+        <div class="panel-header">
+          <h3>🎮 飞行控制</h3>
+          <div class="panel-actions">
+            <button class="btn-secondary">暂停</button>
+            <button class="btn-primary">开始飞行</button>
+          </div>
+        </div>
+
+        <div class="game-controls">
+          <div class="control-section">
+            <h4>🎯 当前任务</h4>
+            <div class="current-task">
+              <div class="task-info">
+                <div class="task-name">新手教程 - 基础飞行</div>
+                <div class="task-desc">学习基本的起飞、悬停和降落操作</div>
+                <div class="task-progress">
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%"></div>
+                  </div>
+                  <span>3/4 步骤完成</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="control-section">
+            <h4>🎮 操作指南</h4>
+            <div class="instruction-list">
+              <div class="instruction-item completed">
+                <span class="instruction-icon">✅</span>
+                <span class="instruction-text">选择起飞点</span>
+              </div>
+              <div class="instruction-item completed">
+                <span class="instruction-icon">✅</span>
+                <span class="instruction-text">检查设备状态</span>
+              </div>
+              <div class="instruction-item completed">
+                <span class="instruction-icon">✅</span>
+                <span class="instruction-text">执行起飞</span>
+              </div>
+              <div class="instruction-item current">
+                <span class="instruction-icon">🎯</span>
+                <span class="instruction-text">悬停练习</span>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="mission-step">
+            <div class="step-header">
+              <span class="step-number">1</span>
+              <span class="step-type">起飞</span>
+              <button class="step-remove">×</button>
+            </div>
+            <div class="step-params">
+              <label>高度 (米)</label>
+              <input type="number" value="100" min="10" max="500">
+            </div>
+          </div>
+
+          <div class="mission-step">
+            <div class="step-header">
+              <span class="step-number">2</span>
+              <span class="step-type">移动到</span>
+              <button class="step-remove">×</button>
+            </div>
+            <div class="step-params">
+              <div class="param-row">
+                <label>纬度</label>
+                <input type="number" value="39.9042" step="0.0001">
+              </div>
+              <div class="param-row">
+                <label>经度</label>
+                <input type="number" value="116.4074" step="0.0001">
+              </div>
+              <div class="param-row">
+                <label>高度</label>
+                <input type="number" value="150" min="10" max="500">
+              </div>
+            </div>
+          </div>
+
+          <div class="mission-step">
+            <div class="step-header">
+              <span class="step-number">3</span>
+              <span class="step-type">环绕</span>
+              <button class="step-remove">×</button>
+            </div>
+            <div class="step-params">
+              <div class="param-row">
+                <label>半径 (米)</label>
+                <input type="number" value="50" min="10" max="200">
+              </div>
+              <div class="param-row">
+                <label>圈数</label>
+                <input type="number" value="2" min="1" max="10">
+              </div>
+            </div>
+          </div>
+
+          <div class="mission-step">
+            <div class="step-header">
+              <span class="step-number">4</span>
+              <span class="step-type">降落</span>
+              <button class="step-remove">×</button>
+            </div>
+            <div class="step-params">
+              <label>降落点</label>
+              <select>
+                <option value="home">起始点</option>
+                <option value="custom">自定义位置</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="add-step-btn">
+            <span>+</span>
+            <span>添加步骤</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 游戏统计面板 -->
+    <div class="telemetry-panel">
+      <div class="panel-header">
+        <h3>📊 飞行统计</h3>
+        <div class="panel-actions">
+          <button class="btn-secondary">分享</button>
+        </div>
+      </div>
+
+      <div class="game-stats">
+        <div class="stat-item">
+          <div class="stat-label">飞行时间</div>
+          <div class="stat-value">2:35</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">飞行距离</div>
+          <div class="stat-value">1.2km</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">最高速度</div>
+          <div class="stat-value">25m/s</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">当前高度</div>
+          <div class="stat-value">120m</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">电量</div>
+          <div class="stat-value">85%</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">信号强度</div>
+          <div class="stat-value">强</div>
+        </div>
+      </div>
+
+      <div class="achievement-preview">
+        <h4>🏆 即将获得</h4>
+        <div class="achievement-preview-item">
+          <div class="achievement-icon">🎯</div>
+          <div class="achievement-info">
+            <div class="achievement-name">悬停大师</div>
+            <div class="achievement-desc">保持悬停30秒</div>
+            <div class="achievement-progress">
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 80%"></div>
+              </div>
+              <span>24/30秒</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-feed">
+        <div class="video-header">
+          <h4>📹 实时视频</h4>
+          <div class="video-controls">
+            <button class="video-btn">📸 拍照</button>
+            <button class="video-btn">🎥 录像</button>
+            <button class="video-btn">🎨 滤镜</button>
+          </div>
+        </div>
+        <div class="video-placeholder">
+          <div class="video-overlay">
+            <span class="video-icon">📹</span>
+            <span>实时视频流</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="command-center.js"></script>
+</body>
+</html> 

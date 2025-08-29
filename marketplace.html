@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YITA - 市场平台</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html" class="logo-text">YITA</a>
+      </div>
+      <div class="nav-menu">
+        <a href="index.html#command-center" class="nav-link">指挥中心</a>
+        <a href="index.html#developer-portal" class="nav-link">开发者</a>
+        <a href="index.html#marketplace" class="nav-link">市场</a>
+        <a href="index.html#technology" class="nav-link">技术</a>
+        <a href="index.html#about" class="nav-link">关于我们</a>
+      </div>
+      <div class="nav-cta">
+        <button class="btn-secondary" onclick="window.location.href='marketplace-v2.html'" style="margin-right: 1rem;">简化版</button>
+        <span class="user-info">购物车 (3)</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 市场平台主界面 -->
+  <div class="marketplace-layout">
+    <!-- 侧边栏 -->
+    <div class="marketplace-sidebar">
+      <div class="search-section">
+        <div class="search-box">
+          <input type="text" placeholder="搜索产品..." class="search-input">
+          <button class="search-btn">🔍</button>
+        </div>
+      </div>
+
+      <div class="filter-section">
+        <h3>分类筛选</h3>
+        <div class="category-filters">
+          <label class="filter-item">
+            <input type="checkbox" checked>
+            <span class="checkmark"></span>
+            无人机设备
+          </label>
+          <label class="filter-item">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            传感器
+          </label>
+          <label class="filter-item">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            软件服务
+          </label>
+          <label class="filter-item">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            配件耗材
+          </label>
+        </div>
+
+        <h3>价格范围</h3>
+        <div class="price-filter">
+          <input type="range" min="0" max="100000" value="50000" class="price-slider">
+          <div class="price-range">
+            <span>¥0</span>
+            <span>¥100,000</span>
+          </div>
+        </div>
+
+        <h3>品牌</h3>
+        <div class="brand-filters">
+          <label class="filter-item">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            DJI
+          </label>
+          <label class="filter-item">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            YITA
+          </label>
+          <label class="filter-item">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            Parrot
+          </label>
+          <label class="filter-item">
+            <input type="checkbox">
+            <span class="checkmark"></span>
+            其他
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- 主内容区域 -->
+    <div class="marketplace-main">
+      <!-- 顶部工具栏 -->
+      <div class="marketplace-toolbar">
+        <div class="toolbar-left">
+          <h2>市场平台</h2>
+          <span class="product-count">共 1,234 个产品</span>
+        </div>
+        <div class="toolbar-right">
+          <select class="sort-select">
+            <option value="popular">最受欢迎</option>
+            <option value="price-low">价格从低到高</option>
+            <option value="price-high">价格从高到低</option>
+            <option value="newest">最新上架</option>
+          </select>
+          <button class="view-toggle active" data-view="grid">⊞</button>
+          <button class="view-toggle" data-view="list">☰</button>
+        </div>
+      </div>
+
+      <!-- 产品网格 -->
+      <div class="product-grid" id="product-grid">
+        <!-- 产品卡片 1 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="images/drone-inspection.jpg" alt="巡检无人机">
+            <div class="product-badge">热销</div>
+            <button class="favorite-btn">❤</button>
+          </div>
+          <div class="product-info">
+            <h3>YITA Pro 巡检无人机</h3>
+            <p>专业级巡检无人机，配备4K相机和AI识别系统</p>
+            <div class="product-meta">
+              <div class="rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">(128)</span>
+              </div>
+              <div class="price">¥12,999</div>
+            </div>
+            <div class="product-actions">
+              <button class="btn-secondary">详情</button>
+              <button class="btn-primary">加入购物车</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 产品卡片 2 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="images/evtol-transport.jpg" alt="eVTOL运输机">
+            <div class="product-badge new">新品</div>
+            <button class="favorite-btn">♡</button>
+          </div>
+          <div class="product-info">
+            <h3>YITA eVTOL 运输机</h3>
+            <p>垂直起降电动飞行器，载重50kg，续航200km</p>
+            <div class="product-meta">
+              <div class="rating">
+                <span class="stars">★★★★☆</span>
+                <span class="rating-count">(89)</span>
+              </div>
+              <div class="price">¥89,999</div>
+            </div>
+            <div class="product-actions">
+              <button class="btn-secondary">详情</button>
+              <button class="btn-primary">加入购物车</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 产品卡片 3 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="images/logistics-delivery.jpg" alt="物流无人机">
+            <button class="favorite-btn">♡</button>
+          </div>
+          <div class="product-info">
+            <h3>YITA 物流无人机</h3>
+            <p>智能物流配送无人机，支持自动避障和精准投放</p>
+            <div class="product-meta">
+              <div class="rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">(256)</span>
+              </div>
+              <div class="price">¥8,999</div>
+            </div>
+            <div class="product-actions">
+              <button class="btn-secondary">详情</button>
+              <button class="btn-primary">加入购物车</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 产品卡片 4 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="images/agriculture-spraying.jpg" alt="农业喷洒无人机">
+            <div class="product-badge sale">特价</div>
+            <button class="favorite-btn">♡</button>
+          </div>
+          <div class="product-info">
+            <h3>YITA 农业喷洒无人机</h3>
+            <p>专业农业植保无人机，大容量药箱，高效作业</p>
+            <div class="product-meta">
+              <div class="rating">
+                <span class="stars">★★★★☆</span>
+                <span class="rating-count">(167)</span>
+              </div>
+              <div class="price">
+                <span class="original-price">¥15,999</span>
+                <span class="current-price">¥12,999</span>
+              </div>
+            </div>
+            <div class="product-actions">
+              <button class="btn-secondary">详情</button>
+              <button class="btn-primary">加入购物车</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 产品卡片 5 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="images/survey-mapping.jpg" alt="测绘无人机">
+            <button class="favorite-btn">♡</button>
+          </div>
+          <div class="product-info">
+            <h3>YITA 测绘无人机</h3>
+            <p>高精度测绘无人机，配备激光雷达和RTK定位</p>
+            <div class="product-meta">
+              <div class="rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">(203)</span>
+              </div>
+              <div class="price">¥25,999</div>
+            </div>
+            <div class="product-actions">
+              <button class="btn-secondary">详情</button>
+              <button class="btn-primary">加入购物车</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 产品卡片 6 -->
+        <div class="product-card">
+          <div class="product-image">
+            <img src="images/emergency-rescue.jpg" alt="救援无人机">
+            <div class="product-badge">推荐</div>
+            <button class="favorite-btn">♡</button>
+          </div>
+          <div class="product-info">
+            <h3>YITA 救援无人机</h3>
+            <p>应急救援专用无人机，配备生命探测和物资投放</p>
+            <div class="product-meta">
+              <div class="rating">
+                <span class="stars">★★★★★</span>
+                <span class="rating-count">(145)</span>
+              </div>
+              <div class="price">¥18,999</div>
+            </div>
+            <div class="product-actions">
+              <button class="btn-secondary">详情</button>
+              <button class="btn-primary">加入购物车</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 分页 -->
+      <div class="pagination">
+        <button class="page-btn" disabled>‹</button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <span class="page-dots">...</span>
+        <button class="page-btn">10</button>
+        <button class="page-btn">›</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 购物车侧边栏 -->
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h3>购物车</h3>
+      <button class="cart-close" onclick="toggleCart()">×</button>
+    </div>
+    <div class="cart-items">
+      <div class="cart-item">
+        <img src="images/drone-inspection.jpg" alt="巡检无人机">
+        <div class="cart-item-info">
+          <h4>YITA Pro 巡检无人机</h4>
+          <div class="cart-item-price">¥12,999</div>
+          <div class="cart-item-quantity">
+            <button class="qty-btn">-</button>
+            <span>1</span>
+            <button class="qty-btn">+</button>
+          </div>
+        </div>
+        <button class="remove-btn">×</button>
+      </div>
+      <div class="cart-item">
+        <img src="images/logistics-delivery.jpg" alt="物流无人机">
+        <div class="cart-item-info">
+          <h4>YITA 物流无人机</h4>
+          <div class="cart-item-price">¥8,999</div>
+          <div class="cart-item-quantity">
+            <button class="qty-btn">-</button>
+            <span>2</span>
+            <button class="qty-btn">+</button>
+          </div>
+        </div>
+        <button class="remove-btn">×</button>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>总计:</span>
+        <span class="total-price">¥30,997</span>
+      </div>
+      <button class="btn-primary btn-full">去结算</button>
+    </div>
+  </div>
+
+  <script src="marketplace.js"></script>
+</body>
+</html> 

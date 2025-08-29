@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YITA 指挥中心 - 玩家版</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+    <div class="player-layout">
+        <!-- 顶部导航 -->
+        <div class="player-header">
+            <div class="header-left">
+                <button class="btn-secondary" onclick="window.location.href='index.html'">← 返回主页</button>
+                <button class="btn-secondary" onclick="window.location.href='command-center-pro.html'">切换到专业版</button>
+            </div>
+            <div class="header-center">
+                <h1>🎮 即玩主页</h1>
+                <p>3秒懂，30秒玩起来</p>
+            </div>
+            <div class="header-right">
+                <div class="player-stats">
+                    <span class="stat-item">🏆 等级: <span id="playerLevel">5</span></span>
+                    <span class="stat-item">⭐ 积分: <span id="playerScore">1250</span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主游戏区域 -->
+        <div class="game-area">
+            <!-- 3D场景显示 -->
+            <div class="scene-container">
+                <div class="scene-selector">
+                    <button class="scene-btn active" onclick="switchScene('city')">🏙️ 城市</button>
+                    <button class="scene-btn" onclick="switchScene('canyon')">🏔️ 峡谷</button>
+                    <button class="scene-btn" onclick="switchScene('coast')">🌊 海岸</button>
+                </div>
+                <div class="scene-view" id="sceneView">
+                    <div class="scene-background city-scene">
+                        <div class="drone-3d" id="drone3D">🚁</div>
+                        <div class="scene-elements">
+                            <div class="building">🏢</div>
+                            <div class="building">🏢</div>
+                            <div class="building">🏢</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4个大按钮控制 -->
+            <div class="control-area">
+                <div class="big-buttons">
+                    <button class="big-btn takeoff" onclick="executePrimitive('takeoff')">
+                        <div class="btn-icon">🚁</div>
+                        <div class="btn-text">起飞</div>
+                    </button>
+                    <button class="big-btn move" onclick="executePrimitive('move')">
+                        <div class="btn-icon">📍</div>
+                        <div class="btn-text">到这里</div>
+                    </button>
+                    <button class="big-btn orbit" onclick="executePrimitive('orbit')">
+                        <div class="btn-icon">🔄</div>
+                        <div class="btn-text">环绕</div>
+                    </button>
+                    <button class="big-btn land" onclick="executePrimitive('land')">
+                        <div class="btn-icon">🛬</div>
+                        <div class="btn-text">降落</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 侧边栏 -->
+        <div class="player-sidebar">
+            <!-- 挑战赛 -->
+            <div class="sidebar-section">
+                <h3>🏆 挑战赛</h3>
+                <div class="challenge-list">
+                    <div class="challenge-item" onclick="startChallenge('tunnel')">
+                        <div class="challenge-icon">🕳️</div>
+                        <div class="challenge-info">
+                            <h4>穿越圈</h4>
+                            <p>通过所有圆环</p>
+                            <div class="challenge-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%"></div>
+                                </div>
+                                <span>60%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="challenge-item" onclick="startChallenge('hover')">
+                        <div class="challenge-icon">🎯</div>
+                        <div class="challenge-info">
+                            <h4>定点悬停</h4>
+                            <p>保持稳定30秒</p>
+                            <div class="challenge-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%"></div>
+                                </div>
+                                <span>完成</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="challenge-item" onclick="startChallenge('race')">
+                        <div class="challenge-icon">🏁</div>
+                        <div class="challenge-info">
+                            <h4>竞速飞行</h4>
+                            <p>最快完成赛道</p>
+                            <div class="challenge-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <span>未开始</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 排行榜 -->
+            <div class="sidebar-section">
+                <h3>📊 排行榜</h3>
+                <div class="leaderboard">
+                    <div class="leaderboard-item">
+                        <span class="rank">🥇</span>
+                        <span class="player-name">飞行大师</span>
+                        <span class="score">2850</span>
+                    </div>
+                    <div class="leaderboard-item">
+                        <span class="rank">🥈</span>
+                        <span class="player-name">天空征服者</span>
+                        <span class="score">2400</span>
+                    </div>
+                    <div class="leaderboard-item">
+                        <span class="rank">🥉</span>
+                        <span class="player-name">无人机王</span>
+                        <span class="score">2100</span>
+                    </div>
+                    <div class="leaderboard-item current">
+                        <span class="rank">4</span>
+                        <span class="player-name">你</span>
+                        <span class="score">1250</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 成就系统 -->
+            <div class="sidebar-section">
+                <h3>🏅 成就</h3>
+                <div class="achievement-list">
+                    <div class="achievement-item unlocked">
+                        <div class="achievement-icon">🎯</div>
+                        <div class="achievement-info">
+                            <h4>精准射手</h4>
+                            <p>完成10次定点悬停</p>
+                        </div>
+                    </div>
+                    <div class="achievement-item unlocked">
+                        <div class="achievement-icon">⚡</div>
+                        <div class="achievement-info">
+                            <h4>速度之王</h4>
+                            <p>竞速挑战用时<2分钟</p>
+                        </div>
+                    </div>
+                    <div class="achievement-item locked">
+                        <div class="achievement-icon">🔒</div>
+                        <div class="achievement-info">
+                            <h4>特技大师</h4>
+                            <p>完成所有挑战</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 体验营 -->
+            <div class="sidebar-section">
+                <h3>🎪 体验营</h3>
+                <div class="experience-cards">
+                    <div class="experience-card">
+                        <div class="experience-icon">🥽</div>
+                        <div class="experience-info">
+                            <h4>VR体验舱</h4>
+                            <p>沉浸式飞行体验</p>
+                            <button class="btn-primary" onclick="bookVR()">预约</button>
+                        </div>
+                    </div>
+                    <div class="experience-card">
+                        <div class="experience-icon">🏕️</div>
+                        <div class="experience-info">
+                            <h4>线下飞行营</h4>
+                            <p>真实无人机体验</p>
+                            <button class="btn-primary" onclick="bookCamp()">报名</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 成就弹窗 -->
+        <div class="achievement-popup" id="achievementPopup">
+            <div class="popup-content">
+                <div class="popup-icon">🏆</div>
+                <h3>恭喜获得成就！</h3>
+                <p id="achievementText">精准射手 - 完成10次定点悬停</p>
+                <button onclick="closeAchievement()">太棒了！</button>
+            </div>
+        </div>
+
+        <!-- 转化提示 -->
+        <div class="conversion-banner" id="conversionBanner">
+            <div class="banner-content">
+                <h3>🎉 解锁更多精彩内容！</h3>
+                <p>注册账号，体验完整功能，参与更多挑战</p>
+                <div class="banner-buttons">
+                    <button class="btn-primary" onclick="register()">立即注册</button>
+                    <button class="btn-secondary" onclick="closeBanner()">稍后再说</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="command-center-player.js"></script>
+</body>
+</html> 

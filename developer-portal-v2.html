@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YITA 开发者门户 - StratoOS Dev</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <div class="dev-layout">
+        <!-- 顶部导航 -->
+        <div class="dev-header">
+            <div class="header-left">
+                <button class="btn-secondary" onclick="window.location.href='index.html'">← 返回主页</button>
+                <button class="btn-secondary" onclick="window.location.href='developer-portal.html'">查看原版</button>
+            </div>
+            <div class="header-center">
+                <h1>💻 StratoOS 开发者门户</h1>
+                <p>1小时内跑通SDK示例，获得沙箱Key</p>
+            </div>
+            <div class="header-right">
+                <div class="dev-stats">
+                    <span class="stat-item">🔑 API Key: <span id="apiKeyStatus">未申请</span></span>
+                    <span class="stat-item">📊 配额: <span id="quotaStatus">0/1000</span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 主要内容区 -->
+        <div class="dev-main">
+            <!-- 左侧导航 -->
+            <div class="dev-sidebar">
+                <div class="sidebar-section">
+                    <h3>🚀 快速开始</h3>
+                    <div class="nav-links">
+                        <a href="#getting-started" class="nav-link active" onclick="showSection('getting-started')">
+                            <span class="nav-icon">📖</span>
+                            <span class="nav-text">开始指南</span>
+                        </a>
+                        <a href="#api-docs" class="nav-link" onclick="showSection('api-docs')">
+                            <span class="nav-icon">📚</span>
+                            <span class="nav-text">API 文档</span>
+                        </a>
+                        <a href="#sdk" class="nav-link" onclick="showSection('sdk')">
+                            <span class="nav-icon">📦</span>
+                            <span class="nav-text">SDK 下载</span>
+                        </a>
+                        <a href="#sandbox" class="nav-link" onclick="showSection('sandbox')">
+                            <span class="nav-icon">🏖️</span>
+                            <span class="nav-text">沙箱环境</span>
+                        </a>
+                        <a href="#extensions" class="nav-link" onclick="showSection('extensions')">
+                            <span class="nav-icon">🛍️</span>
+                            <span class="nav-text">插件商店</span>
+                        </a>
+                        <a href="#compliance" class="nav-link" onclick="showSection('compliance')">
+                            <span class="nav-icon">📋</span>
+                            <span class="nav-text">合规指南</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>🔧 开发工具</h3>
+                    <div class="tool-links">
+                        <a href="#" class="tool-link" onclick="openTool('simulator')">
+                            <span class="tool-icon">🎮</span>
+                            <span class="tool-text">仿真器</span>
+                        </a>
+                        <a href="#" class="tool-link" onclick="openTool('debugger')">
+                            <span class="tool-icon">🐛</span>
+                            <span class="tool-text">调试器</span>
+                        </a>
+                        <a href="#" class="tool-link" onclick="openTool('monitor')">
+                            <span class="tool-icon">📊</span>
+                            <span class="tool-text">监控面板</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>👥 社区</h3>
+                    <div class="community-links">
+                        <a href="#" class="community-link" onclick="openCommunity('github')">
+                            <span class="community-icon">🐙</span>
+                            <span class="community-text">GitHub</span>
+                        </a>
+                        <a href="#" class="community-link" onclick="openCommunity('discord')">
+                            <span class="community-icon">💬</span>
+                            <span class="community-text">Discord</span>
+                        </a>
+                        <a href="#" class="community-link" onclick="openCommunity('forum')">
+                            <span class="community-icon">💭</span>
+                            <span class="community-text">开发者论坛</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧内容区 -->
+            <div class="dev-content">
+                <!-- 开始指南 -->
+                <div id="getting-started" class="content-section active">
+                    <div class="section-header">
+                        <h2>📖 开始指南</h2>
+                        <p>5分钟快速上手 StratoOS 开发</p>
+                    </div>
+
+                    <div class="getting-started-grid">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <h3>安装工具链</h3>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span>Rust</span>
+                                    <button onclick="copyCode('rust-install')">复制</button>
+                                </div>
+                                <pre><code id="rust-install" class="language-bash"># 安装 Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# 安装 StratoOS SDK
+cargo install stratoos-sdk
+
+# 验证安装
+stratoos --version</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <h3>创建项目</h3>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span>Python</span>
+                                    <button onclick="copyCode('python-project')">复制</button>
+                                </div>
+                                <pre><code id="python-project" class="language-bash"># 创建 Python 项目
+pip install stratoos-python-sdk
+
+# 初始化项目
+stratoos init my-drone-app
+
+# 进入项目目录
+cd my-drone-app</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <h3>10行起飞</h3>
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span>Python</span>
+                                    <button onclick="copyCode('takeoff-example')">复制</button>
+                                </div>
+                                <pre><code id="takeoff-example" class="language-python">from stratoos import Drone
+
+# 连接无人机
+drone = Drone.connect("DRONE-001")
+
+# 起飞
+drone.takeoff(height=50)
+
+# 移动到目标点
+drone.move_to(lat=39.9042, lng=116.4074)
+
+# 环绕飞行
+drone.orbit(radius=100, circles=3)
+
+# 降落
+drone.land()
+
+print("任务完成！")</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="step-card">
+                            <div class="step-number">4</div>
+                            <h3>申请沙箱Key</h3>
+                            <div class="sandbox-request">
+                                <p>点击下方按钮申请免费的沙箱环境访问权限</p>
+                                <button class="btn-primary" onclick="requestSandboxKey()">申请沙箱Key</button>
+                                <div class="key-info" id="keyInfo" style="display: none;">
+                                    <p><strong>API Key:</strong> <span id="sandboxKey">sk_test_...</span></p>
+                                    <p><strong>配额:</strong> 1000 次调用/月</p>
+                                    <p><strong>有效期:</strong> 30 天</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API 文档 -->
+                <div id="api-docs" class="content-section">
+                    <div class="section-header">
+                        <h2>📚 API 文档</h2>
+                        <p>完整的 API 参考和示例</p>
+                    </div>
+
+                    <div class="api-categories">
+                        <div class="api-category">
+                            <h3>🚁 飞行控制</h3>
+                            <div class="api-methods">
+                                <div class="api-method">
+                                    <div class="method-header">
+                                        <span class="method-type get">GET</span>
+                                        <span class="method-path">/api/v1/drone/{id}/status</span>
+                                    </div>
+                                    <p>获取无人机状态</p>
+                                    <button onclick="tryAPI('get-drone-status')">在线测试</button>
+                                </div>
+                                <div class="api-method">
+                                    <div class="method-header">
+                                        <span class="method-type post">POST</span>
+                                        <span class="method-path">/api/v1/drone/{id}/takeoff</span>
+                                    </div>
+                                    <p>控制无人机起飞</p>
+                                    <button onclick="tryAPI('post-takeoff')">在线测试</button>
+                                </div>
+                                <div class="api-method">
+                                    <div class="method-header">
+                                        <span class="method-type post">POST</span>
+                                        <span class="method-path">/api/v1/drone/{id}/move</span>
+                                    </div>
+                                    <p>移动到指定坐标</p>
+                                    <button onclick="tryAPI('post-move')">在线测试</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="api-category">
+                            <h3>📡 遥测数据</h3>
+                            <div class="api-methods">
+                                <div class="api-method">
+                                    <div class="method-header">
+                                        <span class="method-type get">GET</span>
+                                        <span class="method-path">/api/v1/telemetry/{id}</span>
+                                    </div>
+                                    <p>获取实时遥测数据</p>
+                                    <button onclick="tryAPI('get-telemetry')">在线测试</button>
+                                </div>
+                                <div class="api-method">
+                                    <div class="method-header">
+                                        <span class="method-type get">GET</span>
+                                        <span class="method-path">/api/v1/telemetry/{id}/history</span>
+                                    </div>
+                                    <p>获取历史遥测数据</p>
+                                    <button onclick="tryAPI('get-telemetry-history')">在线测试</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="api-category">
+                            <h3>🎯 任务管理</h3>
+                            <div class="api-methods">
+                                <div class="api-method">
+                                    <div class="method-header">
+                                        <span class="method-type post">POST</span>
+                                        <span class="method-path">/api/v1/mission</span>
+                                    </div>
+                                    <p>创建新任务</p>
+                                    <button onclick="tryAPI('post-mission')">在线测试</button>
+                                </div>
+                                <div class="api-method">
+                                    <div class="method-header">
+                                        <span class="method-type get">GET</span>
+                                        <span class="method-path">/api/v1/mission/{id}</span>
+                                    </div>
+                                    <p>获取任务状态</p>
+                                    <button onclick="tryAPI('get-mission')">在线测试</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SDK 下载 -->
+                <div id="sdk" class="content-section">
+                    <div class="section-header">
+                        <h2>📦 SDK 下载</h2>
+                        <p>多语言 SDK 和开发工具</p>
+                    </div>
+
+                    <div class="sdk-grid">
+                        <div class="sdk-card">
+                            <div class="sdk-header">
+                                <div class="sdk-icon">🦀</div>
+                                <div class="sdk-info">
+                                    <h3>Rust SDK</h3>
+                                    <p>高性能系统级开发</p>
+                                </div>
+                            </div>
+                            <div class="sdk-details">
+                                <div class="version-info">
+                                    <span class="version">v1.2.0</span>
+                                    <span class="release-date">2024-01-15</span>
+                                </div>
+                                <div class="sdk-stats">
+                                    <span>📥 1.2k 下载</span>
+                                    <span>⭐ 4.8 评分</span>
+                                </div>
+                            </div>
+                            <div class="sdk-actions">
+                                <button class="btn-primary" onclick="downloadSDK('rust')">下载</button>
+                                <button class="btn-secondary" onclick="viewDocs('rust')">文档</button>
+                                <button class="btn-secondary" onclick="viewExamples('rust')">示例</button>
+                            </div>
+                        </div>
+
+                        <div class="sdk-card">
+                            <div class="sdk-header">
+                                <div class="sdk-icon">🐍</div>
+                                <div class="sdk-info">
+                                    <h3>Python SDK</h3>
+                                    <p>快速原型和AI集成</p>
+                                </div>
+                            </div>
+                            <div class="sdk-details">
+                                <div class="version-info">
+                                    <span class="version">v2.1.0</span>
+                                    <span class="release-date">2024-01-10</span>
+                                </div>
+                                <div class="sdk-stats">
+                                    <span>📥 3.5k 下载</span>
+                                    <span>⭐ 4.9 评分</span>
+                                </div>
+                            </div>
+                            <div class="sdk-actions">
+                                <button class="btn-primary" onclick="downloadSDK('python')">下载</button>
+                                <button class="btn-secondary" onclick="viewDocs('python')">文档</button>
+                                <button class="btn-secondary" onclick="viewExamples('python')">示例</button>
+                            </div>
+                        </div>
+
+                        <div class="sdk-card">
+                            <div class="sdk-header">
+                                <div class="sdk-icon">☕</div>
+                                <div class="sdk-info">
+                                    <h3>Java SDK</h3>
+                                    <p>企业级应用开发</p>
+                                </div>
+                            </div>
+                            <div class="sdk-details">
+                                <div class="version-info">
+                                    <span class="version">v1.0.5</span>
+                                    <span class="release-date">2024-01-05</span>
+                                </div>
+                                <div class="sdk-stats">
+                                    <span>📥 800 下载</span>
+                                    <span>⭐ 4.7 评分</span>
+                                </div>
+                            </div>
+                            <div class="sdk-actions">
+                                <button class="btn-primary" onclick="downloadSDK('java')">下载</button>
+                                <button class="btn-secondary" onclick="viewDocs('java')">文档</button>
+                                <button class="btn-secondary" onclick="viewExamples('java')">示例</button>
+                            </div>
+                        </div>
+
+                        <div class="sdk-card">
+                            <div class="sdk-header">
+                                <div class="sdk-icon">🔧</div>
+                                <div class="sdk-info">
+                                    <h3>CLI 工具</h3>
+                                    <p>命令行开发工具</p>
+                                </div>
+                            </div>
+                            <div class="sdk-details">
+                                <div class="version-info">
+                                    <span class="version">v1.1.2</span>
+                                    <span class="release-date">2024-01-12</span>
+                                </div>
+                                <div class="sdk-stats">
+                                    <span>📥 2.1k 下载</span>
+                                    <span>⭐ 4.8 评分</span>
+                                </div>
+                            </div>
+                            <div class="sdk-actions">
+                                <button class="btn-primary" onclick="downloadSDK('cli')">下载</button>
+                                <button class="btn-secondary" onclick="viewDocs('cli')">文档</button>
+                                <button class="btn-secondary" onclick="viewExamples('cli')">示例</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 沙箱环境 -->
+                <div id="sandbox" class="content-section">
+                    <div class="section-header">
+                        <h2>🏖️ 沙箱环境</h2>
+                        <p>安全的测试和开发环境</p>
+                    </div>
+
+                    <div class="sandbox-container">
+                        <div class="sandbox-info">
+                            <div class="info-card">
+                                <h3>🔑 API Key 管理</h3>
+                                <div class="key-management">
+                                    <div class="key-status">
+                                        <span>状态:</span>
+                                        <span class="status-badge" id="keyStatusBadge">未申请</span>
+                                    </div>
+                                    <div class="key-details" id="keyDetails" style="display: none;">
+                                        <p><strong>Key:</strong> <span id="apiKeyDisplay">sk_test_...</span></p>
+                                        <p><strong>配额:</strong> <span id="quotaDisplay">0/1000</span></p>
+                                        <p><strong>有效期:</strong> <span id="expiryDisplay">2024-02-15</span></p>
+                                    </div>
+                                    <button class="btn-primary" onclick="requestSandboxKey()" id="requestKeyBtn">申请沙箱Key</button>
+                                </div>
+                            </div>
+
+                            <div class="info-card">
+                                <h3>📊 使用统计</h3>
+                                <div class="usage-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-label">API 调用</span>
+                                        <span class="stat-value" id="apiCalls">0</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">错误率</span>
+                                        <span class="stat-value" id="errorRate">0%</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-label">响应时间</span>
+                                        <span class="stat-value" id="responseTime">0ms</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sandbox-tools">
+                            <div class="tool-card">
+                                <h3>🎮 仿真器</h3>
+                                <p>在虚拟环境中测试您的应用</p>
+                                <button class="btn-secondary" onclick="openSimulator()">启动仿真器</button>
+                            </div>
+
+                            <div class="tool-card">
+                                <h3>📝 日志查看器</h3>
+                                <p>查看详细的API调用日志</p>
+                                <button class="btn-secondary" onclick="openLogViewer()">查看日志</button>
+                            </div>
+
+                            <div class="tool-card">
+                                <h3>🔧 Webhook 测试</h3>
+                                <p>测试和调试Webhook集成</p>
+                                <button class="btn-secondary" onclick="openWebhookTester()">测试Webhook</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 插件商店 -->
+                <div id="extensions" class="content-section">
+                    <div class="section-header">
+                        <h2>🛍️ 插件商店</h2>
+                        <p>算法和应用模块</p>
+                    </div>
+
+                    <div class="extensions-grid">
+                        <div class="extension-card">
+                            <div class="extension-header">
+                                <div class="extension-icon">🤖</div>
+                                <div class="extension-info">
+                                    <h3>AI 路径规划</h3>
+                                    <p>智能避障和路径优化</p>
+                                </div>
+                            </div>
+                            <div class="extension-details">
+                                <div class="extension-stats">
+                                    <span>⭐ 4.9</span>
+                                    <span>📥 1.2k</span>
+                                    <span>💰 免费</span>
+                                </div>
+                                <div class="extension-tags">
+                                    <span class="tag">AI</span>
+                                    <span class="tag">路径规划</span>
+                                    <span class="tag">避障</span>
+                                </div>
+                            </div>
+                            <div class="extension-actions">
+                                <button class="btn-primary" onclick="installExtension('ai-pathfinding')">安装</button>
+                                <button class="btn-secondary" onclick="viewExtensionDetails('ai-pathfinding')">详情</button>
+                            </div>
+                        </div>
+
+                        <div class="extension-card">
+                            <div class="extension-header">
+                                <div class="extension-icon">📸</div>
+                                <div class="extension-info">
+                                    <h3>图像识别</h3>
+                                    <p>实时物体检测和识别</p>
+                                </div>
+                            </div>
+                            <div class="extension-details">
+                                <div class="extension-stats">
+                                    <span>⭐ 4.8</span>
+                                    <span>📥 2.1k</span>
+                                    <span>💰 $29</span>
+                                </div>
+                                <div class="extension-tags">
+                                    <span class="tag">计算机视觉</span>
+                                    <span class="tag">物体检测</span>
+                                    <span class="tag">实时</span>
+                                </div>
+                            </div>
+                            <div class="extension-actions">
+                                <button class="btn-primary" onclick="installExtension('image-recognition')">购买</button>
+                                <button class="btn-secondary" onclick="viewExtensionDetails('image-recognition')">详情</button>
+                            </div>
+                        </div>
+
+                        <div class="extension-card">
+                            <div class="extension-header">
+                                <div class="extension-icon">🌐</div>
+                                <div class="extension-info">
+                                    <h3>网络优化</h3>
+                                    <p>低延迟通信协议</p>
+                                </div>
+                            </div>
+                            <div class="extension-details">
+                                <div class="extension-stats">
+                                    <span>⭐ 4.7</span>
+                                    <span>📥 800</span>
+                                    <span>💰 $19</span>
+                                </div>
+                                <div class="extension-tags">
+                                    <span class="tag">网络</span>
+                                    <span class="tag">低延迟</span>
+                                    <span class="tag">优化</span>
+                                </div>
+                            </div>
+                            <div class="extension-actions">
+                                <button class="btn-primary" onclick="installExtension('network-optimization')">购买</button>
+                                <button class="btn-secondary" onclick="viewExtensionDetails('network-optimization')">详情</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 合规指南 -->
+                <div id="compliance" class="content-section">
+                    <div class="section-header">
+                        <h2>📋 合规指南</h2>
+                        <p>BVLOS、空域、安全标准</p>
+                    </div>
+
+                    <div class="compliance-grid">
+                        <div class="compliance-card">
+                            <h3>🚁 BVLOS 飞行</h3>
+                            <div class="compliance-content">
+                                <h4>超视距飞行要求</h4>
+                                <ul>
+                                    <li>实时监控系统</li>
+                                    <li>自动避障功能</li>
+                                    <li>应急降落机制</li>
+                                    <li>通信链路冗余</li>
+                                </ul>
+                                <button class="btn-secondary" onclick="viewComplianceDetails('bvlos')">查看详情</button>
+                            </div>
+                        </div>
+
+                        <div class="compliance-card">
+                            <h3>🛡️ 安全标准</h3>
+                            <div class="compliance-content">
+                                <h4>DO-178C 认证</h4>
+                                <ul>
+                                    <li>软件安全等级</li>
+                                    <li>代码覆盖率要求</li>
+                                    <li>故障分析报告</li>
+                                    <li>验证测试流程</li>
+                                </ul>
+                                <button class="btn-secondary" onclick="viewComplianceDetails('safety')">查看详情</button>
+                            </div>
+                        </div>
+
+                        <div class="compliance-card">
+                            <h3>🌍 空域管理</h3>
+                            <div class="compliance-content">
+                                <h4>U-Space 集成</h4>
+                                <ul>
+                                    <li>空域信息获取</li>
+                                    <li>飞行计划提交</li>
+                                    <li>实时位置报告</li>
+                                    <li>冲突检测预警</li>
+                                </ul>
+                                <button class="btn-secondary" onclick="viewComplianceDetails('airspace')">查看详情</button>
+                            </div>
+                        </div>
+
+                        <div class="compliance-card">
+                            <h3>📝 审计日志</h3>
+                            <div class="compliance-content">
+                                <h4>操作记录要求</h4>
+                                <ul>
+                                    <li>命令执行日志</li>
+                                    <li>系统状态记录</li>
+                                    <li>异常事件追踪</li>
+                                    <li>数据完整性验证</li>
+                                </ul>
+                                <button class="btn-secondary" onclick="viewComplianceDetails('audit')">查看详情</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- API 测试弹窗 -->
+    <div class="api-modal" id="apiModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>API 测试</h3>
+                <button class="close-btn" onclick="closeApiModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="api-test-form">
+                    <div class="form-group">
+                        <label>请求方法</label>
+                        <select id="apiMethod">
+                            <option value="GET">GET</option>
+                            <option value="POST">POST</option>
+                            <option value="PUT">PUT</option>
+                            <option value="DELETE">DELETE</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>请求路径</label>
+                        <input type="text" id="apiPath" placeholder="/api/v1/drone/123/status">
+                    </div>
+                    <div class="form-group">
+                        <label>请求参数</label>
+                        <textarea id="apiParams" placeholder='{"key": "value"}'></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn-primary" onclick="executeApiTest()">发送请求</button>
+                        <button class="btn-secondary" onclick="closeApiModal()">取消</button>
+                    </div>
+                </div>
+                <div class="api-response" id="apiResponse" style="display: none;">
+                    <h4>响应结果</h4>
+                    <pre><code id="responseCode"></code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="developer-portal-v2.js"></script>
+</body>
+</html> 
