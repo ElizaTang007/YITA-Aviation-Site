@@ -422,3 +422,91 @@ function switchToProduct(targetIndex) {
 document.addEventListener('DOMContentLoaded', function() {
   initMarketplaceScrollAnimation();
 });
+
+// 飞行体验注册弹窗功能
+function openExperienceModal() {
+  const modal = document.getElementById('experienceModal');
+  if (modal) {
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden'; // 防止背景滚动
+  }
+}
+
+function closeExperienceModal() {
+  const modal = document.getElementById('experienceModal');
+  if (modal) {
+    modal.classList.remove('show');
+    document.body.style.overflow = 'auto'; // 恢复滚动
+  }
+}
+
+// 点击弹窗外部关闭
+document.addEventListener('click', function(e) {
+  const modal = document.getElementById('experienceModal');
+  if (e.target === modal) {
+    closeExperienceModal();
+  }
+});
+
+// ESC键关闭弹窗
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeExperienceModal();
+  }
+});
+
+// 表单提交处理
+document.addEventListener('DOMContentLoaded', function() {
+  const experienceForm = document.querySelector('.experience-form');
+  if (experienceForm) {
+    experienceForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // 收集表单数据
+      const formData = new FormData(this);
+      const data = {
+        name: this.querySelector('input[type="text"]').value,
+        email: this.querySelector('input[type="email"]').value,
+        phone: this.querySelector('input[type="tel"]').value,
+        experienceTypes: Array.from(this.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value),
+        preference: this.querySelector('select').value,
+        notes: this.querySelector('textarea').value
+      };
+      
+      // 验证必填字段
+      if (!data.name || !data.email || !data.phone || !data.preference) {
+        alert('请填写所有必填字段');
+        return;
+      }
+      
+      if (data.experienceTypes.length === 0) {
+        alert('请至少选择一种体验类型');
+        return;
+      }
+      
+      // 模拟提交（实际项目中这里会发送到服务器）
+      console.log('提交的体验申请数据:', data);
+      
+      // 显示成功消息
+      alert('申请提交成功！我们将在24小时内联系您，为您安排专属的飞行体验。');
+      
+      // 关闭弹窗并重置表单
+      closeExperienceModal();
+      this.reset();
+    });
+  }
+});
+
+// 增强按钮交互效果
+document.addEventListener('DOMContentLoaded', function() {
+  const experienceBtn = document.querySelector('.entertainment-cta .btn-primary');
+  if (experienceBtn) {
+    experienceBtn.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-3px) scale(1.02)';
+    });
+    
+    experienceBtn.addEventListener('mouseleave', function() {
+      this.style.transform = 'translateY(0) scale(1)';
+    });
+  }
+});

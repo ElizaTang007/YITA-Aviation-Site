@@ -68,7 +68,7 @@
           <span class="title-line highlight">低空经济综合平台</span>
         </h1>
         <p class="hero-subtitle">
-          依塔智行（YITA航空）提供指挥中心、开发者门户、市场平台三大核心服务，构建完整的低空经济生态系统
+          依塔智行（YITA航空）提供指挥中心、开发者门户、市场平台、娱乐体验四大核心服务，构建完整的低空经济生态系统
         </p>
         <div class="hero-cta">
           <button class="btn-primary btn-large" onclick="scrollToSection('business-platforms')">了解更多</button>
@@ -83,12 +83,12 @@
 
 
 
-  <!-- 三大业务板块 -->
+  <!-- 四大业务板块 -->
   <section id="business-platforms" class="business-platforms-section">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">三大核心业务</h2>
-        <p class="section-subtitle">指挥中心、开发者门户、市场平台，构建完整的低空经济生态系统</p>
+        <h2 class="section-title">四大核心业务</h2>
+        <p class="section-subtitle">指挥中心、开发者门户、市场平台、娱乐体验，构建完整的低空经济生态系统</p>
       </div>
       <div class="platforms-grid">
         <div class="platform-card">
@@ -126,6 +126,18 @@
             <li>风控审核与保障</li>
           </ul>
           <button class="btn-primary" onclick="window.location.href='marketplace.html'">浏览市场</button>
+        </div>
+        <div class="platform-card">
+          <div class="platform-icon">🎯</div>
+          <h3>娱乐体验</h3>
+          <p>通过娱乐体验让飞行更好玩、更具生活方式感，开启飞行的未来生活方式</p>
+          <ul>
+            <li>VR模拟飞行竞速与FPV竞赛</li>
+            <li>沉浸式驾驶舱体验</li>
+            <li>高端会员制飞行俱乐部</li>
+            <li>eVTOL预体验与社交网络</li>
+          </ul>
+          <button class="btn-primary" onclick="scrollToSection('entertainment-experience')">立即加入飞行体验</button>
         </div>
       </div>
     </div>
@@ -314,9 +326,72 @@ await mission.execute();</code></pre>
               </div>
             </div>
             <div class="marketplace-browse-btn">
-              <button class="btn-primary" onclick="window.location.href='marketplace-v2.html'">浏览商品</button>
+              <button class="btn-primary" onclick="window.location.href='marketplace.html'">浏览商品</button>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 娱乐体验详情 -->
+  <section id="entertainment-experience" class="entertainment-experience-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">娱乐体验</h2>
+        <p class="section-subtitle">飞行的未来生活方式</p>
+      </div>
+      <div class="entertainment-content">
+        <div class="entertainment-intro">
+          <h3>通过娱乐体验让飞行更好玩、更具生活方式感</h3>
+          <p>YITA 航空致力于将飞行从专业领域带入大众生活，通过创新的娱乐体验形式，让每个人都能感受到飞行的魅力与乐趣。</p>
+        </div>
+        <div class="entertainment-modules">
+          <div class="module-card">
+            <div class="module-icon">🏁</div>
+            <h3>飞竞</h3>
+            <div class="module-features">
+              <div class="feature-item">
+                <span class="feature-dot"></span>
+                <span>线上 VR 模拟飞行竞速</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-dot"></span>
+                <span>线下 FPV 无人机竞速赛 + 未来 eVTOL 表演赛</span>
+              </div>
+            </div>
+          </div>
+          <div class="module-card">
+            <div class="module-icon">🥽</div>
+            <h3>VR 模拟舱</h3>
+            <div class="module-features">
+              <div class="feature-item">
+                <span class="feature-dot"></span>
+                <span>沉浸式驾驶舱体验</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-dot"></span>
+                <span>游戏化训练，降低飞行门槛</span>
+              </div>
+            </div>
+          </div>
+          <div class="module-card">
+            <div class="module-icon">👑</div>
+            <h3>私人飞行俱乐部</h3>
+            <div class="module-features">
+              <div class="feature-item">
+                <span class="feature-dot"></span>
+                <span>高端会员制社区</span>
+              </div>
+              <div class="feature-item">
+                <span class="feature-dot"></span>
+                <span>eVTOL 预体验 + 社交网络</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="entertainment-cta">
+          <button class="btn-primary btn-large" onclick="openExperienceModal()">立即加入飞行体验</button>
         </div>
       </div>
     </div>
@@ -515,7 +590,7 @@ await mission.execute();</code></pre>
       <div class="about-content">
         <div class="about-text">
           <h2>关于 YITA</h2>
-          <p>我们致力于构建完整的低空经济生态系统，通过指挥中心、开发者门户、市场平台三大核心服务，推动低空经济的快速发展。</p>
+          <p>我们致力于构建完整的低空经济生态系统，通过指挥中心、开发者门户、市场平台、娱乐体验四大核心服务，推动低空经济的快速发展。</p>
           <p>从设备控制到应用开发，从技术标准到商业交易，YITA 为低空经济提供一站式解决方案。</p>
           <div class="stats">
             <div class="stat-item">
@@ -689,6 +764,81 @@ await mission.execute();</code></pre>
     </div>
   </footer>
 
+  <!-- 飞行体验注册弹窗 -->
+  <div id="experienceModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>加入飞行体验</h3>
+        <button class="close-btn" onclick="closeExperienceModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="experience-intro">
+          <p>选择您感兴趣的飞行体验类型，我们将为您提供专属的体验方案</p>
+        </div>
+        <form class="experience-form">
+          <div class="form-group">
+            <label>姓名</label>
+            <input type="text" placeholder="请输入您的姓名" required>
+          </div>
+          <div class="form-group">
+            <label>邮箱</label>
+            <input type="email" placeholder="请输入您的邮箱" required>
+          </div>
+          <div class="form-group">
+            <label>手机号</label>
+            <input type="tel" placeholder="请输入您的手机号" required>
+          </div>
+          <div class="form-group">
+            <label>感兴趣的体验类型</label>
+            <div class="experience-options">
+              <label class="option-item">
+                <input type="checkbox" value="racing">
+                <span class="checkmark"></span>
+                <span class="option-text">
+                  <strong>飞竞</strong><br>
+                  <small>VR模拟飞行竞速 + FPV无人机竞赛</small>
+                </span>
+              </label>
+              <label class="option-item">
+                <input type="checkbox" value="vr-sim">
+                <span class="checkmark"></span>
+                <span class="option-text">
+                  <strong>VR模拟舱</strong><br>
+                  <small>沉浸式驾驶舱体验 + 游戏化训练</small>
+                </span>
+              </label>
+              <label class="option-item">
+                <input type="checkbox" value="club">
+                <span class="checkmark"></span>
+                <span class="option-text">
+                  <strong>私人飞行俱乐部</strong><br>
+                  <small>高端会员制社区 + eVTOL预体验</small>
+                </span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>体验偏好</label>
+            <select required>
+              <option value="">请选择体验偏好</option>
+              <option value="beginner">初学者 - 想要体验飞行的乐趣</option>
+              <option value="intermediate">进阶者 - 希望提升飞行技能</option>
+              <option value="professional">专业级 - 寻求极致飞行体验</option>
+              <option value="social">社交型 - 希望结识飞行爱好者</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>备注信息</label>
+            <textarea placeholder="请告诉我们您的特殊需求或期望..." rows="3"></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="button" class="btn-secondary" onclick="closeExperienceModal()">取消</button>
+            <button type="submit" class="btn-primary">提交申请</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>
