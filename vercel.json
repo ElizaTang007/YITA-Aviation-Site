@@ -23,101 +23,38 @@
       "use": "@vercel/static"
     },
     {
-      "src": "images/**",
+      "src": "*.svg",
       "use": "@vercel/static"
     },
     {
-      "src": "videos/**",
+      "src": "images/**",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/sitemap.xml",
-      "dest": "/sitemap.xml"
-    },
-    {
-      "src": "/robots.txt",
-      "dest": "/robots.txt"
-    },
-    {
       "src": "/",
       "dest": "/index.html"
-    },
-    {
-      "src": "/marketplace",
-      "dest": "/marketplace.html"
-    },
-    {
-      "src": "/marketplace-v2",
-      "dest": "/marketplace-v2.html"
-    },
-    {
-      "src": "/seller-registration",
-      "dest": "/seller-registration.html"
-    },
-    {
-      "src": "/login",
-      "dest": "/login.html"
-    },
-    {
-      "src": "/command-center",
-      "dest": "/command-center.html"
     },
     {
       "src": "/command-center-pro",
       "dest": "/command-center-pro.html"
     },
     {
-      "src": "/command-center-pro.html",
-      "dest": "/command-center-pro.html"
-    },
-    {
-      "src": "/command-center-player",
-      "dest": "/command-center-player.html"
-    },
-    {
       "src": "/developer-portal",
       "dest": "/developer-portal.html"
     },
     {
-      "src": "/developer-portal-v2",
-      "dest": "/developer-portal-v2.html"
-    },
-    {
-      "src": "/developer-portal.html",
-      "dest": "/developer-portal.html"
-    },
-    {
-      "src": "/marketplace.html",
+      "src": "/marketplace",
       "dest": "/marketplace.html"
     },
     {
-      "src": "/login.html",
+      "src": "/login",
       "dest": "/login.html"
     },
     {
       "src": "/(.*)",
       "dest": "/404.html"
     }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
-      ]
-    }
   ]
-} 
+}
