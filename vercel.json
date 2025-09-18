@@ -17,7 +17,7 @@
       "dest": "/command-center-pro.html"
     },
     {
-      "src": "/developer-portal",
+      "src": "/developer-portal", 
       "dest": "/developer-portal.html"
     },
     {
@@ -33,9 +33,15 @@
       "dest": "/404.html"
     }
   ],
-  "functions": {
-    "videos/hero.mp4": {
-      "maxDuration": 30
+  "headers": [
+    {
+      "source": "/videos/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
-  }
+  ]
 }
