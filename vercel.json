@@ -69,6 +69,10 @@
       "dest": "/command-center-pro.html"
     },
     {
+      "src": "/command-center-pro.html",
+      "dest": "/command-center-pro.html"
+    },
+    {
       "src": "/command-center-player",
       "dest": "/command-center-player.html"
     },
@@ -79,6 +83,18 @@
     {
       "src": "/developer-portal-v2",
       "dest": "/developer-portal-v2.html"
+    },
+    {
+      "src": "/developer-portal.html",
+      "dest": "/developer-portal.html"
+    },
+    {
+      "src": "/marketplace.html",
+      "dest": "/marketplace.html"
+    },
+    {
+      "src": "/login.html",
+      "dest": "/login.html"
     },
     {
       "src": "/(.*)",
