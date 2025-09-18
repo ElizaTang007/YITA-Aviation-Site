@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YITA 网站诊断</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            padding: 20px;
+        }
+        .status {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success { background: #0a5; }
+        .error { background: #a50; }
+        .info { background: #05a; }
+    </style>
+</head>
+<body>
+    <h1>YITA 网站诊断工具</h1>
+    
+    <div class="status info">
+        <h3>检查项目</h3>
+        <p>正在检查网站各个组件的加载状态...</p>
+    </div>
+    
+    <div id="results"></div>
+    
+    <script>
+        const results = document.getElementById('results');
+        
+        function addResult(name, status, message) {
+            const div = document.createElement('div');
+            div.className = `status ${status}`;
+            div.innerHTML = `<strong>${name}:</strong> ${message}`;
+            results.appendChild(div);
+        }
+        
+        // 检查页面加载
+        addResult('页面加载', 'success', 'HTML页面已加载');
+        
+        // 检查CSS
+        const cssLink = document.createElement('link');
+        cssLink.rel = 'stylesheet';
+        cssLink.href = 'style.css';
+        cssLink.onload = () => addResult('CSS样式', 'success', '样式文件加载成功');
+        cssLink.onerror = () => addResult('CSS样式', 'error', '样式文件加载失败');
+        document.head.appendChild(cssLink);
+        
+        // 检查JavaScript
+        const script = document.createElement('script');
+        script.src = 'script.js';
+        script.onload = () => addResult('JavaScript', 'success', '脚本文件加载成功');
+        script.onerror = () => addResult('JavaScript', 'error', '脚本文件加载失败');
+        document.head.appendChild(script);
+        
+        // 检查图片资源
+        const testImage = new Image();
+        testImage.onload = () => addResult('图片资源', 'success', '图片可以正常加载');
+        testImage.onerror = () => addResult('图片资源', 'error', '图片加载失败');
+        testImage.src = 'images/team.jpg';
+        
+        // 检查视频资源
+        const testVideo = document.createElement('video');
+        testVideo.onloadstart = () => addResult('视频资源', 'success', '视频文件可以访问');
+        testVideo.onerror = () => addResult('视频资源', 'error', '视频文件加载失败');
+        testVideo.src = 'videos/hero.mp4';
+        
+        // 检查控制台错误
+        window.addEventListener('error', (e) => {
+            addResult('JavaScript错误', 'error', `${e.message} (${e.filename}:${e.lineno})`);
+        });
+        
+        // 检查网络状态
+        if (navigator.onLine) {
+            addResult('网络连接', 'success', '网络连接正常');
+        } else {
+            addResult('网络连接', 'error', '网络连接异常');
+        }
+        
+        // 检查浏览器兼容性
+        if (typeof fetch !== 'undefined') {
+            addResult('浏览器兼容性', 'success', '支持现代Web API');
+        } else {
+            addResult('浏览器兼容性', 'error', '浏览器版本过旧');
+        }
+    </script>
+</body>
+</html>
