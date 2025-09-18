@@ -3,31 +3,7 @@
   "name": "yita-aviation-site",
   "builds": [
     {
-      "src": "*.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "*.js",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "*.css",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "*.xml",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "*.txt",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "*.svg",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "images/**",
+      "src": "**/*",
       "use": "@vercel/static"
     }
   ],
@@ -56,5 +32,10 @@
       "src": "/(.*)",
       "dest": "/404.html"
     }
-  ]
+  ],
+  "functions": {
+    "videos/hero.mp4": {
+      "maxDuration": 30
+    }
+  }
 }
