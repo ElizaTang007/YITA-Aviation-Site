@@ -30,7 +30,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/404.html"
+      "dest": "/index.html"
     }
   ],
   "headers": [
