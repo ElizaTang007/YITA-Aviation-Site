@@ -93,6 +93,22 @@ body {
   content: none !important;
 }
 
+/* 强制隐藏所有导航链接的图标 */
+a[href="#contact"]::before,
+a[href="#contact"]::after,
+a[href*="contact"]::before,
+a[href*="contact"]::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* 强制隐藏所有包含"联系我们"文本的链接图标 */
+a:contains("联系我们")::before,
+a:contains("联系我们")::after {
+  display: none !important;
+  content: none !important;
+}
+
 .nav-link:hover {
   color: #ffffff;
 }
