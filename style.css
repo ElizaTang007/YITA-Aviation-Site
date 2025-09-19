@@ -8322,13 +8322,3 @@ a[href="contact"]::after {
   }
 }
 
-/* 渐变文字效果 - 最简方案 */
-.gradient-text {
-  color: #00d4ff !important;
-  font-weight: 700;
-  text-shadow: 0 0 20px rgba(0, 212, 255, 0.8), 0 0 40px rgba(0, 212, 255, 0.4);
-  background: linear-gradient(90deg, #ffffff 0%, #00d4ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
