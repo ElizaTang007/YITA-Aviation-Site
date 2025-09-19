@@ -8228,14 +8228,15 @@ a:contains("联系我们")::after {
 
 /* 渐变文字效果 */
 .gradient-text {
-  background: linear-gradient(90deg, #ffffff 0%, #00d4ff 100%);
+  background: linear-gradient(90deg, #ffffff 0%, #00d4ff 50%, #00a8cc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   color: #00d4ff; /* 回退颜色 */
-  font-weight: 600;
+  font-weight: 700;
   display: inline-block;
   position: relative;
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
 }
 
 /* 为不支持background-clip的浏览器提供回退 */
@@ -8243,5 +8244,14 @@ a:contains("联系我们")::after {
   .gradient-text {
     color: #00d4ff;
     background: none;
+    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
   }
+}
+
+/* 确保渐变文字在深色背景下更明显 */
+.gradient-text:hover {
+  background: linear-gradient(90deg, #ffffff 0%, #00d4ff 30%, #00a8cc 70%, #0088aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
