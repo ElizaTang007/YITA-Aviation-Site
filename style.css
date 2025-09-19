@@ -141,6 +141,41 @@ a[href="contact"]::after {
   opacity: 0 !important;
 }
 
+/* 强制删除所有可能的图标和装饰 */
+.nav-link,
+a[href="#contact"],
+a[href*="contact"],
+a[href="contact"] {
+  background: none !important;
+  background-image: none !important;
+  background-size: none !important;
+  background-position: none !important;
+  background-repeat: none !important;
+}
+
+.nav-link::before,
+.nav-link::after,
+a[href="#contact"]::before,
+a[href="#contact"]::after,
+a[href*="contact"]::before,
+a[href*="contact"]::after,
+a[href="contact"]::before,
+a[href="contact"]::after {
+  display: none !important;
+  content: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  background: none !important;
+  background-image: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+}
+
 .nav-link:hover {
   color: #ffffff;
 }
