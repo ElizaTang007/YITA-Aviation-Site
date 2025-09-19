@@ -59,8 +59,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  max-width: 1200px;
+  padding: 0.75rem 1.5rem;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -75,7 +75,7 @@ body {
 
 .nav-menu {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .nav-link {
@@ -87,6 +87,12 @@ body {
 
 .nav-link:hover {
   color: #ffffff;
+}
+
+.nav-cta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .nav-cta .btn-primary {
@@ -109,7 +115,6 @@ body {
 .language-switcher {
   display: flex;
   gap: 0.5rem;
-  margin-right: 1rem;
 }
 
 .lang-btn {
