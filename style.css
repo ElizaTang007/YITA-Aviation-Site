@@ -8463,6 +8463,24 @@ body {
   white-space: nowrap !important;
   background: none !important;
   border: none !important;
+  color: inherit !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+/* 确保主要按钮样式生效 */
+.top-bar .action-btn.primary-btn {
+  background: linear-gradient(135deg, #00d4ff, #0099cc) !important;
+  color: #000000 !important;
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3) !important;
+}
+
+.top-bar .action-btn.secondary-btn {
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
 }
 
 /* 移动端响应式 */
