@@ -1,12 +1,26 @@
-// 导航栏滚动效果
-window.addEventListener('scroll', function() {
+// 性能优化：节流函数
+function throttle(func, limit) {
+  let inThrottle;
+  return function() {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  }
+}
+
+// 导航栏滚动效果（使用节流优化）
+window.addEventListener('scroll', throttle(function() {
   const navbar = document.querySelector('.navbar');
   if (window.scrollY > 100) {
     navbar.style.background = 'rgba(0, 0, 0, 0.95)';
   } else {
     navbar.style.background = 'rgba(0, 0, 0, 0.9)';
   }
-});
+}, 16));
 
 // 平滑滚动到锚点
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -583,3 +597,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// 性能监控
+function initPerformanceMonitoring() {
+  // 监控页面加载时间
+  window.addEventListener('load', function() {
+    const loadTime = performance.now();
+    console.log(`页面加载时间: ${loadTime.toFixed(2)}ms`);
+    
+    // 监控LCP (Largest Contentful Paint)
+    if ('PerformanceObserver' in window) {
+      const observer = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        const lastEntry = entries[entries.length - 1];
+        console.log(`最大内容绘制时间: ${lastEntry.startTime.toFixed(2)}ms`);
+      });
+      observer.observe({ entryTypes: ['largest-contentful-paint'] });
+    }
+  });
+}
+
+// 初始化性能监控
+initPerformanceMonitoring();

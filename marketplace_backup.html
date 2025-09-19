@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YITA 市场平台 - eVTOL专区</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+        
+        .marketplace-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 2rem 1.5rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .search-bar {
+            margin-bottom: 2rem;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 0.875rem;
+        }
+        
+        .filter-section {
+            margin-bottom: 2rem;
+        }
+        
+        .filter-section h3 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        
+        .filter-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+        
+        .filter-item input {
+            margin-right: 0.5rem;
+        }
+        
+        .main-content {
+            padding: 2rem;
+        }
+        
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 153, 204, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+        
+        .product-card:hover::before {
+            opacity: 1;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.2);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-image img:hover {
+            transform: scale(1.05);
+        }
+        
+        .product-image img.lazy {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .product-image img.lazy.loaded {
+            opacity: 1;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .product-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-description {
+            color: #cccccc;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stars {
+            color: #ffd700;
+            margin-right: 0.5rem;
+        }
+        
+        .rating-text {
+            color: #cccccc;
+            font-size: 0.875rem;
+        }
+        
+        .product-price {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .current-price {
+            color: #00d4ff;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+        
+        .original-price {
+            color: #cccccc;
+            text-decoration: line-through;
+            font-size: 0.875rem;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary, .btn-secondary {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+            color: #ffffff;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.3);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .cart-count {
+            background: #ff4444;
+            color: white;
+            border-radius: 50%;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            margin-left: 0.5rem;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            margin: 5% auto;
+            padding: 2rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+        }
+        
+        .close {
+            color: #ffffff;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="marketplace-layout">
+        <!-- 左侧筛选栏 -->
+        <div class="sidebar">
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="搜索eVTOL、品牌、型号...">
+            </div>
+            
+            <div class="filter-section">
+                <h3>🚁 产品分类</h3>
+                <div class="filter-item">
+                    <input type="checkbox" id="evtol" checked>
+                    <label for="evtol">eVTOL载人飞行器</label>
+                </div>
+                <div class="filter-item">
+                    <input type="checkbox" id="drone">
+                    <label for="drone">无人机设备</label>
+                </div>
+                <div class="filter-item">
+                    <input type="checkbox" id="accessory">
+                    <label for="accessory">配件耗材</label>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h3>💰 价格区间</h3>
+                <div class="filter-item">
+                    <input type="radio" name="price" value="0-1000000" id="price1">
+                    <label for="price1">¥0 - ¥100万</label>
+                </div>
+                <div class="filter-item">
+                    <input type="radio" name="price" value="1000000-5000000" id="price2" checked>
+                    <label for="price2">¥100万 - ¥500万</label>
+                </div>
+                <div class="filter-item">
+                    <input type="radio" name="price" value="5000000+" id="price3">
+                    <label for="price3">¥500万+</label>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <h3>🏷️ 品牌</h3>
+                <div class="filter-item">
+                    <input type="checkbox" id="ehang">
+                    <label for="ehang">亿航智能</label>
+                </div>
+                <div class="filter-item">
+                    <input type="checkbox" id="fengfei">
+                    <label for="fengfei">峰飞航空</label>
+                </div>
+                <div class="filter-item">
+                    <input type="checkbox" id="xpeng">
+                    <label for="xpeng">小鹏汇天</label>
+                </div>
+                <div class="filter-item">
+                    <input type="checkbox" id="joby">
+                    <label for="joby">Joby Aviation</label>
+                </div>
+                <div class="filter-item">
+                    <input type="checkbox" id="archer">
+                    <label for="archer">Archer</label>
+                </div>
+                <div class="filter-item">
+                    <input type="checkbox" id="volocopter">
+                    <label for="volocopter">Volocopter</label>
+                </div>
+                <div class="filter-item">
+                    <input type="checkbox" id="lilium">
+                    <label for="lilium">Lilium</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 右侧商品展示区 -->
+        <div class="main-content">
+            <div class="content-header">
+                <h2>找到 <span id="productCount">12</span> 个产品</h2>
+                <div>
+                    <button class="btn-secondary" onclick="viewCart()">购物车 <span class="cart-count" id="cartCount">0</span></button>
+                </div>
+            </div>
+            
+            <div class="product-grid" id="productGrid">
+                <!-- 产品卡片将通过JavaScript动态生成 -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- 产品详情模态框 -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+    
+    <script>
+        // 产品数据
+        const products = [
+            {
+                id: 1,
+                name: '亿航EH216-S 载人级自动驾驶飞行器',
+                description: '全球首款载人级自动驾驶飞行器，双座设计，最大航程35公里，适用于城市空中交通。',
+                price: 2800000,
+                originalPrice: 3200000,
+                rating: 4.9,
+                reviewCount: 28,
+                brand: '亿航智能',
+                category: 'evtol',
+                image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop&q=80',
+                specs: {
+                    seats: '2座',
+                    range: '35公里',
+                    speed: '130公里/小时',
+                    weight: '220kg',
+                    battery: '锂离子电池',
+                    certification: 'CAAC认证'
+                }
+            },
+            {
+                id: 2,
+                name: '峰飞V1500M 大型货运eVTOL',
+                description: '专为货运设计的大型eVTOL，载重1500kg，航程250公里，适合中短途物流运输。',
+                price: 4500000,
+                originalPrice: 5000000,
+                rating: 4.8,
+                reviewCount: 15,
+                brand: '峰飞航空',
+                category: 'evtol',
+                image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop&q=80',
+                specs: {
+                    seats: '货运专用',
+                    range: '250公里',
+                    speed: '180公里/小时',
+                    weight: '1500kg',
+                    battery: '锂离子电池',
+                    certification: 'CAAC认证'
+                }
+            },
+            {
+                id: 3,
+                name: '小鹏汇天X2 双人智能电动飞行器',
+                description: '双人座智能电动飞行器，配备先进的自动驾驶系统，适合个人出行和观光体验。',
+                price: 1200000,
+                originalPrice: 1500000,
+                rating: 4.7,
+                reviewCount: 32,
+                brand: '小鹏汇天',
+                category: 'evtol',
+                image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&q=80',
+                specs: {
+                    seats: '2座',
+                    range: '25公里',
+                    speed: '120公里/小时',
+                    weight: '180kg',
+                    battery: '锂离子电池',
+                    certification: '测试阶段'
+                }
+            },
+            {
+                id: 4,
+                name: 'Joby Aviation S4 城市空中出租车',
+                description: '美国Joby Aviation开发的5座eVTOL，航程240公里，专为城市空中出租车服务设计。',
+                price: 3200000,
+                originalPrice: 3600000,
+                rating: 4.8,
+                reviewCount: 42,
+                brand: 'Joby Aviation',
+                category: 'evtol',
+                image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&q=80',
+                specs: {
+                    seats: '5座',
+                    range: '240公里',
+                    speed: '200公里/小时',
+                    weight: '450kg',
+                    battery: '锂离子电池',
+                    certification: 'FAA认证'
+                }
+            },
+            {
+                id: 5,
+                name: 'Archer Midnight 电动垂直起降飞机',
+                description: 'Archer公司开发的4座eVTOL，航程100英里，适合短途通勤和区域交通。',
+                price: 2800000,
+                originalPrice: 3200000,
+                rating: 4.7,
+                reviewCount: 35,
+                brand: 'Archer',
+                category: 'evtol',
+                image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&q=80',
+                specs: {
+                    seats: '4座',
+                    range: '160公里',
+                    speed: '150公里/小时',
+                    weight: '350kg',
+                    battery: '锂离子电池',
+                    certification: 'FAA认证'
+                }
+            },
+            {
+                id: 6,
+                name: 'Volocopter VoloCity 城市飞行器',
+                description: '德国Volocopter开发的2座eVTOL，航程35公里，专为城市短途出行设计。',
+                price: 1800000,
+                originalPrice: 2100000,
+                rating: 4.6,
+                reviewCount: 28,
+                brand: 'Volocopter',
+                category: 'evtol',
+                image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop&q=80',
+                specs: {
+                    seats: '2座',
+                    range: '35公里',
+                    speed: '110公里/小时',
+                    weight: '200kg',
+                    battery: '锂离子电池',
+                    certification: 'EASA认证'
+                }
+            },
+            {
+                id: 7,
+                name: 'Lilium Jet 电动喷气式eVTOL',
+                description: '德国Lilium开发的7座eVTOL，航程300公里，采用电动喷气推进技术。',
+                price: 4200000,
+                originalPrice: 4800000,
+                rating: 4.9,
+                reviewCount: 38,
+                brand: 'Lilium',
+                category: 'evtol',
+                image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&q=80',
+                specs: {
+                    seats: '7座',
+                    range: '300公里',
+                    speed: '250公里/小时',
+                    weight: '600kg',
+                    battery: '锂离子电池',
+                    certification: 'EASA认证'
+                }
+            },
+            {
+                id: 8,
+                name: '沃飞长空AE200 城市空中出行eVTOL',
+                description: '专为城市空中出行设计，垂直起降，适合短途通勤和城市交通。',
+                price: 2200000,
+                originalPrice: 2600000,
+                rating: 4.5,
+                reviewCount: 22,
+                brand: '沃飞长空',
+                category: 'evtol',
+                image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop&q=80',
+                specs: {
+                    seats: '2座',
+                    range: '30公里',
+                    speed: '100公里/小时',
+                    weight: '160kg',
+                    battery: '锂离子电池',
+                    certification: 'CAAC认证'
+                }
+            },
+            {
+                id: 9,
+                name: '时的科技E20 倾转旋翼eVTOL',
+                description: '采用倾转旋翼技术，兼具直升机和固定翼优势，航程远，效率高。',
+                price: 3500000,
+                originalPrice: 4000000,
+                rating: 4.6,
+                reviewCount: 19,
+                brand: '时的科技',
+                category: 'evtol',
+                image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&q=80',
+                specs: {
+                    seats: '4座',
+                    range: '200公里',
+                    speed: '160公里/小时',
+                    weight: '400kg',
+                    battery: '锂离子电池',
+                    certification: '测试阶段'
+                }
+            },
+            {
+                id: 10,
+                name: '御风未来Matrix 1 复合翼eVTOL',
+                description: '复合翼设计，结合多旋翼和固定翼特点，适合多种应用场景。',
+                price: 2800000,
+                originalPrice: 3200000,
+                rating: 4.4,
+                reviewCount: 16,
+                brand: '御风未来',
+                category: 'evtol',
+                image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop&q=80',
+                specs: {
+                    seats: '3座',
+                    range: '150公里',
+                    speed: '140公里/小时',
+                    weight: '300kg',
+                    battery: '锂离子电池',
+                    certification: '测试阶段'
+                }
+            },
+            {
+                id: 11,
+                name: 'AutoFlight V1500M 大型货运eVTOL',
+                description: '峰飞航空大型货运eVTOL，载重能力达1500kg，适合中短途物流运输。',
+                price: 4800000,
+                originalPrice: 5200000,
+                rating: 4.7,
+                reviewCount: 24,
+                brand: '峰飞航空',
+                category: 'evtol',
+                image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&q=80',
+                specs: {
+                    seats: '货运专用',
+                    range: '280公里',
+                    speed: '190公里/小时',
+                    weight: '1600kg',
+                    battery: '锂离子电池',
+                    certification: 'CAAC认证'
+                }
+            },
+            {
+                id: 12,
+                name: 'EHang EH216-S 载人级自动驾驶飞行器',
+                description: '亿航智能载人级自动驾驶飞行器，双座设计，最大航程35公里。',
+                price: 2600000,
+                originalPrice: 3000000,
+                rating: 4.8,
+                reviewCount: 31,
+                brand: '亿航智能',
+                category: 'evtol',
+                image: 'https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=400&h=300&fit=crop&q=80',
+                specs: {
+                    seats: '2座',
+                    range: '35公里',
+                    speed: '130公里/小时',
+                    weight: '220kg',
+                    battery: '锂离子电池',
+                    certification: 'CAAC认证'
+                }
+            }
+        ];
+        
+        // 购物车数据
+        let cart = [];
+        
+        // 渲染产品列表
+        function renderProducts() {
+            const productGrid = document.getElementById('productGrid');
+            productGrid.innerHTML = '';
+            
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}" class="lazy" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-rating">
+                            <span class="stars">${'★'.repeat(5)}</span>
+                            <span class="rating-text">${product.rating} (${product.reviewCount})</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">¥${product.price.toLocaleString()}</span>
+                            <span class="original-price">¥${product.originalPrice.toLocaleString()}</span>
+                        </div>
+                    </div>
+                    <div class="product-actions">
+                        <button class="btn-primary" onclick="addToCart(${product.id})">加入购物车</button>
+                        <button class="btn-secondary" onclick="viewDetails(${product.id})">查看详情</button>
+                    </div>
+                `;
+                productGrid.appendChild(productCard);
+            });
+        }
+        
+        // 添加到购物车
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                const existingItem = cart.find(item => item.id === productId);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({...product, quantity: 1});
+                }
+                updateCartCount();
+                alert(`${product.name} 已添加到购物车！`);
+            }
+        }
+        
+        // 查看产品详情
+        function viewDetails(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product) {
+                const modal = document.getElementById('productModal');
+                const modalContent = document.getElementById('modalContent');
+                
+                modalContent.innerHTML = `
+                    <h2>${product.name}</h2>
+                    <div style="margin: 1rem 0;">
+                        <img src="${product.image}" alt="${product.name}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <p style="margin-bottom: 1rem; color: #cccccc;">${product.description}</p>
+                    <div style="margin-bottom: 1rem;">
+                        <h3 style="color: #00d4ff; margin-bottom: 0.5rem;">技术规格</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                            <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 8px;">
+                                <strong>座位数：</strong>${product.specs.seats}
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 8px;">
+                                <strong>航程：</strong>${product.specs.range}
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 8px;">
+                                <strong>巡航速度：</strong>${product.specs.speed}
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 8px;">
+                                <strong>最大载重：</strong>${product.specs.weight}
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 8px;">
+                                <strong>电池类型：</strong>${product.specs.battery}
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 8px;">
+                                <strong>认证状态：</strong>${product.specs.certification}
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                        <button class="btn-primary" onclick="addToCart(${product.id}); closeModal();">加入购物车</button>
+                        <button class="btn-secondary" onclick="closeModal()">关闭</button>
+                    </div>
+                `;
+                
+                modal.style.display = 'block';
+            }
+        }
+        
+        // 查看购物车
+        function viewCart() {
+            if (cart.length === 0) {
+                alert('购物车为空！');
+                return;
+            }
+            
+            let cartContent = '购物车内容：\n\n';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                cartContent += `${item.name} x${item.quantity} = ¥${itemTotal.toLocaleString()}\n`;
+            });
+            
+            cartContent += `\n总计：¥${total.toLocaleString()}`;
+            alert(cartContent);
+        }
+        
+        // 更新购物车数量
+        function updateCartCount() {
+            const cartCount = document.getElementById('cartCount');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+        }
+        
+        // 关闭模态框
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+        
+        // 图片懒加载
+        function initLazyLoading() {
+            const images = document.querySelectorAll('img.lazy');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.src;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+            
+            images.forEach(img => imageObserver.observe(img));
+        }
+        
+        // 页面加载完成后渲染产品
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProducts();
+            updateCartCount();
+            initLazyLoading();
+        });
+    </script>
+</body>
+</html>
