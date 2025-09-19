@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航栏测试</title>
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: #111;
+            border-radius: 8px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            color: #cccccc;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #ffffff;
+        }
+        
+        .nav-link-text {
+            color: #cccccc;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nav-link-text:hover {
+            color: #ffffff;
+        }
+        
+        .test-section {
+            margin: 40px 0;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>导航栏图标测试</h1>
+    
+    <div class="test-section">
+        <h2>测试1：普通链接</h2>
+        <div class="nav-container">
+            <div class="nav-menu">
+                <a href="#about" class="nav-link">关于我们</a>
+                <a href="#contact" class="nav-link">联系我们</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>测试2：文本（无链接）</h2>
+        <div class="nav-container">
+            <div class="nav-menu">
+                <span class="nav-link-text">关于我们</span>
+                <span class="nav-link-text">联系我们</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>说明</h2>
+        <p>如果测试1中的"联系我们"有图标，但测试2中没有，说明图标来自链接本身。</p>
+        <p>如果两个都有图标，说明是其他原因（浏览器扩展、系统设置等）。</p>
+    </div>
+</body>
+</html>
