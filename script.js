@@ -314,6 +314,38 @@ function preloadCriticalResources() {
   });
 }
 
+// 图片懒加载
+function initLazyLoading() {
+  const images = document.querySelectorAll('img[data-src]');
+  
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.classList.remove('lazy');
+        imageObserver.unobserve(img);
+      }
+    });
+  });
+  
+  images.forEach(img => imageObserver.observe(img));
+}
+
+// 性能监控
+function initPerformanceMonitoring() {
+  // 监控页面加载时间
+  window.addEventListener('load', function() {
+    const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+    console.log('页面加载时间:', loadTime + 'ms');
+    
+    // 如果加载时间过长，可以显示优化提示
+    if (loadTime > 3000) {
+      console.warn('页面加载时间较长，建议优化');
+    }
+  });
+}
+
 // 页面加载完成后预加载资源
 window.addEventListener('load', preloadCriticalResources);
 
@@ -421,7 +453,34 @@ function switchToProduct(targetIndex) {
 // 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', function() {
   initMarketplaceScrollAnimation();
+  initLanguageSwitcher();
+  initLazyLoading();
+  initPerformanceMonitoring();
 });
+
+// 语言切换功能
+function initLanguageSwitcher() {
+  const langButtons = document.querySelectorAll('.lang-btn');
+  
+  langButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // 移除所有active类
+      langButtons.forEach(btn => btn.classList.remove('active'));
+      // 添加active类到当前按钮
+      this.classList.add('active');
+      
+      const lang = this.getAttribute('data-lang');
+      // 这里可以添加实际的语言切换逻辑
+      console.log('切换到语言:', lang);
+      
+      // 简单的示例：可以在这里添加实际的多语言内容切换
+      if (lang === 'en') {
+        // 切换到英文的逻辑
+        alert('English version coming soon!');
+      }
+    });
+  });
+}
 
 // 飞行体验注册弹窗功能
 function openExperienceModal() {

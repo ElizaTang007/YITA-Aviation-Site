@@ -38,18 +38,19 @@
         <span class="logo-text">YITA</span>
       </div>
       <div class="nav-menu">
-        <a href="#solutions" class="nav-link">解决方案</a>
         <a href="#command-center" class="nav-link">指挥中心</a>
         <a href="#developer-portal" class="nav-link">开发者</a>
         <a href="#marketplace" class="nav-link">市场</a>
         <a href="#technology" class="nav-link">技术</a>
-        <a href="#team" class="nav-link">团队</a>
-        <a href="#news" class="nav-link">新闻</a>
         <a href="#about" class="nav-link">关于我们</a>
         <a href="#careers" class="nav-link">招聘</a>
         <a href="#contact" class="nav-link">联系我们</a>
       </div>
       <div class="nav-cta">
+        <div class="language-switcher">
+          <button class="lang-btn active" data-lang="zh">中文</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
         <a href="data-room.html" class="btn-secondary">投资人入口</a>
         <a href="login.html" class="btn-secondary">登录</a>
         <a href="login.html" class="btn-primary">注册</a>
@@ -74,20 +75,6 @@
         <p class="hero-subtitle">
           依塔智行（YITA航空）提供指挥中心、开发者门户、市场平台、娱乐体验四大核心服务，构建完整的低空经济生态系统
         </p>
-        <div class="value-propositions">
-          <div class="value-card">
-            <h4>政府监管</h4>
-            <p>提供完整的空域管理和合规监管解决方案</p>
-          </div>
-          <div class="value-card">
-            <h4>企业应用</h4>
-            <p>一站式低空经济商业平台，降低运营成本</p>
-          </div>
-          <div class="value-card">
-            <h4>开发者生态</h4>
-            <p>开放API和SDK，构建繁荣的第三方应用生态</p>
-          </div>
-        </div>
         <div class="hero-cta">
           <button class="btn-primary btn-large" onclick="scrollToSection('business-platforms')">了解更多</button>
         </div>
@@ -110,7 +97,13 @@
       </div>
       <div class="platforms-grid">
         <div class="platform-card">
-          <div class="platform-icon">🎮</div>
+          <div class="platform-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <h3>指挥中心</h3>
           <p>远程控制无人机、eVTOL，支持超视距任务编排，让复杂操作变得直观简单</p>
           <ul>
@@ -122,7 +115,13 @@
           <button class="btn-primary" onclick="window.location.href='command-center-pro.html'">立即体验</button>
         </div>
         <div class="platform-card">
-          <div class="platform-icon">💻</div>
+          <div class="platform-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+              <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/>
+              <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
           <h3>开发者门户</h3>
           <p>StratoOS 兼容层与 SDK，提供完整的开发工具链和沙箱环境</p>
           <ul>
@@ -134,7 +133,13 @@
           <button class="btn-primary" onclick="window.location.href='developer-portal.html'">开始开发</button>
         </div>
         <div class="platform-card">
-          <div class="platform-icon">🛒</div>
+          <div class="platform-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="9" cy="21" r="1" stroke="currentColor" stroke-width="2"/>
+              <circle cx="20" cy="21" r="1" stroke="currentColor" stroke-width="2"/>
+              <path d="M1 1H5L7.68 14.39C7.77 14.7 7.98 14.97 8.28 15.13L20 21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <h3>市场平台</h3>
           <p>无人机、eVTOL、配件买卖平台，从刊登到交易的完整闭环</p>
           <ul>
@@ -146,7 +151,13 @@
           <button class="btn-primary" onclick="window.location.href='marketplace.html'">浏览市场</button>
         </div>
         <div class="platform-card">
-          <div class="platform-icon">🎯</div>
+          <div class="platform-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
           <h3>娱乐体验</h3>
           <p>通过娱乐体验让飞行更好玩、更具生活方式感，开启飞行的未来生活方式</p>
           <ul>
@@ -197,17 +208,35 @@
         </div>
         <div class="platform-features">
           <div class="feature-card">
-            <div class="feature-icon">🚁</div>
+            <div class="feature-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              </svg>
+            </div>
             <h3>超视距控制</h3>
             <p>突破视觉限制，实现远程任务执行与监控</p>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">🎮</div>
+            <div class="feature-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/>
+                <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
             <h3>游戏化交互</h3>
             <p>指挥官模式，让复杂操作变得直观简单</p>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">🤖</div>
+            <div class="feature-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
             <h3>群体智能</h3>
             <p>分布式 MPC，支持多机协同与自主决策</p>
           </div>
@@ -463,11 +492,6 @@ await mission.execute();</code></pre>
           <h3>碳积分机制</h3>
           <p>每次飞行计算碳排放，生成碳积分，助力绿色低空经济</p>
         </div>
-        <div class="tech-item">
-          <div class="tech-number">09</div>
-          <h3>Flight DB</h3>
-          <p>海量飞行数据仓库，支持AI训练和监管洞察分析</p>
-        </div>
       </div>
     </div>
   </section>
@@ -572,33 +596,193 @@ await mission.execute();</code></pre>
   <section id="partners" class="partners-section">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title">合作伙伴</h2>
-        <p class="section-subtitle">与行业领先企业携手共建低空经济生态</p>
+        <h2 class="section-title">战略合作伙伴</h2>
+        <p class="section-subtitle">与全球顶尖机构深度合作，构建低空经济生态联盟</p>
       </div>
-      <div class="partners-grid">
-        <div class="partner-category">
-          <h3>政府机构</h3>
-          <div class="partner-logos">
-            <div class="partner-logo">民航局</div>
-            <div class="partner-logo">空管局</div>
-            <div class="partner-logo">工信部</div>
+      
+      <div class="partners-showcase">
+        <div class="partner-tier">
+          <div class="tier-header">
+            <h3>政府战略合作</h3>
+            <p>与监管机构深度合作，推动行业标准制定</p>
+          </div>
+          <div class="partner-logos-tier">
+            <div class="partner-logo-premium">
+              <div class="logo-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3 21H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M5 21V7L13 2L21 7V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M9 9H15V13H9V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="logo-text">
+                <h4>中国民用航空局</h4>
+                <span>CAAC</span>
+              </div>
+            </div>
+            <div class="partner-logo-premium">
+              <div class="logo-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="logo-text">
+                <h4>国家空管委</h4>
+                <span>ATMB</span>
+              </div>
+            </div>
+            <div class="partner-logo-premium">
+              <div class="logo-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21" stroke="currentColor" stroke-width="2"/>
+                  <line x1="12" y1="17" x2="12" y2="21" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="logo-text">
+                <h4>工业和信息化部</h4>
+                <span>MIIT</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="partner-category">
-          <h3>技术伙伴</h3>
-          <div class="partner-logos">
-            <div class="partner-logo">华为云</div>
-            <div class="partner-logo">阿里云</div>
-            <div class="partner-logo">腾讯云</div>
+
+        <div class="partner-tier">
+          <div class="tier-header">
+            <h3>技术生态伙伴</h3>
+            <p>与全球领先技术公司合作，提供强大技术支撑</p>
+          </div>
+          <div class="partner-logos-tier">
+            <div class="partner-logo-standard">
+              <div class="logo-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="logo-text">
+                <h4>华为云</h4>
+                <span>Cloud Computing</span>
+              </div>
+            </div>
+            <div class="partner-logo-standard">
+              <div class="logo-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="logo-text">
+                <h4>阿里云</h4>
+                <span>Cloud Services</span>
+              </div>
+            </div>
+            <div class="partner-logo-standard">
+              <div class="logo-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="logo-text">
+                <h4>腾讯云</h4>
+                <span>Cloud Platform</span>
+              </div>
+            </div>
+            <div class="partner-logo-standard">
+              <div class="logo-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                  <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="logo-text">
+                <h4>微软Azure</h4>
+                <span>Cloud Infrastructure</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="partner-category">
-          <h3>设备厂商</h3>
-          <div class="partner-logos">
-            <div class="partner-logo">大疆</div>
-            <div class="partner-logo">亿航</div>
-            <div class="partner-logo">峰飞</div>
+
+        <div class="partner-tier">
+          <div class="tier-header">
+            <h3>设备制造伙伴</h3>
+            <p>与全球顶级航空设备制造商深度合作</p>
           </div>
+          <div class="partner-logos-tier">
+            <div class="partner-logo-standard">
+              <div class="logo-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="logo-text">
+                <h4>大疆创新</h4>
+                <span>DJI</span>
+              </div>
+            </div>
+            <div class="partner-logo-standard">
+              <div class="logo-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="logo-text">
+                <h4>亿航智能</h4>
+                <span>EHang</span>
+              </div>
+            </div>
+            <div class="partner-logo-standard">
+              <div class="logo-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="logo-text">
+                <h4>峰飞航空</h4>
+                <span>AutoFlight</span>
+              </div>
+            </div>
+            <div class="partner-logo-standard">
+              <div class="logo-icon">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                  <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="logo-text">
+                <h4>小鹏汇天</h4>
+                <span>Xpeng Aeroht</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="partnership-stats">
+        <div class="stat-item">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">战略合作伙伴</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">国家/地区</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">合作项目</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">99%</div>
+          <div class="stat-label">合作满意度</div>
         </div>
       </div>
     </div>
@@ -648,75 +832,6 @@ await mission.execute();</code></pre>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 团队介绍 -->
-  <section id="team" class="team-section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">核心团队</h2>
-        <p class="section-subtitle">汇聚航空、软件、AI领域的顶尖人才</p>
-      </div>
-      <div class="team-grid">
-        <div class="team-member">
-          <div class="member-photo">
-            <img src="images/team.jpg" alt="CEO">
-          </div>
-          <div class="member-info">
-            <h3>张三</h3>
-            <p class="member-title">CEO & 联合创始人</p>
-            <p class="member-bio">前波音资深工程师，15年航空系统开发经验，主导过多个大型航空项目</p>
-          </div>
-        </div>
-        <div class="team-member">
-          <div class="member-photo">
-            <img src="images/team.jpg" alt="CTO">
-          </div>
-          <div class="member-info">
-            <h3>李四</h3>
-            <p class="member-title">CTO & 联合创始人</p>
-            <p class="member-bio">无人机控制专家，前大疆技术总监，在自主飞行和AI算法方面有深厚造诣</p>
-          </div>
-        </div>
-        <div class="team-member">
-          <div class="member-photo">
-            <img src="images/team.jpg" alt="COO">
-          </div>
-          <div class="member-info">
-            <h3>王五</h3>
-            <p class="member-title">COO & 联合创始人</p>
-            <p class="member-bio">前华为云业务负责人，在平台运营和生态建设方面有丰富经验</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 新闻动态 -->
-  <section id="news" class="news-section">
-    <div class="container">
-      <div class="section-header">
-        <h2 class="section-title">新闻动态</h2>
-        <p class="section-subtitle">关注YITA的最新进展和行业动态</p>
-      </div>
-      <div class="news-grid">
-        <div class="news-item">
-          <div class="news-date">2025年1月</div>
-          <h3>YITA完成A轮融资，获得5000万美元投资</h3>
-          <p>本轮融资由知名投资机构领投，资金将用于技术研发和市场拓展</p>
-        </div>
-        <div class="news-item">
-          <div class="news-date">2024年12月</div>
-          <h3>与民航局签署战略合作协议</h3>
-          <p>共同推进低空经济监管体系建设，为行业发展提供政策支持</p>
-        </div>
-        <div class="news-item">
-          <div class="news-date">2024年11月</div>
-          <h3>StratoOS获得国际适航认证</h3>
-          <p>成为首个通过DO-178C标准认证的低空经济操作系统</p>
         </div>
       </div>
     </div>
@@ -797,7 +912,12 @@ await mission.execute();</code></pre>
       <div class="contact-content">
         <div class="contact-info">
           <div class="contact-item">
-            <div class="contact-icon">📧</div>
+            <div class="contact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2"/>
+                <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </div>
             <div class="contact-details">
               <h3>邮箱联系</h3>
               <p>yitaaviation@163.com</p>
@@ -805,7 +925,13 @@ await mission.execute();</code></pre>
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">🏢</div>
+            <div class="contact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 21H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5 21V7L13 2L21 7V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9 9H15V13H9V9Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
             <div class="contact-details">
               <h3>公司地址</h3>
               <p>中国·上海</p>
@@ -813,7 +939,14 @@ await mission.execute();</code></pre>
             </div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">🤝</div>
+            <div class="contact-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 21V19C16 17.9 15.1 17 14 17H5C3.9 17 3 17.9 3 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="8.5" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                <path d="M20 8V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M23 11H17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
             <div class="contact-details">
               <h3>商务合作</h3>
               <p>合作伙伴、投资机构、媒体合作</p>

@@ -5,6 +5,28 @@
   box-sizing: border-box;
 }
 
+/* 性能优化 */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 懒加载图片样式 */
+img.lazy {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+img.lazy.loaded {
+  opacity: 1;
+}
+
 body {
   font-family: 'Inter', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
@@ -81,6 +103,35 @@ body {
 .nav-cta .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+}
+
+/* 语言切换器 */
+.language-switcher {
+  display: flex;
+  gap: 0.5rem;
+  margin-right: 1rem;
+}
+
+.lang-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.lang-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.lang-btn.active {
+  background: #00d4ff;
+  border-color: #00d4ff;
+  color: #000000;
 }
 
 /* 按钮样式 */
@@ -450,6 +501,15 @@ body {
 .platform-icon {
   font-size: 4rem;
   margin-bottom: 1.5rem;
+  color: #00d4ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.platform-icon svg {
+  width: 48px;
+  height: 48px;
 }
 
 .platform-card h3 {
@@ -598,6 +658,15 @@ body {
 .feature-icon {
   font-size: 3rem;
   margin-bottom: 1rem;
+  color: #00d4ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.feature-icon svg {
+  width: 32px;
+  height: 32px;
 }
 
 .feature-card h3 {
@@ -1875,45 +1944,199 @@ body {
 
 /* 合作伙伴 */
 .partners-section {
-  padding: 6rem 0;
-  background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+  padding: 8rem 0;
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+  position: relative;
+  overflow: hidden;
 }
 
-.partners-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
-  margin-top: 3rem;
+.partners-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, rgba(0, 153, 204, 0.1) 0%, transparent 50%);
+  pointer-events: none;
 }
 
-.partner-category h3 {
-  color: #00d4ff;
-  margin-bottom: 2rem;
+.partners-showcase {
+  margin-top: 4rem;
+}
+
+.partner-tier {
+  margin-bottom: 4rem;
+}
+
+.tier-header {
   text-align: center;
-  font-size: 1.3rem;
+  margin-bottom: 3rem;
 }
 
-.partner-logos {
+.tier-header h3 {
+  color: #00d4ff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.tier-header h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #00d4ff, #0099cc);
+  border-radius: 2px;
+}
+
+.tier-header p {
+  color: #cccccc;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.partner-logos-tier {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.partner-logo-premium {
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(0, 153, 204, 0.05));
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  border-radius: 16px;
+  padding: 2rem;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.partner-logo-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.partner-logo-premium:hover::before {
+  left: 100%;
+}
+
+.partner-logo-premium:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+  border-color: #00d4ff;
+}
+
+.partner-logo-standard {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
   gap: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.partner-logo-standard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  transition: left 0.5s ease;
+}
+
+.partner-logo-standard:hover::before {
+  left: 100%;
+}
+
+.partner-logo-standard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0, 212, 255, 0.15);
+  border-color: rgba(0, 212, 255, 0.3);
+}
+
+.logo-icon {
+  flex-shrink: 0;
+  color: #00d4ff;
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-.partner-logo {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 1rem 2rem;
-  border-radius: 8px;
+.logo-text h4 {
   color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.logo-text span {
+  color: #999999;
+  font-size: 0.9rem;
   font-weight: 500;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.partnership-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+  padding: 3rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.partnership-stats .stat-item {
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
 }
 
-.partner-logo:hover {
-  background: rgba(0, 212, 255, 0.2);
-  border-color: #00d4ff;
-  transform: translateY(-2px);
+.partnership-stats .stat-item:hover {
+  transform: translateY(-3px);
+  background: rgba(0, 212, 255, 0.05);
+  border-color: rgba(0, 212, 255, 0.2);
+}
+
+.partnership-stats .stat-number {
+  color: #00d4ff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #00d4ff, #0099cc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.partnership-stats .stat-label {
+  color: #cccccc;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 /* Data Room 页面 */
@@ -2066,6 +2289,96 @@ body {
 
 .access-info li {
   margin-bottom: 0.5rem;
+}
+
+/* 响应式设计优化 */
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+  
+  .language-switcher {
+    margin-right: 0.5rem;
+  }
+  
+  .lang-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .value-propositions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .platforms-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .tech-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .solutions-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .partner-logos-tier {
+    grid-template-columns: 1fr;
+  }
+  
+  .partnership-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .contact-content {
+    flex-direction: column;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .nav-container {
+    padding: 1rem 15px;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .platform-card {
+    padding: 1.5rem;
+  }
+  
+  .tech-item {
+    padding: 1.5rem;
+  }
+  
+  .partnership-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .partner-logo-premium,
+  .partner-logo-standard {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
 }
 
 /* 页脚 */
@@ -6768,6 +7081,7 @@ body {
   background: rgba(0, 212, 255, 0.1);
   border-radius: 50%;
   flex-shrink: 0;
+  color: #00d4ff;
 }
 
 .contact-details h3 {
