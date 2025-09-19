@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>投资人资料库 - YITA航空</title>
+  <meta name="description" content="YITA航空投资人资料库，包含商业计划书、财务模型、技术白皮书等机密资料" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html" class="logo-text">YITA</a>
+      </div>
+      <div class="nav-menu">
+        <a href="index.html" class="nav-link">返回主页</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 登录区域 -->
+  <section class="data-room-login">
+    <div class="container">
+      <div class="login-card">
+        <h2>投资人资料库</h2>
+        <p class="login-subtitle">请输入访问密码以查看机密资料</p>
+        
+        <div id="login-form" class="login-form">
+          <div class="form-group">
+            <input type="password" id="password" placeholder="请输入访问密码" required>
+          </div>
+          <button class="btn-primary" onclick="checkPassword()">进入资料库</button>
+        </div>
+        
+        <div id="data-room" class="data-room-content" style="display: none;">
+          <h3>资料库内容</h3>
+          <div class="documents-grid">
+            <div class="document-category">
+              <h4>商业计划</h4>
+              <div class="document-list">
+                <div class="document-item">
+                  <span class="doc-icon">📊</span>
+                  <div class="doc-info">
+                    <h5>YITA商业计划书 v2.1</h5>
+                    <p>完整的商业模式和市场分析</p>
+                    <span class="doc-date">2025-01-15</span>
+                  </div>
+                  <button class="btn-download">下载</button>
+                </div>
+                <div class="document-item">
+                  <span class="doc-icon">💰</span>
+                  <div class="doc-info">
+                    <h5>财务模型与预测</h5>
+                    <p>5年财务预测和投资回报分析</p>
+                    <span class="doc-date">2025-01-10</span>
+                  </div>
+                  <button class="btn-download">下载</button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="document-category">
+              <h4>技术资料</h4>
+              <div class="document-list">
+                <div class="document-item">
+                  <span class="doc-icon">📋</span>
+                  <div class="doc-info">
+                    <h5>StratoOS技术白皮书</h5>
+                    <p>双平面架构详细技术说明</p>
+                    <span class="doc-date">2025-01-12</span>
+                  </div>
+                  <button class="btn-download">下载</button>
+                </div>
+                <div class="document-item">
+                  <span class="doc-icon">🔒</span>
+                  <div class="doc-info">
+                    <h5>安全认证报告</h5>
+                    <p>DO-178C适航认证详细报告</p>
+                    <span class="doc-date">2024-12-20</span>
+                  </div>
+                  <button class="btn-download">下载</button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="document-category">
+              <h4>法律文件</h4>
+              <div class="document-list">
+                <div class="document-item">
+                  <span class="doc-icon">📄</span>
+                  <div class="doc-info">
+                    <h5>知识产权清单</h5>
+                    <p>专利、商标、软件著作权清单</p>
+                    <span class="doc-date">2025-01-08</span>
+                  </div>
+                  <button class="btn-download">下载</button>
+                </div>
+                <div class="document-item">
+                  <span class="doc-icon">🤝</span>
+                  <div class="doc-info">
+                    <h5>合作协议模板</h5>
+                    <p>与政府、企业合作的标准协议</p>
+                    <span class="doc-date">2025-01-05</span>
+                  </div>
+                  <button class="btn-download">下载</button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="document-category">
+              <h4>演示资料</h4>
+              <div class="document-list">
+                <div class="document-item">
+                  <span class="doc-icon">🎥</span>
+                  <div class="doc-info">
+                    <h5>产品演示视频</h5>
+                    <p>指挥中心功能演示和产品介绍</p>
+                    <span class="doc-date">2025-01-14</span>
+                  </div>
+                  <button class="btn-download">下载</button>
+                </div>
+                <div class="document-item">
+                  <span class="doc-icon">📈</span>
+                  <div class="doc-info">
+                    <h5>市场调研报告</h5>
+                    <p>低空经济市场分析和竞品对比</p>
+                    <span class="doc-date">2025-01-11</span>
+                  </div>
+                  <button class="btn-download">下载</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="access-info">
+            <h4>访问说明</h4>
+            <ul>
+              <li>所有资料均包含水印，仅供内部使用</li>
+              <li>请勿将资料转发给未授权第三方</li>
+              <li>如有疑问，请联系：investor@yitaaviation.com</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function checkPassword() {
+      const password = document.getElementById('password').value;
+      // 简单的密码验证，实际应用中应该使用更安全的方式
+      if (password === 'yita2025' || password === 'YITA2025') {
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('data-room').style.display = 'block';
+      } else {
+        alert('密码错误，请重新输入');
+      }
+    }
+    
+    // 回车键登录
+    document.getElementById('password').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        checkPassword();
+      }
+    });
+    
+    // 下载按钮功能
+    document.querySelectorAll('.btn-download').forEach(button => {
+      button.addEventListener('click', function() {
+        alert('下载功能需要联系管理员获取实际文件');
+      });
+    });
+  </script>
+</body>
+</html>
