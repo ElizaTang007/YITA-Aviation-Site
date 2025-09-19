@@ -87,109 +87,26 @@ body {
   transition: color 0.3s ease;
 }
 
-.nav-link::before,
-.nav-link::after {
-  display: none !important;
-  content: none !important;
+/* 导航栏样式 - 简洁版本 */
+.nav-link {
+  color: #cccccc;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
 }
 
-/* 强制隐藏所有导航链接的图标 */
+.nav-link:hover {
+  color: #ffffff;
+}
+
+/* 彻底删除所有可能的图标 */
+.nav-link::before,
+.nav-link::after,
 a[href="#contact"]::before,
 a[href="#contact"]::after,
 a[href*="contact"]::before,
 a[href*="contact"]::after {
-  display: none !important;
-  content: none !important;
-}
-
-/* 强制隐藏所有包含"联系我们"文本的链接图标 */
-a:contains("联系我们")::before,
-a:contains("联系我们")::after {
-  display: none !important;
-  content: none !important;
-}
-
-/* 强制隐藏所有导航链接的伪元素图标 */
-.nav-link::before,
-.nav-link::after,
-a[href="#contact"]::before,
-a[href="#contact"]::after,
-a[href*="contact"]::before,
-a[href*="contact"]::after,
-a[href="contact"]::before,
-a[href="contact"]::after {
-  display: none !important;
-  content: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  width: 0 !important;
-  height: 0 !important;
-  font-size: 0 !important;
-  line-height: 0 !important;
-}
-
-/* 确保所有导航链接没有任何装饰 */
-.nav-link {
-  text-decoration: none !important;
-}
-
-.nav-link::before,
-.nav-link::after {
-  display: none !important;
-  content: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-}
-
-/* 强制删除所有可能的图标和装饰 */
-.nav-link,
-a[href="#contact"],
-a[href*="contact"],
-a[href="contact"] {
-  background: none !important;
-  background-image: none !important;
-  background-size: none !important;
-  background-position: none !important;
-  background-repeat: none !important;
-}
-
-/* 专门针对联系我们链接的强力规则 */
-.nav-link.no-icon,
-.nav-link.no-icon::before,
-.nav-link.no-icon::after,
-a[href="#contact"].no-icon,
-a[href="#contact"].no-icon::before,
-a[href="#contact"].no-icon::after {
-  background: none !important;
-  background-image: none !important;
-  content: none !important;
-  display: block !important;
-  position: static !important;
-  width: auto !important;
-  height: auto !important;
-  font-size: inherit !important;
-  line-height: inherit !important;
-  visibility: visible !important;
-  opacity: 1 !important;
-  left: auto !important;
-  top: auto !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: none !important;
-  box-shadow: none !important;
-  text-shadow: none !important;
-  filter: none !important;
-  transform: none !important;
-}
-
-.nav-link::before,
-.nav-link::after,
-a[href="#contact"]::before,
-a[href="#contact"]::after,
-a[href*="contact"]::before,
-a[href*="contact"]::after,
-a[href="contact"]::before,
-a[href="contact"]::after {
   display: none !important;
   content: none !important;
   visibility: hidden !important;
@@ -203,6 +120,13 @@ a[href="contact"]::after {
   position: absolute !important;
   left: -9999px !important;
   top: -9999px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
 }
 
 .nav-link:hover {
