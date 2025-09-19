@@ -8232,6 +8232,16 @@ a:contains("联系我们")::after {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  color: transparent;
+  color: #00d4ff; /* 回退颜色 */
   font-weight: 600;
+  display: inline-block;
+  position: relative;
+}
+
+/* 为不支持background-clip的浏览器提供回退 */
+@supports not (-webkit-background-clip: text) {
+  .gradient-text {
+    color: #00d4ff;
+    background: none;
+  }
 }
