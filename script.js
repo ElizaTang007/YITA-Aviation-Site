@@ -512,11 +512,11 @@ function initLanguageSwitcher() {
         }
       } else if (lang === 'zh') {
         // 切换到中文版
-        if (currentPath === '/index-en.html') {
-          window.location.href = '/';
+        if (currentPath === '/index-en.html' || currentPath === '/index-en.html/') {
+          window.location.href = '/index.html';
         } else {
           // 其他页面也跳转到中文首页
-          window.location.href = '/';
+          window.location.href = '/index.html';
         }
       }
     });
