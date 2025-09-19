@@ -109,6 +109,38 @@ a:contains("联系我们")::after {
   content: none !important;
 }
 
+/* 强制隐藏所有导航链接的伪元素图标 */
+.nav-link::before,
+.nav-link::after,
+a[href="#contact"]::before,
+a[href="#contact"]::after,
+a[href*="contact"]::before,
+a[href*="contact"]::after,
+a[href="contact"]::before,
+a[href="contact"]::after {
+  display: none !important;
+  content: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
+/* 确保所有导航链接没有任何装饰 */
+.nav-link {
+  text-decoration: none !important;
+}
+
+.nav-link::before,
+.nav-link::after {
+  display: none !important;
+  content: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
 .nav-link:hover {
   color: #ffffff;
 }
