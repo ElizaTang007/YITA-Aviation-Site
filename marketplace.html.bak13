@@ -386,7 +386,7 @@
                 reviewCount: 32,
                 brand: '小鹏汇天',
                 category: 'evtol',
-                image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&q=80',
+                image: 'https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=400&h=300&fit=crop&q=80',
                 specs: {
                     seats: '2座',
                     range: '25公里',
@@ -426,7 +426,7 @@
                 reviewCount: 35,
                 brand: 'Archer',
                 category: 'evtol',
-                image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&q=80',
+                image: 'https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=400&h=300&fit=crop&q=80',
                 specs: {
                     seats: '4座',
                     range: '160公里',
