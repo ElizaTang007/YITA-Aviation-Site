@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Test - No Icons</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        
+        .navbar {
+            background: #000;
+            padding: 1rem;
+            border-bottom: 1px solid #333;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .nav-link:hover {
+            color: #fff;
+        }
+        
+        .nav-cta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .btn-primary {
+            background: #00d4ff;
+            color: #000;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #fff;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .lang-btn {
+            background: transparent;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border: 1px solid #333;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .lang-btn.active {
+            background: #00d4ff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h2>YITA</h2>
+            </div>
+            <div class="nav-menu">
+                <a href="#" class="nav-link">指挥中心</a>
+                <a href="#" class="nav-link">开发者</a>
+                <a href="#" class="nav-link">市场</a>
+                <a href="#" class="nav-link">技术</a>
+                <a href="#" class="nav-link">关于我们</a>
+                <a href="#" class="nav-link">招聘</a>
+            </div>
+            <div class="nav-cta">
+                <a href="#" class="btn-secondary">投资人入口</a>
+                <a href="#" class="btn-primary">登录/注册</a>
+                <button class="lang-btn active">中文</button>
+                <button class="lang-btn">EN</button>
+            </div>
+        </div>
+    </nav>
+    
+    <div style="padding: 2rem; text-align: center;">
+        <h1>Clean Test Page</h1>
+        <p>This page has no external CSS, no icons, no special characters.</p>
+        <p>Check if the document icon appears here.</p>
+    </div>
+</body>
+</html>
