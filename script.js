@@ -461,22 +461,36 @@ document.addEventListener('DOMContentLoaded', function() {
 // 语言切换功能
 function initLanguageSwitcher() {
   const langButtons = document.querySelectorAll('.lang-btn');
-  
+
   langButtons.forEach(button => {
     button.addEventListener('click', function() {
       // 移除所有active类
       langButtons.forEach(btn => btn.classList.remove('active'));
       // 添加active类到当前按钮
       this.classList.add('active');
-      
+
       const lang = this.getAttribute('data-lang');
-      // 这里可以添加实际的语言切换逻辑
       console.log('切换到语言:', lang);
+
+      // 根据当前页面和选择的语言进行跳转
+      const currentPath = window.location.pathname;
       
-      // 简单的示例：可以在这里添加实际的多语言内容切换
       if (lang === 'en') {
-        // 切换到英文的逻辑
-        alert('English version coming soon!');
+        // 切换到英文版
+        if (currentPath === '/' || currentPath === '/index.html') {
+          window.location.href = '/index-en.html';
+        } else {
+          // 其他页面也跳转到英文首页
+          window.location.href = '/index-en.html';
+        }
+      } else if (lang === 'zh') {
+        // 切换到中文版
+        if (currentPath === '/index-en.html') {
+          window.location.href = '/';
+        } else {
+          // 其他页面也跳转到中文首页
+          window.location.href = '/';
+        }
       }
     });
   });
