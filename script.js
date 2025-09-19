@@ -473,9 +473,21 @@ document.addEventListener('DOMContentLoaded', function() {
   initMobileMenu();
 });
 
+// 移动端菜单功能
+function initMobileMenu() {
+  const mobileToggle = document.getElementById('mobileMenuToggle');
+  const menuSection = document.querySelector('.menu-section');
+  
+  if (mobileToggle && menuSection) {
+    mobileToggle.addEventListener('click', function() {
+      menuSection.classList.toggle('mobile-active');
+    });
+  }
+}
+
 // 语言切换功能
 function initLanguageSwitcher() {
-  const langButtons = document.querySelectorAll('.lang-btn');
+  const langButtons = document.querySelectorAll('.lang-option');
 
   langButtons.forEach(button => {
     button.addEventListener('click', function() {
