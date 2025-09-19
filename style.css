@@ -8280,3 +8280,16 @@ a[href*="contact"]::after {
   }
 }
 
+/* 联系我们文本样式 - 不是链接，所以不会有图标 */
+.nav-link-text {
+  color: #cccccc;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-link-text:hover {
+  color: #ffffff;
+}
+
