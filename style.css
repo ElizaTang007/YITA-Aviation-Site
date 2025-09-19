@@ -8451,6 +8451,20 @@ body {
   display: none !important;
 }
 
+/* 导航栏按钮特殊样式 - 覆盖通用样式 */
+.top-bar .action-btn {
+  display: inline-block !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 0 !important;
+  padding: 0.75rem 1.5rem !important;
+  font-size: 0.9rem !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  background: none !important;
+  border: none !important;
+}
+
 /* 移动端响应式 */
 @media (max-width: 768px) {
   .header-wrapper {
