@@ -8226,7 +8226,7 @@ a:contains("联系我们")::after {
   }
 }
 
-/* 渐变文字效果 */
+/* 渐变文字效果 - 简单直接的方法 */
 .gradient-text {
   background: linear-gradient(90deg, #ffffff 0%, #00d4ff 50%, #00a8cc 100%);
   -webkit-background-clip: text;
@@ -8235,23 +8235,16 @@ a:contains("联系我们")::after {
   color: #00d4ff; /* 回退颜色 */
   font-weight: 700;
   display: inline-block;
-  position: relative;
-  text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  text-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+  filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.4));
 }
 
-/* 为不支持background-clip的浏览器提供回退 */
+/* 确保在不支持background-clip的浏览器中显示蓝色发光文字 */
 @supports not (-webkit-background-clip: text) {
   .gradient-text {
-    color: #00d4ff;
-    background: none;
-    text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    color: #00d4ff !important;
+    background: none !important;
+    text-shadow: 0 0 25px rgba(0, 212, 255, 0.8), 0 0 50px rgba(0, 212, 255, 0.4);
+    filter: drop-shadow(0 0 15px rgba(0, 212, 255, 0.6));
   }
-}
-
-/* 确保渐变文字在深色背景下更明显 */
-.gradient-text:hover {
-  background: linear-gradient(90deg, #ffffff 0%, #00d4ff 30%, #00a8cc 70%, #0088aa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
