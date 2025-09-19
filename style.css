@@ -153,6 +153,35 @@ a[href="contact"] {
   background-repeat: none !important;
 }
 
+/* 专门针对联系我们链接的强力规则 */
+.nav-link.no-icon,
+.nav-link.no-icon::before,
+.nav-link.no-icon::after,
+a[href="#contact"].no-icon,
+a[href="#contact"].no-icon::before,
+a[href="#contact"].no-icon::after {
+  background: none !important;
+  background-image: none !important;
+  content: none !important;
+  display: block !important;
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  left: auto !important;
+  top: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+}
+
 .nav-link::before,
 .nav-link::after,
 a[href="#contact"]::before,
