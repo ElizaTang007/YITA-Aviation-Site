@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航栏调试</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        
+        .debug-nav {
+            background: #111;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .nav-link {
+            color: #cccccc !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            display: inline-block !important;
+            margin: 0 20px !important;
+            background: none !important;
+            background-image: none !important;
+            border: none !important;
+            box-shadow: none !important;
+            text-shadow: none !important;
+            filter: none !important;
+            transform: none !important;
+            list-style: none !important;
+        }
+        
+        .nav-link:hover {
+            color: #ffffff !important;
+        }
+        
+        .nav-link::before,
+        .nav-link::after {
+            display: none !important;
+            content: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            width: 0 !important;
+            height: 0 !important;
+            background: none !important;
+            position: absolute !important;
+            left: -9999px !important;
+            top: -9999px !important;
+        }
+        
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
+        
+        .highlight {
+            background: #333;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>导航栏图标调试页面</h1>
+    
+    <div class="test-section">
+        <h2>测试1：完全重置的导航栏</h2>
+        <div class="debug-nav">
+            <a href="#test1" class="nav-link">指挥中心</a>
+            <a href="#test2" class="nav-link">开发者</a>
+            <a href="#test3" class="nav-link">市场</a>
+            <a href="#test4" class="nav-link">技术</a>
+            <a href="#test5" class="nav-link">关于我们</a>
+            <a href="#test6" class="nav-link">招聘</a>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>测试2：纯文本（无链接）</h2>
+        <div class="debug-nav">
+            <span style="color: #cccccc; margin: 0 20px;">指挥中心</span>
+            <span style="color: #cccccc; margin: 0 20px;">开发者</span>
+            <span style="color: #cccccc; margin: 0 20px;">市场</span>
+            <span style="color: #cccccc; margin: 0 20px;">技术</span>
+            <span style="color: #cccccc; margin: 0 20px;">关于我们</span>
+            <span style="color: #cccccc; margin: 0 20px;">招聘</span>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>诊断说明</h2>
+        <div class="highlight">
+            <p><strong>如果测试1有图标，测试2没有：</strong>图标来自链接本身</p>
+            <p><strong>如果两个都有图标：</strong>图标来自浏览器扩展、系统设置或其他外部因素</p>
+            <p><strong>如果两个都没有图标：</strong>问题已解决</p>
+        </div>
+    </div>
+    
+    <div class="test-section">
+        <h2>可能的解决方案</h2>
+        <div class="highlight">
+            <p>1. 禁用浏览器扩展</p>
+            <p>2. 清除浏览器缓存</p>
+            <p>3. 使用无痕模式</p>
+            <p>4. 尝试不同浏览器</p>
+            <p>5. 检查系统设置</p>
+        </div>
+    </div>
+</body>
+</html>
