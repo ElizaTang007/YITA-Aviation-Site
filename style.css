@@ -8328,7 +8328,7 @@ body {
   align-items: center;
 }
 
-.brand-text {
+.brand-section h1 {
   color: #ffffff;
   font-size: 1.8rem;
   font-weight: 700;
@@ -8336,6 +8336,14 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  margin: 0;
+}
+
+.brand-section p {
+  color: #cccccc;
+  font-size: 0.8rem;
+  margin: 0;
+  margin-top: -0.2rem;
 }
 
 .menu-section {
@@ -8350,6 +8358,7 @@ body {
   font-weight: 500;
   cursor: pointer;
   transition: color 0.3s ease;
+  text-decoration: none;
 }
 
 .menu-item:hover {
@@ -8378,6 +8387,8 @@ body {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .primary-btn {
@@ -8389,6 +8400,18 @@ body {
 .primary-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+
+.secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
 .lang-switcher {
