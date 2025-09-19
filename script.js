@@ -470,6 +470,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initLanguageSwitcher();
   initLazyLoading();
   initPerformanceMonitoring();
+  initMobileMenu();
 });
 
 // 语言切换功能
