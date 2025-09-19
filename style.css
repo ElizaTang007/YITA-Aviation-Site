@@ -87,6 +87,12 @@ body {
   transition: color 0.3s ease;
 }
 
+.nav-link::before,
+.nav-link::after {
+  display: none !important;
+  content: none !important;
+}
+
 .nav-link:hover {
   color: #ffffff;
 }
