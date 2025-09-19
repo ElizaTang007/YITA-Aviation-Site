@@ -31,8 +31,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" href="videos/hero.mp4" as="video" type="video/mp4">
   <link rel="preload" href="style.css" as="style">
+  <link rel="preload" href="script.js" as="script">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style">
   <link rel="dns-prefetch" href="//fonts.googleapis.com">
   <link rel="dns-prefetch" href="//images.unsplash.com">
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="//unpkg.com">
+  
+  <!-- 性能优化 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="theme-color" content="#000000">
 </head>
 <body>
   <!-- 导航栏 -->
@@ -591,7 +600,7 @@ await mission.execute();</code></pre>
       <div class="solutions-grid">
         <div class="solution-card">
           <div class="solution-image">
-            <img src="images/drone-inspection.jpg" alt="无人机巡检">
+            <img src="images/drone-inspection.jpg" alt="无人机巡检" loading="lazy">
           </div>
           <div class="solution-content">
             <h3>无人机巡检</h3>
@@ -605,7 +614,7 @@ await mission.execute();</code></pre>
         </div>
         <div class="solution-card">
           <div class="solution-image">
-            <img src="images/evtol-transport.jpg" alt="eVTOL 城市出行">
+            <img src="images/evtol-transport.jpg" alt="eVTOL 城市出行" loading="lazy">
           </div>
           <div class="solution-content">
             <h3>eVTOL 城市出行</h3>
@@ -619,7 +628,7 @@ await mission.execute();</code></pre>
         </div>
         <div class="solution-card">
           <div class="solution-image">
-            <img src="images/logistics-delivery.jpg" alt="智能物流">
+            <img src="images/logistics-delivery.jpg" alt="智能物流" loading="lazy">
           </div>
           <div class="solution-content">
             <h3>智能物流</h3>
@@ -633,7 +642,7 @@ await mission.execute();</code></pre>
         </div>
         <div class="solution-card">
           <div class="solution-image">
-            <img src="images/emergency-rescue.jpg" alt="应急救援">
+            <img src="images/emergency-rescue.jpg" alt="应急救援" loading="lazy">
           </div>
           <div class="solution-content">
             <h3>应急救援</h3>
