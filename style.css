@@ -393,11 +393,7 @@ body {
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, #00d4ff, #ffffff, #00a8cc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: #ffffff; /* 降级支持 */
+  color: #ffffff;
   letter-spacing: -0.02em;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 1px 5px rgba(0, 212, 255, 0.2);
   font-family: 'Inter', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
@@ -475,11 +471,7 @@ body {
 
 .hero-subtitle {
   font-size: 1.2rem;
-  background: linear-gradient(135deg, #e8e8e8, #ffffff, #cccccc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: #e8e8e8; /* 降级支持 */
+  color: #e8e8e8;
   margin-bottom: 2.5rem;
   line-height: 1.7;
   font-weight: 300;
@@ -937,11 +929,7 @@ body {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #ffffff, #00d4ff, #cccccc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: #ffffff; /* 降级支持 */
+  color: #ffffff;
 }
 
 
@@ -1770,11 +1758,7 @@ body {
 .stat-number {
   font-size: 2.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #00d4ff, #ffffff, #0099cc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: #00d4ff; /* 降级支持 */
+  color: #00d4ff;
   margin-bottom: 0.5rem;
 }
 
@@ -4017,11 +4001,7 @@ body {
 .stat-number {
   font-size: 2.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #00d4ff, #ffffff, #0099cc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: #00d4ff; /* 降级支持 */
+  color: #00d4ff;
   margin-bottom: 0.5rem;
 }
 
@@ -8349,11 +8329,7 @@ body {
 }
 
 .brand-section h1 {
-  background: linear-gradient(135deg, #00d4ff, #ffffff, #00a8cc);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: #00d4ff; /* 降级支持 */
+  color: #00d4ff;
   font-size: 1.8rem;
   font-weight: 700;
   margin: 0;
