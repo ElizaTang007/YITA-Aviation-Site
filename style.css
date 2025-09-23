@@ -8809,14 +8809,14 @@ body {
 .feature-card h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: #000000;
   margin-bottom: 0.75rem;
 }
 
 .feature-card p {
-  color: #495057;
+  color: #000000;
   line-height: 1.6;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 /* 预订表单区域 */
@@ -8847,7 +8847,7 @@ body {
 .form-header h2 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: #000000;
 }
 
 .booking-form {
@@ -8869,7 +8869,7 @@ body {
 .form-group label {
   font-weight: 500;
   margin-bottom: 0.5rem;
-  color: #2c3e50;
+  color: #000000;
 }
 
 .input-with-icon {
@@ -8884,7 +8884,7 @@ body {
   z-index: 1;
   width: 20px;
   height: 20px;
-  color: #6c757d;
+  color: #007bff;
   color: #6c757d;
   font-size: 1rem;
 }
@@ -8923,7 +8923,7 @@ body {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #2c3e50;
+  color: #000000;
 }
 
 .aircraft-options {
@@ -8945,15 +8945,15 @@ body {
 .aircraft-card h4 {
   font-size: 1rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: #000000;
   margin-bottom: 0.5rem;
 }
 
 .aircraft-card .capacity {
   font-size: 0.9rem;
-  color: #495057;
+  color: #000000;
   margin-bottom: 0.25rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .aircraft-card .price {
@@ -8965,8 +8965,8 @@ body {
 
 .aircraft-card .duration {
   font-size: 0.85rem;
-  color: #495057;
-  font-weight: 500;
+  color: #000000;
+  font-weight: 600;
 }
 
 .aircraft-card:hover {
@@ -9012,7 +9012,7 @@ body {
   display: block;
   font-weight: 500;
   margin-bottom: 0.5rem;
-  color: #2c3e50;
+  color: #000000;
 }
 
 .special-requirements textarea {
@@ -9036,8 +9036,9 @@ body {
 }
 
 .special-requirements textarea::placeholder {
-  color: #6c757d;
-  font-weight: 400;
+  color: #000000;
+  font-weight: 500;
+  opacity: 0.7;
 }
 
 /* 按钮样式 */
@@ -9168,14 +9169,14 @@ body {
 .stat-number {
   font-size: 2rem;
   font-weight: 700;
-  color: #2c3e50;
+  color: #000000;
   margin-bottom: 0.25rem;
 }
 
 .stat-label {
-  color: #495057;
+  color: #000000;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 /* 订单标签导航 */
@@ -9401,13 +9402,13 @@ body {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #2c3e50;
+  color: #000000;
 }
 
 .profile-info p {
-  color: #495057;
+  color: #000000;
   margin-bottom: 1rem;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .role-badge {
@@ -9449,7 +9450,7 @@ body {
 }
 
 .card-icon {
-  color: #6c757d;
+  color: #007bff;
   width: 20px;
   height: 20px;
 }
@@ -9457,7 +9458,7 @@ body {
 .card-header h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: #000000;
 }
 
 .detail-card input {
@@ -9659,7 +9660,7 @@ body {
   z-index: 1;
   width: 20px;
   height: 20px;
-  color: #6c757d;
+  color: #007bff;
   color: #00d4ff;
   font-size: 1.1rem;
 }
