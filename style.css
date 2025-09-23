@@ -8579,11 +8579,829 @@ body {
   }
 }
 
-/* 用户端指挥中心样式 */
-.user-command-center {
+/* 用户端指挥中心样式 - 白色主题 */
+.user-theme {
+  background: #f8f9fa;
+  color: #333333;
+}
+
+.user-command-center-white {
   min-height: 100vh;
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-  padding-top: 80px;
+  display: flex;
+  background: #f8f9fa;
+}
+
+/* 左侧导航栏 */
+.user-sidebar {
+  width: 280px;
+  background: #e9ecef;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.brand-logo {
+  width: 60px;
+  height: 60px;
+  background: #007bff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.logo-icon {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.brand-text h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 0.25rem;
+}
+
+.brand-text p {
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #6c757d;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-item:hover {
+  background: rgba(0, 123, 255, 0.1);
+  color: #007bff;
+}
+
+.nav-item.active {
+  background: #007bff;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #0056b3;
+  border-radius: 0 4px 4px 0;
+}
+
+.nav-icon {
+  font-size: 1.2rem;
+}
+
+.nav-text {
+  font-size: 1rem;
+}
+
+/* 右侧主内容区域 */
+.user-main-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* 顶部横幅 */
+.hero-banner {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hero-banner h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 1rem;
+}
+
+.hero-banner .highlight {
+  color: #007bff;
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+/* 服务特色介绍 */
+.features-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.feature-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon-bg {
+  width: 60px;
+  height: 60px;
+  background: #007bff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.feature-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333333;
+  margin-bottom: 0.75rem;
+}
+
+.feature-card p {
+  color: #6c757d;
+  line-height: 1.5;
+}
+
+/* 预订表单区域 */
+.booking-form-section {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.form-icon {
+  font-size: 1.5rem;
+  color: #007bff;
+}
+
+.form-header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333333;
+}
+
+.booking-form {
+  margin-bottom: 2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #333333;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  z-index: 1;
+  color: #6c757d;
+  font-size: 1rem;
+}
+
+.form-select,
+.form-input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  color: #333333;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-select:focus,
+.form-input:focus {
+  outline: none;
+  border-color: #007bff;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.form-select option {
+  background: white;
+  color: #333333;
+}
+
+/* 飞行器选择 */
+.aircraft-selection {
+  margin: 2rem 0;
+}
+
+.aircraft-selection h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #333333;
+}
+
+.aircraft-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.aircraft-card {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.aircraft-card:hover {
+  border-color: #007bff;
+  background: rgba(0, 123, 255, 0.05);
+}
+
+.aircraft-card.selected {
+  border-color: #007bff;
+  background: rgba(0, 123, 255, 0.1);
+}
+
+.aircraft-card h4 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333333;
+}
+
+.aircraft-card p {
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+.price {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #007bff;
+  margin-bottom: 0.5rem;
+}
+
+.duration {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+/* 特殊要求 */
+.special-requirements {
+  margin: 2rem 0;
+}
+
+.special-requirements label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #333333;
+}
+
+.special-requirements textarea {
+  width: 100%;
+  padding: 1rem;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  color: #333333;
+  font-size: 1rem;
+  resize: vertical;
+  min-height: 100px;
+  transition: all 0.3s ease;
+}
+
+.special-requirements textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.special-requirements textarea::placeholder {
+  color: #adb5bd;
+}
+
+/* 按钮样式 */
+.btn-primary {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.btn-primary:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+.btn-large {
+  width: 100%;
+  padding: 1.25rem 2rem;
+  font-size: 1.125rem;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+  transform: translateY(-1px);
+}
+
+/* 服务优势 */
+.service-advantages {
+  background: #f8f9fa;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.service-advantages h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #333333;
+  text-align: center;
+}
+
+.advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.advantage-item h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333333;
+}
+
+.advantage-item p {
+  color: #6c757d;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+/* 订单统计 */
+.order-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.stat-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.75rem;
+  font-size: 1.25rem;
+}
+
+.stat-icon.blue {
+  background: #007bff;
+  color: white;
+}
+
+.stat-icon.green {
+  background: #28a745;
+  color: white;
+}
+
+.stat-icon.purple {
+  background: #6f42c1;
+  color: white;
+}
+
+.stat-icon.red {
+  background: #dc3545;
+  color: white;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #333333;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+/* 订单标签导航 */
+.order-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.order-tab {
+  background: white;
+  border: 2px solid #e9ecef;
+  color: #6c757d;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.order-tab:hover {
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.order-tab.active {
+  background: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+/* 订单列表 */
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.order-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.flight-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.aircraft-icon {
+  width: 40px;
+  height: 40px;
+  background: #007bff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+}
+
+.aircraft-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.aircraft-type {
+  font-weight: 600;
+  color: #333333;
+  font-size: 1rem;
+}
+
+.flight-number {
+  color: #6c757d;
+  font-size: 0.875rem;
+  font-family: monospace;
+}
+
+.order-status {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.order-status.confirming {
+  background: #007bff;
+  color: white;
+}
+
+.order-status.booked {
+  background: #ffc107;
+  color: #333333;
+}
+
+.order-status.completed {
+  background: #28a745;
+  color: white;
+}
+
+.route-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.location {
+  color: #333333;
+  font-weight: 500;
+}
+
+.route-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.flight-line {
+  color: #007bff;
+  font-size: 1.2rem;
+}
+
+.order-details {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.detail-icon {
+  color: #6c757d;
+  font-size: 1rem;
+}
+
+.detail-label {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+.detail-value {
+  color: #333333;
+  font-weight: 500;
+}
+
+.order-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.cost-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.cost-label {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+.cost-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #007bff;
+}
+
+/* 个人资料样式 */
+.profile-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+.profile-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-large {
+  width: 100px;
+  height: 100px;
+  background: #007bff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  margin: 0 auto 1rem;
+  color: white;
+}
+
+.profile-info h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333333;
+}
+
+.profile-info p {
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.role-icon {
+  font-size: 1rem;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.detail-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-icon {
+  color: #6c757d;
+  font-size: 1.25rem;
+}
+
+.card-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333333;
+}
+
+.detail-card input {
+  width: 100%;
+  padding: 0.75rem;
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  color: #333333;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.detail-card input:focus {
+  outline: none;
+  border-color: #007bff;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+.checkbox-group label {
+  color: #333333;
+  font-size: 0.875rem;
 }
 
 .welcome-section {
@@ -8689,10 +9507,15 @@ body {
 /* 标签页内容 */
 .tab-content {
   display: none;
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.3s ease;
 }
 
 .tab-content.active {
   display: block;
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* 预订表单样式 */

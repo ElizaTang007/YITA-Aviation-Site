@@ -3,67 +3,96 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>用户端指挥中心 - YITA航空</title>
-  <meta name="description" content="YITA航空用户端指挥中心，提供eVTOL航班预订、订单管理、个人资料等服务" />
+  <title>天际出行 - eVTOL空中出租车</title>
+  <meta name="description" content="天际出行eVTOL空中出租车服务，提供快速、舒适、环保的城市空中交通体验" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-  <!-- 导航栏 -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <div class="nav-logo">
-        <a href="index.html" class="logo-text">YITA</a>
-      </div>
-      <div class="nav-menu">
-        <a href="index.html" class="nav-link">返回主页</a>
-        <a href="command-center.html" class="nav-link">飞行员版</a>
-      </div>
-    </div>
-  </nav>
-
+<body class="user-theme">
   <!-- 用户端指挥中心主界面 -->
-  <div class="user-command-center">
-    <div class="container">
-      <!-- 顶部欢迎区域 -->
-      <div class="welcome-section">
-        <h1>天际出行</h1>
-        <p class="subtitle">eVTOL 空中出租车</p>
-        <div class="user-info">
-          <div class="user-avatar">
-            <div class="avatar-icon">👤</div>
-          </div>
-          <div class="user-details">
-            <h3>YITING TANG</h3>
-            <p>tangyiting007@gmail.com</p>
-            <span class="user-role">管理员</span>
-          </div>
+  <div class="user-command-center-white">
+    <!-- 左侧导航栏 -->
+    <div class="user-sidebar">
+      <div class="sidebar-header">
+        <div class="brand-logo">
+          <div class="logo-icon">✈️</div>
+        </div>
+        <div class="brand-text">
+          <h2>天际出行</h2>
+          <p>eVTOL 空中出租车</p>
         </div>
       </div>
+      
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" onclick="showTab('booking')">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-text">预订航班</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showTab('orders')">
+          <span class="nav-icon">📅</span>
+          <span class="nav-text">我的订单</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showTab('profile')">
+          <span class="nav-icon">👤</span>
+          <span class="nav-text">个人资料</span>
+        </a>
+      </nav>
+    </div>
 
-      <!-- 功能导航 -->
-      <div class="user-nav-tabs">
-        <button class="nav-tab active" onclick="showTab('booking')">
-          <span class="tab-icon">🏠</span>
-          预订航班
-        </button>
-        <button class="nav-tab" onclick="showTab('orders')">
-          <span class="tab-icon">📅</span>
-          我的订单
-        </button>
-        <button class="nav-tab" onclick="showTab('profile')">
-          <span class="tab-icon">👤</span>
-          个人资料
-        </button>
-      </div>
+    <!-- 右侧主内容区域 -->
+    <div class="user-main-content">
 
       <!-- 预订航班界面 -->
       <div id="booking-tab" class="tab-content active">
-        <div class="booking-section">
-          <h2>预订您的eVTOL航班</h2>
+        <!-- 顶部横幅 -->
+        <div class="hero-banner">
+          <h1>未来出行 <span class="highlight">触手可及</span></h1>
+          <p class="hero-subtitle">体验革命性的城市空中交通服务,让您的出行更快速、更舒适、更环保</p>
+        </div>
+
+        <!-- 服务特色介绍 -->
+        <div class="features-section">
+          <div class="feature-card">
+            <div class="feature-icon-bg">
+              <span class="feature-icon">🕐</span>
+            </div>
+            <h3>快速出行</h3>
+            <p>10-15分钟即可抵达目的地,避开地面交通拥堵</p>
+          </div>
           
-          <!-- 航班信息表单 -->
+          <div class="feature-card">
+            <div class="feature-icon-bg">
+              <span class="feature-icon">📍</span>
+            </div>
+            <h3>城市覆盖</h3>
+            <p>覆盖主要城市CBD和商务区,点对点直达服务</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon-bg">
+              <span class="feature-icon">👥</span>
+            </div>
+            <h3>舒适体验</h3>
+            <p>豪华座椅设计,360度全景视野,享受云端之旅</p>
+          </div>
+          
+          <div class="feature-card">
+            <div class="feature-icon-bg">
+              <span class="feature-icon">✈️</span>
+            </div>
+            <h3>安全可靠</h3>
+            <p>先进的eVTOL技术,多重安全保障系统</p>
+          </div>
+        </div>
+
+        <!-- 航班预订表单 -->
+        <div class="booking-form-section">
+          <div class="form-header">
+            <span class="form-icon">✈️</span>
+            <h2>预订您的eVTOL航班</h2>
+          </div>
+          
           <div class="booking-form">
             <div class="form-row">
               <div class="form-group">
@@ -155,6 +184,25 @@
 
             <button class="btn-primary btn-large" onclick="confirmBooking()">确认预订</button>
           </div>
+
+          <!-- 服务优势 -->
+          <div class="service-advantages">
+            <h3>为什么选择天际出行?</h3>
+            <div class="advantages-grid">
+              <div class="advantage-item">
+                <h4>环保低碳</h4>
+                <p>纯电动驱动,零排放,为城市环保贡献力量</p>
+              </div>
+              <div class="advantage-item">
+                <h4>时间高效</h4>
+                <p>直线飞行路径,大幅缩短通勤时间</p>
+              </div>
+              <div class="advantage-item">
+                <h4>24小时服务</h4>
+                <p>全天候运营,随时响应您的出行需求</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -167,69 +215,118 @@
           <!-- 订单统计 -->
           <div class="order-stats">
             <div class="stat-card">
-              <div class="stat-icon">✈️</div>
+              <div class="stat-icon blue">✈️</div>
               <div class="stat-number">3</div>
               <div class="stat-label">总航班</div>
             </div>
             <div class="stat-card">
-              <div class="stat-icon">📅</div>
+              <div class="stat-icon green">📅</div>
               <div class="stat-number">2</div>
               <div class="stat-label">即将出行</div>
             </div>
             <div class="stat-card">
-              <div class="stat-icon">✅</div>
+              <div class="stat-icon purple">⏰</div>
               <div class="stat-number">1</div>
               <div class="stat-label">已完成</div>
             </div>
             <div class="stat-card">
-              <div class="stat-icon">❌</div>
+              <div class="stat-icon red">📅</div>
               <div class="stat-number">0</div>
               <div class="stat-label">已取消</div>
             </div>
           </div>
 
+          <!-- 标签导航 -->
+          <div class="order-tabs">
+            <button class="order-tab active" onclick="filterOrders('all')">全部航班</button>
+            <button class="order-tab" onclick="filterOrders('upcoming')">即将出行</button>
+            <button class="order-tab" onclick="filterOrders('history')">历史记录</button>
+          </div>
+
           <!-- 订单列表 -->
           <div class="orders-list">
             <div class="order-card">
-              <div class="order-status booked">已预订</div>
-              <div class="order-details">
+              <div class="order-header">
                 <div class="flight-info">
-                  <div class="aircraft-type">中型eVTOL</div>
-                  <div class="flight-number">#ebf6ec</div>
+                  <div class="aircraft-icon">✈️</div>
+                  <div class="aircraft-details">
+                    <div class="aircraft-type">轻型eVTOL</div>
+                    <div class="flight-number">航班 #ebf6ed</div>
+                  </div>
                 </div>
-                <div class="route-info">
-                  <div class="location">北京CBD</div>
-                  <div class="route-connector">✈️</div>
-                  <div class="location">上海陆家嘴</div>
-                </div>
-                <div class="time-info">
-                  <span class="time">01月05日 20:00</span>
-                  <span class="passengers">2人</span>
-                </div>
-                <div class="cost">¥598</div>
+                <div class="order-status confirming">确认中</div>
               </div>
-              <button class="btn-secondary" onclick="viewOrderDetails('ebf6ec')">查看详情</button>
+              
+              <div class="route-info">
+                <div class="location">深圳前海</div>
+                <div class="route-connector">
+                  <div class="flight-line">✈️</div>
+                </div>
+                <div class="location">广州天河</div>
+              </div>
+              
+              <div class="order-details">
+                <div class="detail-item">
+                  <span class="detail-icon">🕐</span>
+                  <span class="detail-label">出发时间</span>
+                  <span class="detail-value">01月07日 01:30</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">👥</span>
+                  <span class="detail-label">乘客数量</span>
+                  <span class="detail-value">1人</span>
+                </div>
+              </div>
+              
+              <div class="order-footer">
+                <div class="cost-info">
+                  <span class="cost-label">总费用</span>
+                  <span class="cost-value">¥299</span>
+                </div>
+                <button class="btn-secondary" onclick="viewOrderDetails('ebf6ed')">查看详情</button>
+              </div>
             </div>
 
             <div class="order-card">
-              <div class="order-status completed">已完成</div>
-              <div class="order-details">
+              <div class="order-header">
                 <div class="flight-info">
-                  <div class="aircraft-type">中型eVTOL</div>
-                  <div class="flight-number">#ebf6ee</div>
+                  <div class="aircraft-icon">✈️</div>
+                  <div class="aircraft-details">
+                    <div class="aircraft-type">中型eVTOL</div>
+                    <div class="flight-number">航班 #ebf6ec</div>
+                  </div>
                 </div>
-                <div class="route-info">
-                  <div class="location">杭州滨江</div>
-                  <div class="route-connector">✈️</div>
-                  <div class="location">上海陆家嘴</div>
-                </div>
-                <div class="time-info">
-                  <span class="time">01月04日 03:15</span>
-                  <span class="passengers">3人</span>
-                </div>
-                <div class="cost">¥897</div>
+                <div class="order-status booked">已预订</div>
               </div>
-              <button class="btn-secondary" onclick="viewOrderDetails('ebf6ee')">查看详情</button>
+              
+              <div class="route-info">
+                <div class="location">北京CBD</div>
+                <div class="route-connector">
+                  <div class="flight-line">✈️</div>
+                </div>
+                <div class="location">上海陆家嘴</div>
+              </div>
+              
+              <div class="order-details">
+                <div class="detail-item">
+                  <span class="detail-icon">🕐</span>
+                  <span class="detail-label">出发时间</span>
+                  <span class="detail-value">01月05日 20:00</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-icon">👥</span>
+                  <span class="detail-label">乘客数量</span>
+                  <span class="detail-value">2人</span>
+                </div>
+              </div>
+              
+              <div class="order-footer">
+                <div class="cost-info">
+                  <span class="cost-label">总费用</span>
+                  <span class="cost-value">¥598</span>
+                </div>
+                <button class="btn-secondary" onclick="viewOrderDetails('ebf6ec')">查看详情</button>
+              </div>
             </div>
           </div>
         </div>
@@ -248,13 +345,19 @@
               <div class="profile-info">
                 <h3>YITING TANG</h3>
                 <p>tangyiting007@gmail.com</p>
-                <span class="role-badge">管理员</span>
+                <div class="role-badge">
+                  <span class="role-icon">👤</span>
+                  <span>管理员</span>
+                </div>
               </div>
             </div>
 
             <div class="profile-details">
               <div class="detail-card">
-                <h3>账户信息</h3>
+                <div class="card-header">
+                  <span class="card-icon">✉️</span>
+                  <h3>账户信息</h3>
+                </div>
                 <div class="form-group">
                   <label>姓名</label>
                   <input type="text" value="YITING TANG" readonly>
@@ -271,7 +374,10 @@
               </div>
 
               <div class="detail-card">
-                <h3>偏好设置</h3>
+                <div class="card-header">
+                  <span class="card-icon">📋</span>
+                  <h3>偏好设置</h3>
+                </div>
                 <div class="form-group">
                   <label>首选出发地</label>
                   <input type="text" placeholder="设置您的常用出发地">

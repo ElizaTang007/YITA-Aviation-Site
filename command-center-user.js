@@ -1,8 +1,57 @@
 // 用户端指挥中心交互功能
 
 document.addEventListener('DOMContentLoaded', function() {
-  initializeUserCommandCenter();
+  // 页面加载动画
+  animatePageLoad();
+  
+  // 初始化功能
+  setTimeout(() => {
+    initializeUserCommandCenter();
+  }, 500);
 });
+
+// 页面加载动画
+function animatePageLoad() {
+  const sidebar = document.querySelector('.user-sidebar');
+  const mainContent = document.querySelector('.user-main-content');
+  
+  if (sidebar) {
+    sidebar.style.opacity = '0';
+    sidebar.style.transform = 'translateX(-50px)';
+    sidebar.style.transition = 'all 0.6s ease';
+    
+    setTimeout(() => {
+      sidebar.style.opacity = '1';
+      sidebar.style.transform = 'translateX(0)';
+    }, 100);
+  }
+  
+  if (mainContent) {
+    mainContent.style.opacity = '0';
+    mainContent.style.transform = 'translateX(50px)';
+    mainContent.style.transition = 'all 0.6s ease';
+    
+    setTimeout(() => {
+      mainContent.style.opacity = '1';
+      mainContent.style.transform = 'translateX(0)';
+    }, 200);
+  }
+  
+  // 特色卡片动画
+  setTimeout(() => {
+    const featureCards = document.querySelectorAll('.feature-card');
+    featureCards.forEach((card, index) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(30px)';
+      card.style.transition = 'all 0.5s ease';
+      
+      setTimeout(() => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, index * 100);
+    });
+  }, 400);
+}
 
 function initializeUserCommandCenter() {
   // 初始化标签页切换
@@ -23,20 +72,34 @@ function showTab(tabName) {
   // 隐藏所有标签页内容
   const tabContents = document.querySelectorAll('.tab-content');
   tabContents.forEach(tab => {
-    tab.classList.remove('active');
+    tab.style.opacity = '0';
+    tab.style.transform = 'translateX(20px)';
+    setTimeout(() => {
+      tab.classList.remove('active');
+    }, 150);
   });
   
   // 移除所有标签页的激活状态
-  const tabs = document.querySelectorAll('.nav-tab');
-  tabs.forEach(tab => {
-    tab.classList.remove('active');
+  const navItems = document.querySelectorAll('.nav-item');
+  navItems.forEach(item => {
+    item.classList.remove('active');
   });
   
-  // 显示选中的标签页
-  document.getElementById(tabName + '-tab').classList.add('active');
-  
   // 激活对应的标签按钮
-  event.target.classList.add('active');
+  const activeNavItem = document.querySelector(`[onclick="showTab('${tabName}')"]`);
+  if (activeNavItem) {
+    activeNavItem.classList.add('active');
+  }
+  
+  // 显示选中的标签页（带动画）
+  setTimeout(() => {
+    const targetTab = document.getElementById(tabName + '-tab');
+    if (targetTab) {
+      targetTab.classList.add('active');
+      targetTab.style.opacity = '1';
+      targetTab.style.transform = 'translateX(0)';
+    }
+  }, 150);
 }
 
 // 飞行器选择功能
@@ -410,4 +473,18 @@ function showNotification(message, type = 'info') {
 function initializeTabs() {
   // 默认显示预订页面
   showTab('booking');
+}
+
+// 订单筛选功能
+function filterOrders(filter) {
+  const orderTabs = document.querySelectorAll('.order-tab');
+  orderTabs.forEach(tab => {
+    tab.classList.remove('active');
+  });
+  
+  // 激活当前标签
+  event.target.classList.add('active');
+  
+  // 这里可以添加实际的筛选逻辑
+  console.log(`筛选订单: ${filter}`);
 }
