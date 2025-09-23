@@ -8579,26 +8579,28 @@ body {
   }
 }
 
-/* 用户端指挥中心样式 - 白色主题 */
+/* 用户端指挥中心样式 - 优化白色主题 */
 .user-theme {
-  background: #f8f9fa;
-  color: #333333;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  color: #2c3e50;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .user-command-center-white {
   min-height: 100vh;
   display: flex;
-  background: #f8f9fa;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
 }
 
 /* 左侧导航栏 */
 .user-sidebar {
   width: 280px;
-  background: #e9ecef;
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
   padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.08);
+  border-right: 1px solid #e9ecef;
 }
 
 .sidebar-header {
@@ -8609,17 +8611,24 @@ body {
 .brand-logo {
   width: 60px;
   height: 60px;
-  background: #007bff;
-  border-radius: 12px;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1rem;
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 123, 255, 0.25);
+  transition: all 0.3s ease;
+}
+
+.brand-logo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(0, 123, 255, 0.35);
 }
 
 .logo-icon {
-  font-size: 1.5rem;
+  width: 28px;
+  height: 28px;
   color: white;
 }
 
@@ -8652,32 +8661,44 @@ body {
   font-weight: 500;
   transition: all 0.3s ease;
   position: relative;
+  overflow: hidden;
 }
 
-.nav-item:hover {
-  background: rgba(0, 123, 255, 0.1);
-  color: #007bff;
-}
-
-.nav-item.active {
-  background: #007bff;
-  color: white;
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
-}
-
-.nav-item.active::before {
+.nav-item::before {
   content: '';
   position: absolute;
   left: 0;
   top: 0;
-  bottom: 0;
-  width: 4px;
-  background: #0056b3;
-  border-radius: 0 4px 4px 0;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.nav-item:hover {
+  color: white;
+  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(0, 123, 255, 0.2);
+}
+
+.nav-item:hover::before {
+  width: 100%;
+}
+
+.nav-item.active {
+  color: white;
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.25);
+}
+
+.nav-item.active::before {
+  width: 100%;
 }
 
 .nav-icon {
-  font-size: 1.2rem;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
 }
 
 .nav-text {
@@ -8688,6 +8709,7 @@ body {
 .user-main-content {
   flex: 1;
   padding: 2rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   overflow-y: auto;
 }
 
@@ -8727,32 +8749,60 @@ body {
 }
 
 .feature-card {
-  background: white;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
   padding: 2rem;
-  border-radius: 16px;
+  border-radius: 20px;
   text-align: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
   transition: all 0.3s ease;
+  border: 1px solid rgba(0, 123, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #007bff 0%, #0056b3 100%);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
 }
 
 .feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 16px 48px rgba(0, 123, 255, 0.15);
+  border-color: rgba(0, 123, 255, 0.3);
 }
 
 .feature-icon-bg {
   width: 60px;
   height: 60px;
-  background: #007bff;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1rem;
+  box-shadow: 0 8px 24px rgba(0, 123, 255, 0.25);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .feature-icon-bg {
+  transform: scale(1.1);
+  box-shadow: 0 12px 32px rgba(0, 123, 255, 0.35);
 }
 
 .feature-icon {
-  font-size: 1.5rem;
+  width: 28px;
+  height: 28px;
   color: white;
 }
 
@@ -8770,11 +8820,14 @@ body {
 
 /* 预订表单区域 */
 .booking-form-section {
-  background: white;
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 24px;
+  padding: 2.5rem;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
   margin-bottom: 2rem;
+  border: 1px solid rgba(0, 123, 255, 0.1);
+  position: relative;
+  overflow: hidden;
 }
 
 .form-header {
@@ -8785,7 +8838,8 @@ body {
 }
 
 .form-icon {
-  font-size: 1.5rem;
+  width: 24px;
+  height: 24px;
   color: #007bff;
 }
 
@@ -8827,6 +8881,9 @@ body {
   position: absolute;
   left: 1rem;
   z-index: 1;
+  width: 20px;
+  height: 20px;
+  color: #6c757d;
   color: #6c757d;
   font-size: 1rem;
 }
@@ -9566,6 +9623,9 @@ body {
   position: absolute;
   left: 1rem;
   z-index: 1;
+  width: 20px;
+  height: 20px;
+  color: #6c757d;
   color: #00d4ff;
   font-size: 1.1rem;
 }
@@ -9706,7 +9766,8 @@ body {
 }
 
 .stat-icon {
-  font-size: 2rem;
+  width: 32px;
+  height: 32px;
   margin-bottom: 0.5rem;
 }
 
