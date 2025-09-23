@@ -8611,25 +8611,26 @@ body {
 .brand-logo {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  background: linear-gradient(135deg, #4dabf7 0%, #339af0 100%);
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1rem;
-  box-shadow: 0 8px 24px rgba(0, 123, 255, 0.25);
+  box-shadow: 0 8px 24px rgba(77, 171, 247, 0.2);
   transition: all 0.3s ease;
 }
 
 .brand-logo:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(0, 123, 255, 0.35);
+  box-shadow: 0 12px 32px rgba(77, 171, 247, 0.3);
 }
 
 .logo-icon {
   width: 28px;
   height: 28px;
   color: white;
+  fill: currentColor;
 }
 
 .brand-text h2 {
@@ -8671,7 +8672,7 @@ body {
   top: 0;
   height: 100%;
   width: 0;
-  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  background: linear-gradient(135deg, #4dabf7 0%, #339af0 100%);
   transition: width 0.3s ease;
   z-index: -1;
 }
@@ -8679,7 +8680,7 @@ body {
 .nav-item:hover {
   color: white;
   transform: translateX(4px);
-  box-shadow: 0 4px 16px rgba(0, 123, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(77, 171, 247, 0.15);
 }
 
 .nav-item:hover::before {
@@ -8688,7 +8689,7 @@ body {
 
 .nav-item.active {
   color: white;
-  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.25);
+  box-shadow: 0 6px 20px rgba(77, 171, 247, 0.2);
 }
 
 .nav-item.active::before {
@@ -8699,6 +8700,8 @@ body {
   width: 20px;
   height: 20px;
   flex-shrink: 0;
+  color: #4dabf7;
+  fill: currentColor;
 }
 
 .nav-text {
@@ -8785,25 +8788,26 @@ body {
 .feature-icon-bg {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  background: linear-gradient(135deg, #4dabf7 0%, #339af0 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1rem;
-  box-shadow: 0 8px 24px rgba(0, 123, 255, 0.25);
+  box-shadow: 0 8px 24px rgba(77, 171, 247, 0.2);
   transition: all 0.3s ease;
 }
 
 .feature-card:hover .feature-icon-bg {
   transform: scale(1.1);
-  box-shadow: 0 12px 32px rgba(0, 123, 255, 0.35);
+  box-shadow: 0 12px 32px rgba(77, 171, 247, 0.3);
 }
 
 .feature-icon {
   width: 28px;
   height: 28px;
   color: white;
+  fill: currentColor;
 }
 
 .feature-card h3 {
@@ -8841,7 +8845,8 @@ body {
 .form-icon {
   width: 24px;
   height: 24px;
-  color: #007bff;
+  color: #4dabf7;
+  fill: currentColor;
 }
 
 .form-header h2 {
@@ -8884,7 +8889,8 @@ body {
   z-index: 1;
   width: 20px;
   height: 20px;
-  color: #007bff;
+  color: #4dabf7;
+  fill: currentColor;
   color: #6c757d;
   font-size: 1rem;
 }
@@ -9450,9 +9456,10 @@ body {
 }
 
 .card-icon {
-  color: #007bff;
+  color: #4dabf7;
   width: 20px;
   height: 20px;
+  fill: currentColor;
 }
 
 .card-header h3 {
@@ -9660,7 +9667,8 @@ body {
   z-index: 1;
   width: 20px;
   height: 20px;
-  color: #007bff;
+  color: #4dabf7;
+  fill: currentColor;
   color: #00d4ff;
   font-size: 1.1rem;
 }
