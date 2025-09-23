@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>用户端指挥中心 - YITA航空</title>
+  <meta name="description" content="YITA航空用户端指挥中心，提供eVTOL航班预订、订单管理、个人资料等服务" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html" class="logo-text">YITA</a>
+      </div>
+      <div class="nav-menu">
+        <a href="index.html" class="nav-link">返回主页</a>
+        <a href="command-center.html" class="nav-link">飞行员版</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 用户端指挥中心主界面 -->
+  <div class="user-command-center">
+    <div class="container">
+      <!-- 顶部欢迎区域 -->
+      <div class="welcome-section">
+        <h1>天际出行</h1>
+        <p class="subtitle">eVTOL 空中出租车</p>
+        <div class="user-info">
+          <div class="user-avatar">
+            <div class="avatar-icon">👤</div>
+          </div>
+          <div class="user-details">
+            <h3>YITING TANG</h3>
+            <p>tangyiting007@gmail.com</p>
+            <span class="user-role">管理员</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 功能导航 -->
+      <div class="user-nav-tabs">
+        <button class="nav-tab active" onclick="showTab('booking')">
+          <span class="tab-icon">🏠</span>
+          预订航班
+        </button>
+        <button class="nav-tab" onclick="showTab('orders')">
+          <span class="tab-icon">📅</span>
+          我的订单
+        </button>
+        <button class="nav-tab" onclick="showTab('profile')">
+          <span class="tab-icon">👤</span>
+          个人资料
+        </button>
+      </div>
+
+      <!-- 预订航班界面 -->
+      <div id="booking-tab" class="tab-content active">
+        <div class="booking-section">
+          <h2>预订您的eVTOL航班</h2>
+          
+          <!-- 航班信息表单 -->
+          <div class="booking-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>出发地</label>
+                <div class="input-with-icon">
+                  <span class="input-icon">📍</span>
+                  <select id="departure" class="form-select">
+                    <option value="">选择出发地点</option>
+                    <option value="beijing-cbd">北京CBD</option>
+                    <option value="shanghai-lujiazui">上海陆家嘴</option>
+                    <option value="shenzhen-qianhai">深圳前海</option>
+                    <option value="guangzhou-tianhe">广州天河</option>
+                    <option value="hangzhou-binjiang">杭州滨江</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label>目的地</label>
+                <div class="input-with-icon">
+                  <span class="input-icon">📍</span>
+                  <select id="destination" class="form-select">
+                    <option value="">选择目的地</option>
+                    <option value="beijing-cbd">北京CBD</option>
+                    <option value="shanghai-lujiazui">上海陆家嘴</option>
+                    <option value="shenzhen-qianhai">深圳前海</option>
+                    <option value="guangzhou-tianhe">广州天河</option>
+                    <option value="hangzhou-binjiang">杭州滨江</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>出发时间</label>
+                <div class="input-with-icon">
+                  <span class="input-icon">🕐</span>
+                  <input type="datetime-local" id="departure-time" class="form-input">
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label>乘客数量</label>
+                <div class="input-with-icon">
+                  <span class="input-icon">👥</span>
+                  <select id="passengers" class="form-select">
+                    <option value="1">1人</option>
+                    <option value="2">2人</option>
+                    <option value="3">3人</option>
+                    <option value="4">4人</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- 飞行器类型选择 -->
+            <div class="aircraft-selection">
+              <h3>飞行器类型</h3>
+              <div class="aircraft-options">
+                <div class="aircraft-card" data-type="light">
+                  <h4>轻型eVTOL</h4>
+                  <p>最多2人</p>
+                  <div class="price">¥299/人</div>
+                  <div class="duration">约15分钟</div>
+                </div>
+                
+                <div class="aircraft-card selected" data-type="medium">
+                  <h4>中型eVTOL</h4>
+                  <p>最多3人</p>
+                  <div class="price">¥399/人</div>
+                  <div class="duration">约12分钟</div>
+                </div>
+                
+                <div class="aircraft-card" data-type="luxury">
+                  <h4>豪华eVTOL</h4>
+                  <p>最多4人</p>
+                  <div class="price">¥599/人</div>
+                  <div class="duration">约10分钟</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 特殊要求 -->
+            <div class="special-requirements">
+              <label>特殊要求 (可选)</label>
+              <textarea id="special-requirements" placeholder="请输入任何特殊要求或备注..." rows="3"></textarea>
+            </div>
+
+            <button class="btn-primary btn-large" onclick="confirmBooking()">确认预订</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 我的订单界面 -->
+      <div id="orders-tab" class="tab-content">
+        <div class="orders-section">
+          <h2>我的订单</h2>
+          <p class="section-subtitle">管理您的eVTOL出行记录</p>
+          
+          <!-- 订单统计 -->
+          <div class="order-stats">
+            <div class="stat-card">
+              <div class="stat-icon">✈️</div>
+              <div class="stat-number">3</div>
+              <div class="stat-label">总航班</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">📅</div>
+              <div class="stat-number">2</div>
+              <div class="stat-label">即将出行</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">✅</div>
+              <div class="stat-number">1</div>
+              <div class="stat-label">已完成</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">❌</div>
+              <div class="stat-number">0</div>
+              <div class="stat-label">已取消</div>
+            </div>
+          </div>
+
+          <!-- 订单列表 -->
+          <div class="orders-list">
+            <div class="order-card">
+              <div class="order-status booked">已预订</div>
+              <div class="order-details">
+                <div class="flight-info">
+                  <div class="aircraft-type">中型eVTOL</div>
+                  <div class="flight-number">#ebf6ec</div>
+                </div>
+                <div class="route-info">
+                  <div class="location">北京CBD</div>
+                  <div class="route-connector">✈️</div>
+                  <div class="location">上海陆家嘴</div>
+                </div>
+                <div class="time-info">
+                  <span class="time">01月05日 20:00</span>
+                  <span class="passengers">2人</span>
+                </div>
+                <div class="cost">¥598</div>
+              </div>
+              <button class="btn-secondary" onclick="viewOrderDetails('ebf6ec')">查看详情</button>
+            </div>
+
+            <div class="order-card">
+              <div class="order-status completed">已完成</div>
+              <div class="order-details">
+                <div class="flight-info">
+                  <div class="aircraft-type">中型eVTOL</div>
+                  <div class="flight-number">#ebf6ee</div>
+                </div>
+                <div class="route-info">
+                  <div class="location">杭州滨江</div>
+                  <div class="route-connector">✈️</div>
+                  <div class="location">上海陆家嘴</div>
+                </div>
+                <div class="time-info">
+                  <span class="time">01月04日 03:15</span>
+                  <span class="passengers">3人</span>
+                </div>
+                <div class="cost">¥897</div>
+              </div>
+              <button class="btn-secondary" onclick="viewOrderDetails('ebf6ee')">查看详情</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 个人资料界面 -->
+      <div id="profile-tab" class="tab-content">
+        <div class="profile-section">
+          <h2>个人资料</h2>
+          
+          <div class="profile-content">
+            <div class="profile-card">
+              <div class="profile-avatar">
+                <div class="avatar-large">👤</div>
+              </div>
+              <div class="profile-info">
+                <h3>YITING TANG</h3>
+                <p>tangyiting007@gmail.com</p>
+                <span class="role-badge">管理员</span>
+              </div>
+            </div>
+
+            <div class="profile-details">
+              <div class="detail-card">
+                <h3>账户信息</h3>
+                <div class="form-group">
+                  <label>姓名</label>
+                  <input type="text" value="YITING TANG" readonly>
+                </div>
+                <div class="form-group">
+                  <label>邮箱</label>
+                  <input type="email" value="tangyiting007@gmail.com" readonly>
+                </div>
+                <div class="form-group">
+                  <label>注册时间</label>
+                  <input type="text" value="2025年9月23日" readonly>
+                </div>
+                <button class="btn-primary">编辑资料</button>
+              </div>
+
+              <div class="detail-card">
+                <h3>偏好设置</h3>
+                <div class="form-group">
+                  <label>首选出发地</label>
+                  <input type="text" placeholder="设置您的常用出发地">
+                </div>
+                <div class="form-group">
+                  <label>首选座位数</label>
+                  <input type="text" placeholder="设置您的默认座位偏好">
+                </div>
+                <div class="checkbox-group">
+                  <input type="checkbox" id="notifications">
+                  <label for="notifications">接收航班通知和优惠信息</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 航班详情模态框 -->
+  <div id="order-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>航班详情</h3>
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="flight-details">
+          <div class="aircraft-info">
+            <div class="aircraft-icon">✈️</div>
+            <span>轻型eVTOL</span>
+          </div>
+          <div class="flight-number">航班号: #7cebf6ed</div>
+          
+          <div class="route-details">
+            <div class="location-detail">
+              <div class="location-icon">📍</div>
+              <div class="location-info">
+                <div class="location-name">深圳前海</div>
+                <div class="time-label">出发时间</div>
+                <div class="time-value">2025年01月07日 01:30</div>
+              </div>
+            </div>
+            
+            <div class="route-connector">
+              <div class="flight-line">✈️</div>
+            </div>
+            
+            <div class="location-detail">
+              <div class="location-icon">📍</div>
+              <div class="location-info">
+                <div class="location-name">广州天河</div>
+                <div class="time-label">预计到达</div>
+                <div class="time-value">2025年01月07日 01:40</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flight-summary">
+            <div class="summary-item">
+              <div class="summary-icon">👥</div>
+              <div class="summary-info">
+                <div class="summary-label">乘客数量</div>
+                <div class="summary-value">1人</div>
+              </div>
+            </div>
+            <div class="summary-item">
+              <div class="summary-icon">⏱️</div>
+              <div class="summary-info">
+                <div class="summary-label">飞行时长</div>
+                <div class="summary-value">10分钟</div>
+              </div>
+            </div>
+            <div class="summary-item">
+              <div class="summary-icon">💳</div>
+              <div class="summary-info">
+                <div class="summary-label">总费用</div>
+                <div class="summary-value">¥299</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-primary" onclick="closeModal()">关闭</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="command-center-user.js"></script>
+</body>
+</html>
