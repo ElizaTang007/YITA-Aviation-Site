@@ -8809,13 +8809,14 @@ body {
 .feature-card h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #333333;
+  color: #2c3e50;
   margin-bottom: 0.75rem;
 }
 
 .feature-card p {
-  color: #6c757d;
-  line-height: 1.5;
+  color: #495057;
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 /* 预订表单区域 */
@@ -8846,7 +8847,7 @@ body {
 .form-header h2 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #333333;
+  color: #2c3e50;
 }
 
 .booking-form {
@@ -8868,7 +8869,7 @@ body {
 .form-group label {
   font-weight: 500;
   margin-bottom: 0.5rem;
-  color: #333333;
+  color: #2c3e50;
 }
 
 .input-with-icon {
@@ -8922,7 +8923,7 @@ body {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #333333;
+  color: #2c3e50;
 }
 
 .aircraft-options {
@@ -8939,6 +8940,33 @@ body {
   text-align: center;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.aircraft-card h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.aircraft-card .capacity {
+  font-size: 0.9rem;
+  color: #495057;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.aircraft-card .price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #007bff;
+  margin-bottom: 0.25rem;
+}
+
+.aircraft-card .duration {
+  font-size: 0.85rem;
+  color: #495057;
+  font-weight: 500;
 }
 
 .aircraft-card:hover {
@@ -8984,7 +9012,7 @@ body {
   display: block;
   font-weight: 500;
   margin-bottom: 0.5rem;
-  color: #333333;
+  color: #2c3e50;
 }
 
 .special-requirements textarea {
@@ -9008,7 +9036,8 @@ body {
 }
 
 .special-requirements textarea::placeholder {
-  color: #adb5bd;
+  color: #6c757d;
+  font-weight: 400;
 }
 
 /* 按钮样式 */
@@ -9139,13 +9168,14 @@ body {
 .stat-number {
   font-size: 2rem;
   font-weight: 700;
-  color: #333333;
+  color: #2c3e50;
   margin-bottom: 0.25rem;
 }
 
 .stat-label {
-  color: #6c757d;
+  color: #495057;
   font-size: 0.875rem;
+  font-weight: 500;
 }
 
 /* 订单标签导航 */
@@ -9371,12 +9401,13 @@ body {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #333333;
+  color: #2c3e50;
 }
 
 .profile-info p {
-  color: #6c757d;
+  color: #495057;
   margin-bottom: 1rem;
+  font-weight: 400;
 }
 
 .role-badge {
@@ -9392,8 +9423,10 @@ body {
 }
 
 .role-icon {
-  font-size: 1rem;
+  width: 16px;
+  height: 16px;
 }
+
 
 .profile-details {
   display: flex;
@@ -9417,13 +9450,14 @@ body {
 
 .card-icon {
   color: #6c757d;
-  font-size: 1.25rem;
+  width: 20px;
+  height: 20px;
 }
 
 .card-header h3 {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #333333;
+  color: #2c3e50;
 }
 
 .detail-card input {
